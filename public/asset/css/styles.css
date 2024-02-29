@@ -1,0 +1,102 @@
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header h4 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.content {
+    padding: 50px;
+}
+
+
+
+.btn-custom i {
+    margin-left: 10px;
+}
+
+.btn {
+    background-color: white;
+    border-radius: 0;
+}
+
+.gap-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+
+    .btn-custom {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .gap-horizontal {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        justify-content: flex-start;
+        margin-right: auto;
+        text-align: left;
+    }
+}
+
+@media (max-width: 576px) {
+    .content {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .col-md-6 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.btn-primary {
+    background-color: blue;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: purple;
+    color: white;
+}
