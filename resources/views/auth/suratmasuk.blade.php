@@ -28,7 +28,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Koleksi Pameran</h3>
+                <h3 class="card-title">Surat Masuk</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
@@ -59,16 +59,14 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>no_inventaris</th>
-                                        <th>Nama Barang</th>
-                                        <th>Asal Ditemukan</th>
-                                        <th>Ukuran</th>
-                                        <th>keterangan</th>
-                                        <th>Action</th> <!-- Kolom tambahan untuk tombol action -->
+                                        <th>Nama</th>
+                                        <th>Nomor HP</th>
+                                        <th>Asal Intansi</th>
+                                        <th>Tanggal</th>
+                                        <th>Agenda</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                   @foreach($koleksis as $key => $koleksi)
                                   <tr>
                                       <td>{{ $key + 1 }}</td>
@@ -85,7 +83,7 @@
                                   </tr>
                                   @endforeach
                                     <!-- Tambahkan baris berikutnya sesuai dengan kebutuhan -->
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -95,6 +93,3 @@
             </div>
           </div>
             <!-- /.row -->
-            
-              
-         

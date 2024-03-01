@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Koleksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +17,14 @@ class LoginController extends Controller
     {
     return view('auth/dashboardd');
     }
+    public function suratmasuk()
+    {
+    return view('auth/suratmasuk');
+    }
     public function koleksipameran()
     {
-    return view('auth/koleksipameran');
+        $koleksis = Koleksi::all();
+    return view('auth/koleksipameran',compact('koleksis'));
     }
     function login_proses(Request $request)
     {

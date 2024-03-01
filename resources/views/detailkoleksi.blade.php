@@ -11,82 +11,71 @@
   <link href="{{ asset('asset/css/detailkoleksi.css') }}" rel="stylesheet">
 </head>
 <body>
+    <style>
+body {
+    background-image: url('{{ asset('gambar/bg5.png') }}');
+    background-size: cover; /* untuk mengisi area background */
+    background-repeat: no-repeat; /* untuk menghindari pengulangan gambar */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+    </style>
 
     <div class="navigation-buttons">
         <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
-        <a href="surat" class="btn btn-primary">Surat Observasi/Kunjungan</a>
-    </div>   
-<div class="col-md-12" style="padding-left:20px;">
-  <h4 style="color: white;"><b>KOLEKSI 1</b></h4>
-</div>
-<div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
-  <img src="gambar/pameran.png" style="width: 100%;">
-</div>
-<div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
-  <div class="row">
-    <div class="col-md-6">
-      <table align="left" style="color: white;font-size: 20px;line-height: 2;">
-          <tr>
-              <td>Nama Barang</td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td>No Inventaris</td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td>Asal Ditemukan</td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td>Cara Didapat</td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td>Tahun/Abad/Masa</td>
-              <td>: ................................................................................</td>
-          </tr>
-      </table>
     </div>
-    <div class="col-md-6">
-      <table align="left" style="color: white;font-size: 20px;">
-          <tr>
-              <td>Deskripsi</td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td></td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td></td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td></td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td></td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td></td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td>Keterangan</td>
-              <td>: ................................................................................</td>
-          </tr>
-          <tr>
-              <td>Ukuran</td>
-              <td>: ................................................................................</td>
-          </tr>
-      </table>
+    <div class="col-md-12" align="center">
+        <h1 style="color: white;"><b>KOLEKSI PAMERAN</b></h1>
     </div>
-  </div>
-</div>
-
+    <div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
+        <img src="gambar/pameran.png" style="width: 100%;">
+      </div>
+    
+      <div class="row">
+        <div class="col-lg-6">
+            <table class="table table-bordered table-striped, table.td" style="color: white;">
+                <tr>
+                    <td>Nama Barang</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                <tr>
+                    <td>No Inventaris</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                <tr>
+                    <td>Asal Ditemukan</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                <tr>
+                    <td>Cara Didapat</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <table class="table table-bordered table-striped,table.td" style="color: white;">
+                <tr>
+                    <td>Deskripsi</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                <tr>
+                    <td>Keterangan</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                <tr>
+                    <td>Ukuran</td>
+                    <td>: ................................................................................</td>
+                </tr>
+                <tr>
+                    <td>Tahun/Abad/Masa</td>
+                    <td>: ................................................................................</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 

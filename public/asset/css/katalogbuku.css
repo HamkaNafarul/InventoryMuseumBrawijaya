@@ -1,60 +1,106 @@
-body {
-    background-color: #5347D8;
-    font-family: 'Poppins', sans-serif;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  .header h4 {
-    color: #fff;
-    padding-top: 5px;
-    font-weight: bold;
-  }
-  .content {
-    padding: 50px;
-    color: #fff;
-  }
-  .content h2, .content h4 {
-    color: #fff;
-  }
-  .btn-custom {
-    background-color: #fff;
-    /*border-radius: 20px;*/
-    width: 237px;
-    height: 70px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #5347D8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .btn-custom i {
-    margin-left: 10px;
-  }
-  .navbar-brand {
-    color: #fff !important;
-  }
-  .navbar-nav .nav-link {
-    color: #fff !important;
-    margin: 0 15px;
-    font-weight: bold;
-  }
-  .poppins-text-bold {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    color: white;
-  }
-  .btn {
-    background-color: white;
-    border-radius: 0;
-  }
-  .gap-horizontal {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.header h4 {
+  color: #fff;
+  padding-top: 5px;
+  font-weight: bold;
+}
+.content {
+  padding: 50px;
+  color: #fff;
+}
+.content h2, .content h4 {
+  color: #fff;
+}
+.btn-custom {
+  background-color: #fff;
+  /*border-radius: 20px;*/
+  width: 237px;
+  height: 70px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #5347D8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-custom i {
+  margin-left: 10px;
+}
+.navbar-brand {
+  color: #fff !important;
+}
+.navbar-nav .nav-link {
+  color: #fff !important;
+  margin: 0 15px;
+  font-weight: bold;
+}
+.poppins-text-bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+.btn {
+  background-color: white;
+  border-radius: 0;
+}
+.gap-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 10px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5); /* Opasitas 50% */
+  padding: 20px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #007bff; /* Warna dasar tombol biru Bootstrap */
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 2px; /* Jarak atas 2px */
+  padding-top: 12px; /* Tinggi padding atas 12px */
+  padding-bottom: 12px; /* Tinggi padding bawah 12px */
+  padding-left: 20px; /* Lebar padding kiri 20px */
+  padding-right: 20px; /* Lebar padding kanan 20px */
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
   
