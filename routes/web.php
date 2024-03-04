@@ -38,6 +38,7 @@ Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalo
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');
 Route::prefix('surat')->group(function () {
     Route::post('/Form/store', [SuratControlller::class, 'store'])->name('store_surat');
+
 });
 Route::get('/detailkoleksi', [HomeController::class, 'detailkoleksi'])->name('detailkoleksi');
 Route::middleware(['guest'])->group(function(){
@@ -53,7 +54,12 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/koleksipameran', [LoginController::class, 'koleksipameran'])->name('koleksipameran');
         Route::get('/koleksipameran/Form', [KoleksiController::class, 'create'])->name('Form');
         Route::post('/koleksipameran/Form/store', [KoleksiController::class, 'store'])->name('store');
+        Route::get('/koleksipameran/FormEditKoleksi/edit/{id}', [KoleksiController::class, 'edit'])->name('edit');
+        Route::put('/koleksipameran/FormEditKoleksi/edit/update/{id}', [KoleksiController::class, 'update'])->name('update');
+        Route::delete('/koleksipameran/FormDeleteKoleksi/delete/{id}', [KoleksiController::class, 'destroy'])->name('delete_kategori');
         Route::get('/suratmasuk', [LoginController::class, 'suratmasuk'])->name('suratmasuk');
+        Route::delete('/suratmasuk/FormDeleteSurat/delete/{id}', [SuratControlller::class, 'destroy'])->name('delete');
+        Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
 
     });
     });

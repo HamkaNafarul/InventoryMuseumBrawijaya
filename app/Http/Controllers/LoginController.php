@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
+use App\Models\surat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,8 @@ class LoginController extends Controller
     }
     public function suratmasuk()
     {
-    return view('auth/suratmasuk');
+        $surats = surat::all();
+    return view('auth/suratmasuk',compact('surats'));
     }
     public function koleksipameran()
     {

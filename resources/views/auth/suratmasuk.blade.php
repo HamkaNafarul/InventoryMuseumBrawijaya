@@ -52,38 +52,43 @@
                         <!-- /.card-header -->
                         <div class="card">
                           <div class="card-header">
-                            <a href="{{ url('dashboardd/koleksipameran/Form') }}" class="btn btn-success">Tambah</a>
                         </div>
                         
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
+                                      <th>No</th>
                                         <th>Nomor HP</th>
+                                        <th>Nama</th>
                                         <th>Asal Intansi</th>
                                         <th>Tanggal</th>
                                         <th>Agenda</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
-                                  @foreach($koleksis as $key => $koleksi)
+                                 <tbody>
+                                  @foreach($surats as $key => $surat)
                                   <tr>
                                       <td>{{ $key + 1 }}</td>
-                                      <td>{{ $koleksi->no_inventaris }}</td>
-                                      <td>{{ $koleksi->nama_barang }}</td>
-                                      <td>{{ $koleksi->asal_ditemukan }}</td>
-                                      <td>{{ $koleksi->ukuran }}</td>
-                                      <td>{{ $koleksi->keterangan }}</td>
+                                      <td>{{ $surat->nomor_hp }}</td>
+                                      <td>{{ $surat->nama }}</td>
+                                      <td>{{ $surat->asal_intansi }}</td>
+                                      <td>{{ $surat->tanggal }}</td>
+                                      <td>{{ $surat->agenda }}</td>
+                                      
                                       <td>
-                                          <button class="btn btn-primary btn-sm">Edit</button>
                                           <button class="btn btn-primary btn-sm">Show</button>
-                                          <button class="btn btn-danger btn-sm">Delete</button>
+                                          <form action="{{ route('delete', ['id' => $surat->id]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>     
                                       </td>
                                   </tr>
                                   @endforeach
                                     <!-- Tambahkan baris berikutnya sesuai dengan kebutuhan -->
-                                </tbody> --}}
+                                </tbody> 
                             </table>
                         </div>
                         <!-- /.card-body -->

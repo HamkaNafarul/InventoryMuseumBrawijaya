@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #5347D8;
+  background-image: "gambar/bg5.png";
   background-size: cover;
   background-position: center;
 }

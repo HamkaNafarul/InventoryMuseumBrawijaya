@@ -19,13 +19,13 @@ return new class extends Migration
                 $table->id(); 
                 $table->string('no_inventaris')->unique();
                 $table->string('nama_barang');
-                $table->string('asal_ditemukan');
-                $table->string('cara_didapat');
-                $table->text('deskripsi');
-                $table->text('keterangan');
-                $table->string('ukuran');
-                $table->string('tahun_abad_masa');
-                $table->string('gambar'); // Kolom gambar
+                $table->string('asal_ditemukan')->nullable();
+                $table->string('cara_didapat')->nullable();
+                $table->text('deskripsi')->nullable();
+                $table->text('keterangan')->nullable();
+                $table->string('ukuran')->nullable();
+                $table->string('tahun_abad_masa')->nullable();
+                $table->string('gambar')->nullable(); // Kolom gambar
                 $table->timestamps();
             });
         }

@@ -34,7 +34,8 @@
         </ul>
     </div>
       <h1><b style="color: white;">SELAMAT DATANG</b></h1>
-      <h3><b style="color: white;">INVENTARIS MUSEUM BRAWIJAYA MALANG</b></h3><br>
+        <h3><b style="color: white;">INVENTARIS MUSEUM BRAWIJAYA MALANG</b></h3>
+    
       <h1>
         <div class="col-sm-12">
             <img style="width: 56px;height: 57px;" src="gambar/image1.png">
