@@ -21,7 +21,7 @@
         }
     </style>
     <div class="row">
-        <div class="col-lg-5" style="background-color: #5347D8;padding: 30px;">
+        <div class="col-lg-5" style="background-color: #5347D8;padding: 30px; height: 900px;">
             <div class="navigation-buttons">
                 <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
                 <a href="surat" class="btn btn-primary">Surat Observasi/Kunjungan</a>
@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-7" style="padding: 30px;">
+        <div class="col-lg-7" style="padding: 30px;height: 900px;">
             <h1 class="poppins-text-bold" style="color: #5347D8;text-align: center;margin-top: 7%;margin-bottom: 7%;">
                 Isi Form Berikut
             </h1>

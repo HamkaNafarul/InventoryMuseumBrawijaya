@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KoleksiBukuControlller;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\SuratControlller;
 use Illuminate\Support\Facades\Route;
@@ -57,11 +58,20 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/koleksipameran/FormEditKoleksi/edit/{id}', [KoleksiController::class, 'edit'])->name('edit');
         Route::put('/koleksipameran/FormEditKoleksi/edit/update/{id}', [KoleksiController::class, 'update'])->name('update');
         Route::delete('/koleksipameran/FormDeleteKoleksi/delete/{id}', [KoleksiController::class, 'destroy'])->name('delete_kategori');
-        Route::get('/suratmasuk', [LoginController::class, 'suratmasuk'])->name('suratmasuk');
-        Route::delete('/suratmasuk/FormDeleteSurat/delete/{id}', [SuratControlller::class, 'destroy'])->name('delete');
         Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
-
+        Route::get('/koleksipameran/data', [KoleksiController::class, 'json'])->name('kategori_data');
     });
+    Route::prefix('dashboardd')->group(function () {
+            Route::get('/suratmasuk', [LoginController::class, 'suratmasuk'])->name('suratmasuk');
+            Route::delete('/suratmasuk/FormDeleteSurat/delete/{id}', [SuratControlller::class, 'destroy'])->name('delete');
+        });
+        Route::prefix('dashboardd')->group(function () {
+            Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
+                Route::get('/koleksibuku', [LoginController::class, 'koleksibuku'])->name('koleksibuku');
+                Route::get('/koleksibuku/FormBuku', [KoleksiBukuControlller::class, 'create'])->name('FormBuku');
+                Route::post('/koleksibuku/FormBuku/store', [KoleksiBukuControlller::class, 'store'])->name('store');
+            });
+
     });
     
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

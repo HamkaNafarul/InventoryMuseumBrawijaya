@@ -60,6 +60,10 @@ class LoginController extends Controller
     }
 
 
+    public function koleksibuku()
+    {
+    return view('auth/koleksibuku');
+    }
     function logout()
     {
         Auth::logout();

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +8,14 @@
     {{-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> --}}
     <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('auth/sidebar')
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="height: 680px; background-image: url('{{ asset('gambar/bg5.png') }}');">
+            <!-- Isi konten di sini -->        
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -23,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-            </section>
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -40,21 +40,7 @@
                                             <i class="fas fa-times"></i></button>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <div class="card-tools">
-                                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                                        <input type="text" name="table_search"
-                                                            class="form-control float-right" placeholder="Search">
-                                                        <div class="input-group-append">
-                                                            <button type="submit" class="btn btn-default"><i
-                                                                    class="fas fa-search"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                               
                                             <!-- /.card-header -->
                                             <div class="card">
                                                 <div class="card-header">
@@ -63,7 +49,7 @@
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
-                                                    <table class="table table-hover text-nowrap">
+                                                    <table class="table table-hover text-nowrap" id="koleksi_tabel">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -76,33 +62,6 @@
                                                                 <!-- Kolom tambahan untuk tombol action -->
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            @foreach($koleksis as $key => $koleksi)
-                                                            <tr>
-                                                                <td>{{ $key + 1 }}</td>
-                                                                <td>{{ $koleksi->no_inventaris }}</td>
-                                                                <td>{{ $koleksi->nama_barang }}</td>
-                                                                <td>{{ $koleksi->asal_ditemukan ? $koleksi->asal_ditemukan : 'Data tidak ada' }}
-                                                                </td>
-                                                                <td>{{ $koleksi->ukuran ? $koleksi->ukuran : 'Data tidak ada' }}
-                                                                </td>
-                                                                <td>{{ $koleksi->keterangan ? $koleksi->keterangan : 'Data tidak ada' }}
-                                                                </td>
-                                                                <td>
-                                                                  
-                                                                    <a href="{{ route('edit', ['id' => $koleksi->id]) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                                    <a href="{{ route('DetailKoleksiAdmin', ['id' => $koleksi->id]) }}" class="btn btn-primary btn-sm">Detail</a>
-
-                                                                    <form action="{{ route('delete_kategori', ['id' => $koleksi->id]) }}" method="post">
-                                                                      @csrf
-                                                                      @method('DELETE')
-                                                                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                                  </form>                                                                
-                                                                </td>
-                                                            </tr>
-                                                            @endforeach
-                                                            <!-- Tambahkan baris berikutnya sesuai dengan kebutuhan -->
-                                                        </tbody>
                                                     </table>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -111,6 +70,98 @@
                                         </div>
                                     </div>
                                 </div>
-                               
-                              
-                                <!-- /.row -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    
+    <script src="{{ asset('asset/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('asset/js/demo.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#koleksi_tabel').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ url('/dashboardd/koleksipameran/data') }}',
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'no_inventaris',
+                        name: 'no_inventaris'
+                    },
+                    {
+                        data: 'nama_barang',
+                        name: 'nama_barang'
+                    },
+                    {
+                        data: 'asal_ditemukan',
+                        name: 'asal_ditemukan',
+                        render: function(data) {
+                            return data ? data :
+                                '-'; // Jika data tidak null, gunakan nilainya. Jika null, gunakan "belum absensi".
+                        }
+                    }, // Add columns according to your requirements
+                    {
+                        data: 'ukuran',
+                        name: 'ukuran',
+                        render: function(data) {
+                            return data ? data :
+                                '-'; // Jika data tidak null".
+                        }
+                    },
+                    {
+                        data: 'keterangan',
+                        name: 'keterangan',
+                        render: function(data) {
+                            return data ? data :
+                                '-'; // Jika data tidak null".
+                        }
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    }
+                ]
+
+            });
+
+            $('#koleksi_tabel').on('click', 'a.delete-users', function(e) {
+                e.preventDefault();
+                var deleteUrl = $(this).data('url');
+
+                if (confirm('Are you sure?')) {
+                    fetch(deleteUrl, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.warning) {
+                                alert(data.warning);
+                            } else {
+                                // Handle success, e.g., reload the DataTable
+                                $('#usersTablePNS').DataTable().ajax.reload();
+                                location.reload();
+                            }
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                }
+            });
+        });
+    </script>
+    </body>
+    
+    </html>
+  

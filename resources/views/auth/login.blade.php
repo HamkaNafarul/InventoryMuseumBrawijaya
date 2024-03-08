@@ -11,7 +11,7 @@
 </head>
 </head>
 
-<body class="hold-transition login-page" style="background-color: #5347D8;">
+<body class="hold-transition login-page" style="background-image: url('{{ asset('gambar/bg5.png') }}');">
 
 
     
@@ -34,7 +34,7 @@
         </ul>
     </div>
       <h1><b style="color: white;">SELAMAT DATANG</b></h1>
-        <h3><b style="color: white;">INVENTARIS MUSEUM BRAWIJAYA MALANG</b></h3>
+      <h3 style="text-align: center;"><b style="color: white;">INVENTARIS MUSEUM BRAWIJAYA MALANG</b></h3><br>
     
       <h1>
         <div class="col-sm-12">

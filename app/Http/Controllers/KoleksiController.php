@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
 use Illuminate\Http\Request;
+use yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Storage;
 
 class KoleksiController extends Controller
@@ -85,13 +86,29 @@ public function destroy($id)
 
     $koleksi->delete();
 
-    return redirect('dashboardd/koleksipameran')->with('success', 'Data berhasil dihapus');
+    return response()->json(['message' => 'Data berhasil dihapus']);
 }
 public function DetailKoleksiAdmin($id)
 {
     $koleksi = Koleksi::findOrFail($id);
     return view('auth.DetailKoleksiAdmin',compact('koleksi'));
 }
-
+public function json()
+    {
+        $koleksi= koleksi::select(['id','no_inventaris','nama_barang','asal_ditemukan','ukuran','keterangan']);
+        $index=1;
+        return DataTables::of($koleksi)
+        ->addColumn('DT_RowIndex',function($data) use ($index) {
+            return $index++;
+        })
+        ->addColumn('action', function ($row) {
+            $editUrl = url('/dashboardd/koleksipameran/FormEditKoleksi/edit/' . $row->id);
+            $deleteUrl = url('/dashboardd/koleksipameran/FormDeleteKoleksi/delete/' . $row->id);
+            $detailUrl = url('/dashboardd/koleksipameran/DetailKoleksiAdmin/' . $row->id);
+            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
+        })
+        
+        ->toJson();
+    }
 
 }

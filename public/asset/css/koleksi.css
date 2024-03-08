@@ -58,47 +58,46 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: 10px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.5); /* Opasitas 50% */
+  width: 300px;
+  margin: 20px;
   padding: 20px;
-}
-
-.title {
-  color: grey;
-  font-size: 18px;
-}
-
-button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #007bff; /* Warna dasar tombol biru Bootstrap */
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.card img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.card h1 {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.card p {
+  color: #ffffff;
+}
+
+.card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-  margin-top: 2px; /* Jarak atas 2px */
-  padding-top: 12px; /* Tinggi padding atas 12px */
-  padding-bottom: 12px; /* Tinggi padding bawah 12px */
-  padding-left: 20px; /* Lebar padding kiri 20px */
-  padding-right: 20px; /* Lebar padding kanan 20px */
+  transition: background-color 0.3s;
 }
 
-a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
-
-button:hover, a:hover {
-  opacity: 0.7;
+.card button:hover {
+  background-color: #0056b3;
 }

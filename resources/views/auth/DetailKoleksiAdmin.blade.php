@@ -80,7 +80,7 @@
                           </div>
                           <div class="mt-4 product-share">
                           </div>
-              ty          </div>
+                       </div>
                       </div>
                       <div class="row mt-4">
                         <nav class="w-100">
