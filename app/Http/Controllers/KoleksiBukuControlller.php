@@ -64,17 +64,19 @@ class KoleksiBukuControlller extends Controller
             'sampul' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
-        $koleksibuku = koleksibuku::findOrFail($id);
-    
-        // Delete previous image if it exists
-        if ($koleksibuku->sampul) {
-            Storage::disk('public')->delete($koleksibuku->sampul);
-        }
-    
-        if ($request->hasFile('sampul')) {
+        $koleksibuku = KoleksiBuku::findOrFail($id);
+
+        // Jika tidak ada sampul baru yang diunggah, gunakan sampul lama
+        if (!$request->hasFile('sampul')) {
+            $validatedData['sampul'] = $koleksibuku->sampul;
+        } else {
+            // Hapus sampul lama jika ada sampul baru yang diunggah
+            if ($koleksibuku->sampul) {
+                Storage::disk('public')->delete($koleksibuku->sampul);
+            }
             $imagePath = $request->file('sampul')->store('uploads', 'public');
             $validatedData['sampul'] = $imagePath;
-        }
+        }    
         $koleksibuku->update($validatedData);
 
     return redirect('dashboardd/koleksibuku')->with('success', 'Data berhasil diperbarui');
@@ -93,6 +95,11 @@ class KoleksiBukuControlller extends Controller
 
     return response()->json(['message' => 'Data berhasil dihapus']);
     }
+    public function DetailKoleksiAdminBuku($id)
+{
+    $koleksibuku = koleksibuku::findOrFail($id);
+    return view('auth.DetailKoleksiAdminBuku',compact('koleksibuku'));
+}
     public function json()
     {
         $koleksibuku= koleksibuku::select(['id','nomor','judul','pengarang','edisi','tahun_terbit','issn','penerbit']);
@@ -104,7 +111,8 @@ class KoleksiBukuControlller extends Controller
         ->addColumn('action', function ($row) {
             $editUrl = url('dashboardd/koleksibuku/FormBukuEdit/edit/' . $row->id);
             $deleteUrl = url('/dashboardd/koleksibuku/FormDeleteKoleksiBuku/delete/' . $row->id);
-            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a>';
+            $detailUrl = url('/dashboardd/koleksibuku/DetailKoleksiAdminBuku/' . $row->id);
+            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
         })        
         
         ->toJson();

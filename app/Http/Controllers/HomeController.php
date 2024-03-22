@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Koleksi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,8 @@ class HomeController extends Controller
     }
     public function koleksi()
     {
-        return view('koleksi');
+        $koleksi = Koleksi::all();
+        return view('koleksi',compact('koleksi'));
     }
     public function katalogbuku()
     {
@@ -23,9 +25,10 @@ class HomeController extends Controller
     {
         return view('surat');
     }
-    public function detailkoleksi()
+    public function detailkoleksi($id)
     {
-        return view('detailkoleksi');
+        $koleksi = Koleksi::findOrFail($id);
+        return view('detailkoleksi',compact('koleksi'));
     }
 
 

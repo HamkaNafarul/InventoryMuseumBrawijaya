@@ -48,27 +48,17 @@
   </div>
   <!-- Add icon library -->
   <div class="card-container">
+    @foreach($koleksi as $koleksi)
     <div class="card">
-      <img src="{{ asset('gambar/pameran.png') }}" alt="John" style="width:100%">
-      <h1>KOLEKSI</h1>
-      <p class="title">Senjata Besi</p>
-      <p>Deskripsi</p>
-      <button class="btn btn-primary py-3 px-5 mt-2">Detail</button>
-    </div>
-    <div class="card">
-      <img src="{{ asset('gambar/pameran.png') }}" alt="John" style="width:100%">
-      <h1>KOLEKSI</h1>
-      <p class="title">Senjata Besi</p>
-      <p>Deskripsi</p>
-      <button class="btn btn-primary py-3 px-5 mt-2">Detail</button>
-    </div>
-    <div class="card">
-      <img src="{{ asset('gambar/pameran.png') }}" alt="John" style="width:100%">
-      <h1>KOLEKSI</h1>
-      <p class="title">Senjata Besi</p>
-      <p>Deskripsi</p>
-      <button class="btn btn-primary py-3 px-5 mt-2">Detail</button>
-    </div>
+        @if(isset($koleksi['gambar']))
+        <img src="{{ asset('storage/' . $koleksi['gambar']) }}" class="product-image" alt="Product Image" style="width:100%">
+        @endif
+        <h1 class="nama">{{ $koleksi['nama_barang'] }}</h1>
+        <p class="title">{{ $koleksi['tahun_abad_masa'] }}</p>
+        <p class="didapat">{{ $koleksi['cara_didapat'] }}</p>
+        <a href="{{ route('detailkoleksi_landing', ['id' => $koleksi->id]) }}" class="btn btn-primary py-3 px-5 mt-2">Detail</a>
+      </div>
+    @endforeach    
   </div>
 </div>
     @include('footer1')

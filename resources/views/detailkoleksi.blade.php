@@ -29,7 +29,7 @@ body {
         <h1 style="color: white;"><b>KOLEKSI PAMERAN</b></h1>
     </div>
     <div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
-        <img src="gambar/pameran.png" style="width: 100%;">
+        <img src="{{ asset('storage/' . $koleksi['gambar']) }}" class="product-image" alt="Product Image" style="width:100%">
       </div>
     
       <div class="row">
@@ -37,40 +37,39 @@ body {
             <table class="table table-bordered table-striped, table.td" style="color: white;">
                 <tr>
                     <td>Nama Barang</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->nama_barang }}</td>
                 </tr>
                 <tr>
                     <td>No Inventaris</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->no_inventaris}}</td>
                 </tr>
                 <tr>
                     <td>Asal Ditemukan</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->asal_ditemukan }}</td>
                 </tr>
                 <tr>
                     <td>Cara Didapat</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->cara_didapat}}</td>
                 </tr>
-                
             </table>
         </div>
         <div class="col-lg-6">
             <table class="table table-bordered table-striped,table.td" style="color: white;">
                 <tr>
                     <td>Deskripsi</td>
-                    <td>: ................................................................................</td>
+                   <td>: {{ $koleksi->deskripsi}}</td>
                 </tr>
                 <tr>
                     <td>Keterangan</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->keterangan}}</td>
                 </tr>
                 <tr>
                     <td>Ukuran</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->ukuran}}</td>
                 </tr>
                 <tr>
                     <td>Tahun/Abad/Masa</td>
-                    <td>: ................................................................................</td>
+                    <td>: {{ $koleksi->tahun_abad_masa}}</td>
                 </tr>
             </table>
         </div>

@@ -41,25 +41,22 @@ class SuratControlller extends Controller
     
         $surat->delete();
     
-        return redirect('dashboardd/suratmasuk')->with('success', 'Data berhasil dihapus');
-
+        return response()->json(['message' => 'Data berhasil dihapus']);
     }
     public function json()
-    {
-        $surat= surat::select(['id','nomor_hp','nama','asal_intansi','tanggal','agenda']);
-        $index=1;
-        return DataTables::of($surat)
-        ->addColumn('DT_RowIndex',function($data) use ($index) {
+{
+    $surat = surat::select(['id','nomor_hp','nama','asal_intansi','tanggal','agenda','file']);
+    $index = 1;
+    return DataTables::of($surat)
+        ->addColumn('DT_RowIndex', function ($data) use ($index) {
             return $index++;
         })
-        // ->addColumn('action', function ($row) {
-        //     $editUrl = url('/dashboardd/koleksipameran/FormEditKoleksi/edit/' . $row->id);
-        //     $deleteUrl = url('/dashboardd/koleksipameran/FormDeleteKoleksi/delete/' . $row->id);
-        //     $detailUrl = url('/dashboardd/koleksipameran/DetailKoleksiAdmin/' . $row->id);
-        //     return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
-        // })
-        
+        ->addColumn('action', function ($row) {
+            $deleteUrl = url('/dashboardd/suratmasuk/FormDeleteSurat/delete/' . $row->id);
+            return '<a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a>';
+        })        
         ->toJson();
-    }
+}
+
     
 }
