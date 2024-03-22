@@ -7,7 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
     <link href="{{ asset('asset/css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -36,11 +37,11 @@
             <div class="col-lg-6">
                 <div class="row g-3">
                     <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="gambar/image1.png">
-                    </div>
+                        <img class="img-fluid rounded w-90 wow zoomIn" style="width: auto; height: 280px;"data-wow-delay="0.1s" src="gambar/image1.png">
+                    </div>                    
                     
                     <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="gambar/image2.png">
+                        <img class="img-fluid rounded w-90 wow zoomIn" style="width: auto; height: 280px;" data-wow-delay="0.1s" src="gambar/image2.png">
                     </div>
                 </div>
             </div>
@@ -75,8 +76,28 @@
     </div>
 </div>
 
-<!-- About End -->
+  @include('footer1')
+  <script>
+    // Animasi untuk gambar
+    anime({
+        targets: '.wow',
+        translateY: [-50, 0],
+        opacity: [0, 1],
+        duration: 1000,
+        easing: 'easeOutExpo',
+        delay: anime.stagger(100),
+    });
 
+    // Animasi untuk teks dan tombol
+    anime({
+        targets: '.fade-in',
+        translateY: [50, 0],
+        opacity: [0, 1],
+        duration: 1000,
+        easing: 'easeOutExpo',
+        delay: anime.stagger(100),
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

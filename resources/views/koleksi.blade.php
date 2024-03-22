@@ -24,8 +24,9 @@
     padding: 0;
 }
 
+
 </style>
-  @include('navbar')
+@include('navbar')
 
   <div class="col-md-12" align="center">
       <h1 style="color: white;"><b>KOLEKSI PAMERAN</b></h1>
@@ -68,14 +69,11 @@
       <p>Deskripsi</p>
       <button class="btn btn-primary py-3 px-5 mt-2">Detail</button>
     </div>
-    <div class="card">
-      <img src="{{ asset('gambar/pameran.png') }}" alt="John" style="width:100%">
-      <h1>KOLEKSI</h1>
-      <p class="title">Senjata Besi</p>
-      <p>Deskripsi</p>
-      <button class="btn btn-primary py-3 px-5 mt-2">Detail</button>
-    </div>
   </div>
+</div>
+    @include('footer1')
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 

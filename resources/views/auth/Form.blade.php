@@ -13,22 +13,22 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')
-  <div class="content-wrapper">
+      <div class="content-wrapper" style="background-image: url('{{ asset('gambar/bg5.png') }}');">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-6" style="color: white;">
             <h1>Selamat Datang</h1>
-          </div>
+        </div>
         </div>
       </div>
     </section>
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
                 <h3 class="card-title">Dashboard Admin</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -42,12 +42,14 @@
     <div class="container-fluid">
         <div class="row">
             <!-- left column -->
-            <div class="col-md-6">
-                <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
-                    </div>
+            <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-md-6">
+                      <!-- general form elements -->
+                      <div class="card card-primary mx-auto">
+                          <div class="card-header">
+                              <h3 class="card-title">Form Tambah</h3>
+                          </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form action="{{ url('dashboardd/koleksipameran/Form/store') }}" method="POST" role="form" enctype="multipart/form-data">

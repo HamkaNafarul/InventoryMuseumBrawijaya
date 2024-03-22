@@ -49,7 +49,7 @@ class KoleksiController extends Controller
     $validatedData = $request->validate([
         'no_inventaris' => 'required|unique:koleksi,no_inventaris,'.$id,
         'nama_barang' => 'required',
-        'asal_ditemukan' => 'nullable',
+        'asal_ditemukan' => 'nullable', 
         'cara_didapat' => 'nullable',
         'deskripsi' => 'nullable',
         'keterangan' => 'nullable',

@@ -13,13 +13,12 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')
-  <div class="content-wrapper">
+      <div class="content-wrapper" style="background-image: url('{{ asset('gambar/bg5.png') }}');">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-6" style="color: white;">
             <h1>Selamat Datang</h1>
-          </div>
         </div>
       </div>
     </section>
@@ -38,19 +37,21 @@
                 </div>
               </div>
                 <!-- Main content -->
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <!-- left column -->
-            <div class="col-md-6">
-                <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
-                    </div>
+                <section class="content">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <!-- left column -->
+                          <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <!-- general form elements -->
+                                    <div class="card card-primary mx-auto">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Form Edit</h3>
+                                        </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="POST" action="{{ route('update', ['id' => $koleksi->id]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('update.koleksi', ['id' => $koleksi->id]) }}" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
                         <div class="card-body">

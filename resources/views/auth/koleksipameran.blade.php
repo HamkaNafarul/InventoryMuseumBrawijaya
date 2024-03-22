@@ -19,7 +19,7 @@
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"style="color: white;"> 
                             <h1>Selamat Datang</h1>
                         </div>
                     </div>
@@ -40,7 +40,6 @@
                                             <i class="fas fa-times"></i></button>
                                     </div>
                                 </div>
-                               
                                             <!-- /.card-header -->
                                             <div class="card">
                                                 <div class="card-header">

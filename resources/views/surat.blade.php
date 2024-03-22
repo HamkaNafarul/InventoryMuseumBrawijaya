@@ -20,15 +20,17 @@
             background-position: center;
         }
     </style>
+
     <div class="row">
-        <div class="col-lg-5" style="background-color: #5347D8;padding: 30px; height: 900px;">
+        <div class="col-lg-5" style="background-color: #5347D8;padding: 30px;">
             <div class="navigation-buttons">
                 <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
                 <a href="surat" class="btn btn-primary">Surat Observasi/Kunjungan</a>
             </div>
-            <h1 class="poppins-text-bold" style="font-weight: 600;">
-                Isikan Formulir Berikut<br> Jika Ingin Melakukan Kunjungan atau<br> Observasi
-            </h1>
+            
+            <h3 class="poppins-text-bold">
+                Isikan Formulir Berikut Jika Ingin Melakukan Kunjungan atau<br> Observasi
+            </h3>
             <p style="color: white;">Kontak</p>
             <div class="row">
                 <div class="col-sm-1">
@@ -99,26 +101,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-7" style="padding: 30px;height: 900px;">
-            <h1 class="poppins-text-bold" style="color: #5347D8;text-align: center;margin-top: 7%;margin-bottom: 7%;">
-                Isi Form Berikut
-            </h1>
+        <div class="col-lg-7" style="padding: 20px;height: 200px;">
+            <h2 class="poppins-text-bold" style="color: #ffffff;text-align: center;margin-top: 7%;margin-bottom: 7%;">
+                Form Surat
+            </h2>
             <form action="{{ route('store_surat') }}" method="POST" role="form"
                 enctype="multipart/form-data">
                 @csrf
-                <div style=" display: flex;flex-direction: column;gap: 20px;margin-left: 20%;margin-right: 20%;">
+                <div style="display: flex; flex-direction: column; gap: 20px; margin-left: 20%; margin-right: 20%;">
                     <input type="text" class="form-control" name="nama" placeholder="Nama"
-                        style="background-color: #C4C4C4;min-height: 78px;">
+                        style="background-color: #C4C4C4;min-height: 55px;">
                     <input type="text" class="form-control" name="nomor_hp" placeholder="Nomor HP"
-                        style="background-color: #C4C4C4;min-height: 78px;">
+                        style="background-color: #C4C4C4;min-height: 55px;">
                     <input type="text" class="form-control" name="asal_intansi" placeholder="Asal Instansi"
-                        style="background-color: #C4C4C4;min-height: 78px;">
+                        style="background-color: #C4C4C4;min-height: 55px;">
                     <input type="date" class="form-control" name="tanggal"
-                        style="background-color: #C4C4C4;min-height: 78px">
+                        style="background-color: #C4C4C4;min-height: 55px">
                     <input type="text" class="form-control" name="agenda" placeholder="Agenda"
-                        style="background-color: #C4C4C4;min-height: 78px;">
+                        style="background-color: #C4C4C4;min-height: 55px;">
                     <input type="file" class="form-control" name="file"
-                        style="background-color: #C4C4C4;min-height: 78px;padding: 30px;">
+                        style="background-color: #C4C4C4;min-height: 48px;padding: 30px;">
                     <div class="col-md-12" style="padding-top: 10%;">
                         <button type="submit" class="btn-custom">KIRIM</button>
                     </div>
@@ -126,6 +128,7 @@
             </form>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>

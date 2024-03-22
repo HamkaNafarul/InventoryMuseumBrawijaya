@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
       
@@ -59,3 +61,4 @@
           </nav>
         </div>
       </aside>
+      

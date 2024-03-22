@@ -55,7 +55,7 @@
                         </div>
                         
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-hover text-nowrap" id="surat">
                                 <thead>
                                     <tr>
                                       <th>No</th>
@@ -67,7 +67,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                 <tbody>
+                                 {{-- <tbody>
                                   @foreach($surats as $key => $surat)
                                   <tr>
                                       <td>{{ $key + 1 }}</td>
@@ -88,13 +88,69 @@
                                   </tr>
                                   @endforeach
                                     <!-- Tambahkan baris berikutnya sesuai dengan kebutuhan -->
-                                </tbody> 
+                                </tbody>  --}}
+                              </tbody>
                             </table>
+                          </div>
                         </div>
-                        <!-- /.card-body -->
+                      </div>
                     </div>
-                    <!-- /.card -->
+                  </div>
                 </div>
+              </section>
             </div>
           </div>
             <!-- /.row -->
+
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+            <script src="{{ asset('asset/js/adminlte.min.js') }}"></script>
+            <script src="{{ asset('asset/js/demo.js') }}"></script>
+        <script>
+            $(document).ready(function() {
+                $('#surat').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{{ url('/dashboardd/suratmasuk/data') }}',
+                    columns: [
+        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+        { data: 'nomor_hp', name: 'nomor_hp' },
+        { data: 'nama', name: 'nama' },
+        { data: 'asal_intansi', name: 'asal_intansi' },
+        { data: 'tanggal', name: 'tanggal' },
+        { data: 'agenda', name: 'agenda' },
+    ] 
+                });
+    
+                $('#surat').on('click', 'a.delete-users', function(e) {
+                    e.preventDefault();
+                    var deleteUrl = $(this).data('url');
+    
+                    if (confirm('Are you sure?')) {
+                        fetch(deleteUrl, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                },
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.warning) {
+                                    alert(data.warning);
+                                } else {
+                                    // Handle success, e.g., reload the DataTable
+                                    $('#usersTablePNS').DataTable().ajax.reload();
+                                    location.reload();
+                                }
+                            })
+                            .catch(error => {
+                                // Handle error
+                                console.error(error);
+                            });
+                    }
+                });
+            });
+        </script>
+        </body>
+</html>
