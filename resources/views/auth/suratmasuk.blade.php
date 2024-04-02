@@ -57,12 +57,44 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="card-header">
+                                    <h3 class="card-title">Tanggal Penuh</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            data-toggle="tooltip" title="Collapse">
+                                            <i class="fas fa-minus"></i></button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove"
+                                            data-toggle="tooltip" title="Remove">
+                                            <i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{{ url('/') }}" class="btn btn-success btn-block">Tambah</a>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap" id="surat">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Tanggal</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
         </section>
+        
     </div>
     </div>
     </div>
