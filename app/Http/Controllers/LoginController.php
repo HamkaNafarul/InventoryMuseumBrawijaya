@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
+use App\Models\koleksibuku;
 use App\Models\surat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,14 @@ class LoginController extends Controller
     }
     public function dashboardd()
     {
-    return view('auth/dashboardd');
+        $koleksi = Koleksi::all();
+        $koleksibuku = koleksibuku::all();
+        $surat = surat::all();
+        $jumlah_surat = $surat->count();
+        $jumlah_koleksi_buku = $koleksibuku->count();
+        $jumlah_koleksi_pameran = $koleksi->count();
+
+        return view('auth/dashboardd', compact('jumlah_koleksi_buku', 'jumlah_koleksi_pameran','jumlah_surat'));    
     }
     public function suratmasuk()
     {
@@ -26,6 +34,7 @@ class LoginController extends Controller
     public function koleksipameran()
     {
         $koleksis = Koleksi::all();
+        // dd($koleksis);
     return view('auth/koleksipameran',compact('koleksis'));
     }
     function login_proses(Request $request)

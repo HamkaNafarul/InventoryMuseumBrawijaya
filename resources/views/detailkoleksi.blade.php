@@ -15,7 +15,7 @@
 body {
     background-image: url('{{ asset('gambar/bg5.png') }}');
     background-size: cover; /* untuk mengisi area background */
-    background-repeat: no-repeat; /* untuk menghindari pengulangan gambar */
+    background-repeat: repeat; /* untuk mengulang gambar */
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@ body {
     </style>
 
     <div class="navigation-buttons">
-        <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
+        <a href="/koleksi" class="btn btn-primary">Kembali ke Beranda</a>
     </div>
     <div class="col-md-12" align="center">
         <h1 style="color: white;"><b>KOLEKSI PAMERAN</b></h1>
@@ -31,6 +31,7 @@ body {
     <div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
         <img src="{{ asset('storage/' . $koleksi['gambar']) }}" class="product-image" alt="Product Image" style="width:100%">
       </div>
+      <br>
     
       <div class="row">
         <div class="col-lg-6">

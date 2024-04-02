@@ -43,10 +43,15 @@
                                             <!-- /.card-header -->
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <a href="{{ url('dashboardd/koleksipameran/Form') }}"
-                                                        class="btn btn-success">Tambah</a>
-                                                </div>
-
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <a href="{{ url('dashboardd/koleksipameran/Form') }}" class="btn btn-success btn-block">Tambah</a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a href="{{ route('PdfView') }}" target="_blank" class="btn btn-info btn-block">Cetak PDF</a>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
                                                 <div class="card-body table-responsive p-0">
                                                     <table class="table table-hover text-nowrap" id="koleksi_tabel">
                                                         <thead>

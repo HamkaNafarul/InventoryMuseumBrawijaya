@@ -42,6 +42,7 @@ Route::prefix('surat')->group(function () {
 
 });
 Route::get('/detailkoleksi/{id}', [HomeController::class, 'detailkoleksi'])->name('detailkoleksi_landing');
+Route::get('/detailkoleksibuku/{id}', [HomeController::class, 'detailkoleksibuku'])->name('detailkoleksibuku_landing');
 Route::middleware(['guest'])->group(function(){
     Route::get('/login', [LoginController::class, 'viewLogin'])->name('login');
     Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
@@ -60,6 +61,7 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/koleksipameran/FormDeleteKoleksi/delete/{id}', [KoleksiController::class, 'destroy'])->name('delete_kategori');
         Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
         Route::get('/koleksipameran/data', [KoleksiController::class, 'json'])->name('kategori_data');
+        Route::get('/koleksipameran/PdfView', [KoleksiController::class, 'pdf'])->name('PdfView');
     });
     Route::prefix('dashboardd')->group(function () {
             Route::get('/suratmasuk', [LoginController::class, 'suratmasuk'])->name('suratmasuk');
@@ -76,6 +78,7 @@ Route::middleware(['auth'])->group(function(){
             Route::put('/koleksibuku/FormBukuEdit/edit/update/{id}', [KoleksiBukuControlller::class, 'update'])->name('update');
             Route::delete('/koleksibuku/FormDeleteKoleksiBuku/delete/{id}', [KoleksiBukuControlller::class, 'destroy'])->name('delete_kategori');
             Route::get('/koleksibuku/DetailKoleksiAdminBuku/{id}', [KoleksiBukuControlller::class, 'DetailKoleksiAdminBuku'])->name('DetailKoleksiAdminBuku');
+            Route::get('/koleksibuku/PdfView_Buku', [KoleksiBukuControlller::class, 'pdf'])->name('PdfView_Buku');
         });
     });
     

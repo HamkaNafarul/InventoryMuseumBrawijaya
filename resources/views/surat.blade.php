@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-lg-5" style="background-color: #5347D8;padding: 30px;">
             <div class="navigation-buttons">
-                <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
+                <a href="home" class="btn btn-primary">Kembali ke Beranda</a>
                 <a href="surat" class="btn btn-primary">Surat Observasi/Kunjungan</a>
             </div>
             
@@ -115,8 +115,7 @@
                         style="background-color: #C4C4C4;min-height: 55px;">
                     <input type="text" class="form-control" name="asal_intansi" placeholder="Asal Instansi"
                         style="background-color: #C4C4C4;min-height: 55px;">
-                    <input type="date" class="form-control" name="tanggal"
-                        style="background-color: #C4C4C4;min-height: 55px">
+                        <input type="date" class="form-control" name="tanggal" id="tanggalInput" style="background-color: #C4C4C4; min-height: 55px">
                     <input type="text" class="form-control" name="agenda" placeholder="Agenda"
                         style="background-color: #C4C4C4;min-height: 55px;">
                     <input type="file" class="form-control" name="file"
@@ -128,6 +127,22 @@
             </form>
         </div>
     </div>
+    @include('footer1') 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var tanggalTerbatas = ['2024-04-01', '2024-04-02']; // Tanggal tertentu yang tidak bisa dipilih
+    
+            var inputTanggal = document.getElementById('tanggalInput');
+            inputTanggal.addEventListener('input', function() {
+                var tanggalInput = this.value;
+                if (tanggalTerbatas.includes(tanggalInput)) {
+                    alert('Tanggal tidak tersedia karena sudah penuh');
+                    this.value = ''; // Reset nilai input
+                }
+            });
+        });
+    </script>
+    
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>

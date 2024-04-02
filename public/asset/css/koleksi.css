@@ -58,11 +58,12 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /* Mengatur jarak seragam di sekitar card */
+  gap: 10px;
 }
 
 .card {
-  width: 300px;
+  width: 270px;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
@@ -99,5 +100,46 @@
 }
 
 .card button:hover {
+  background-color: #0056b3;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: hidden;
+  width: 90%;
+  max-width: 850px;
+  height: 70px; /* Atur tinggi sesuai kebutuhan */
+}
+
+.search-input {
+  flex: 1; /* Membuat input memanjang sejauh mungkin */
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 0;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background-color 0.3s;
+}
+
+
+/* Media query untuk layar dengan lebar kurang dari 600px */
+@media (max-width: 600px) {
+  .search-input {
+    font-size: 14px; /* Mengurangi ukuran font untuk layar kecil */
+  }
+}
+.search-button:hover {
   background-color: #0056b3;
 }

@@ -6,9 +6,17 @@ use App\Models\koleksibuku;
 use Illuminate\Http\Request;
 use yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class KoleksiBukuControlller extends Controller
 {
+    public function pdf()
+    {
+        $koleksibuku = koleksibuku::all();
+        $pdf=Pdf::loadView('auth.PdfView_Buku', compact('koleksibuku'));
+        return $pdf->stream();
+    }
     public function create()
     {
         return view('auth.FormBuku');

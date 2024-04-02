@@ -12,12 +12,13 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')
-  <div class="content-wrapper">
-    <section class="content-header">
+      <div class="content-wrapper" style="height: 680px; background-image: url('{{ asset('gambar/bg5.png') }}');">
+        <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Selamat Datang</h1>
+            <div class="col-sm-6"style="color: white;"> 
+              <h1>Selamat Datang</h1>
           </div>
         </div>
       </div>
@@ -40,7 +41,7 @@
                 <div class="row">
                   <div class="col-md-3 col-6">
                     <div class="description-block border-right">
-                      <h5 class="description-header">55</h5>
+                      <h5 class="description-header">{{ $jumlah_koleksi_pameran }}</h5>
                       <span class="description-text">Koleksi Pameran</span>
                     </div>
                     <!-- /.description-block -->
@@ -48,7 +49,7 @@
                   <!-- /.col -->
                   <div class="col-md-3 col-6">
                     <div class="description-block border-right">
-                      <h5 class="description-header">55</h5>
+                      <h5 class="description-header">{{ $jumlah_koleksi_buku }}</h5>
                       <span class="description-text">Katalog Buku</span>
                     </div>
                     <!-- /.description-block -->
@@ -56,7 +57,7 @@
                   <!-- /.col -->
                   <div class="col-md-3 col-6">
                     <div class="description-block border-right">
-                      <h5 class="description-header">5</h5>
+                      <h5 class="description-header">1</h5>
                       <span class="description-text">Admin</span>
                     </div>
                     <!-- /.description-block -->
@@ -64,7 +65,7 @@
                   <!-- /.col -->
                   <div class="col-md-3 col-6">
                     <div class="description-block">
-                      <h5 class="description-header">55</h5>
+                      <h5 class="description-header">{{ $jumlah_surat }}</h5>
                       <span class="description-text">Surat Masuk</span>
                     </div>
                     <!-- /.description-block -->

@@ -67,7 +67,7 @@
     </div>
     </div>
     <!-- /.row -->
-
+    
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
@@ -107,8 +107,8 @@
         data: 'file',
         name: 'file',
         render: function (data, type, full, meta) {
-            return '<a href="' + data + '" target="_blank">Download</a>';
-        }
+    return '<a href="/storage/' + data + '" target="_blank">Download</a>';
+}
     },
                     {
                         data: 'action',
@@ -149,3 +149,7 @@
 </body>
 
 </html>
+
+
+
+

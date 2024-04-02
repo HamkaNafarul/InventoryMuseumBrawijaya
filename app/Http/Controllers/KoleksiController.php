@@ -6,6 +6,7 @@ use App\Models\Koleksi;
 use Illuminate\Http\Request;
 use yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KoleksiController extends Controller
 {
@@ -13,6 +14,13 @@ class KoleksiController extends Controller
     public function create()
     {
         return view('auth.Form');
+    }
+    public function pdf()
+    {
+        $koleksi = Koleksi::all();
+        // dd($koleksi);
+        $pdf=Pdf::loadView('auth.PdfView', compact('koleksi'));
+        return $pdf->stream();
     }
 
     public function store(Request $request)
