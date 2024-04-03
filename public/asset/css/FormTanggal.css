@@ -1,0 +1,20 @@
+/* CSS Responsif untuk Form */
+@media (max-width: 768px) {
+    /* Lebar kolom setengah pada layar kecil */
+    .col-md-6 {
+        width: 100%;
+    }
+
+    /* Atur margin untuk elemen card agar tidak terlalu rapat */
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Atur margin kanan pada elemen form untuk memberikan ruang antara elemen */
+.form-group {
+    margin-right: 20px;
+}
+.card-header{
+    background-color: rgba(255, 255, 255, 0.2); /* Warna latar belakang transparan samar-samar */
+}

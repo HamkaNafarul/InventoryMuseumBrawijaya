@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tanggal', function (Blueprint $table) {
             $table->id(); 
             $table->date('tanggal_penuh'); 
+            $table->timestamps();
         });
     }
 

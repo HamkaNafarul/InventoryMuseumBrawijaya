@@ -14,7 +14,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('auth/sidebar')
-        <div class="content-wrapper" style="height: 680px; background-image: url('{{ asset('gambar/bg5.png') }}');">
+        <div class="content-wrapper" style="height: 980px; background-image: url('{{ asset('gambar/bg5.png') }}');">
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -72,12 +72,12 @@
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="{{ url('/') }}" class="btn btn-success btn-block">Tambah</a>
+                                                <a href="{{ route('Form_tanggal') }}" class="btn btn-success btn-block">Tambah</a>
                                             </div>
                                         </div>
                                     </div> 
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-nowrap" id="surat">
+                                    <table class="table table-hover text-nowrap" id="tanggal">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -142,6 +142,56 @@
     return '<a href="/storage/' + data + '" target="_blank">Download</a>';
 }
     },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
+                ]
+            });
+
+            $('#surat').on('click', 'a.delete-users', function (e) {
+                e.preventDefault();
+                var deleteUrl = $(this).data('url');
+
+                if (confirm('Are you sure?')) {
+                    fetch(deleteUrl, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.warning) {
+                                alert(data.warning);
+                            } else {
+                                // Handle success, e.g., reload the DataTable
+                                $('#usersTablePNS').DataTable().ajax.reload();
+                                location.reload();
+                            }
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tanggal').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ url('/dashboardd/suratmasuk/data_tanggal') }}',
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'tanggal_penuh',
+                        name: 'tanggal_penuh'
+                    },
                     {
                         data: 'action',
                         name: 'action'

@@ -3,6 +3,7 @@
 use App\Http\Controllers\KoleksiBukuControlller;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\SuratControlller;
+use App\Http\Controllers\TanggalPenuhController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -19,9 +20,10 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Routes for HomeController
 
@@ -33,7 +35,7 @@ Route::prefix('dashboardd')->group(function () {
     Route::get('/koleksipameran', [LoginController::class, 'koleksipameran'])->name('koleksipameran');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/koleksi', [HomeController::class, 'koleksi'])->name('koleksi');
 Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalogbuku');
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');
@@ -62,11 +64,16 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
         Route::get('/koleksipameran/data', [KoleksiController::class, 'json'])->name('kategori_data');
         Route::get('/koleksipameran/PdfView', [KoleksiController::class, 'pdf'])->name('PdfView');
+        
     });
     Route::prefix('dashboardd')->group(function () {
             Route::get('/suratmasuk', [LoginController::class, 'suratmasuk'])->name('suratmasuk');
             Route::delete('/suratmasuk/FormDeleteSurat/delete/{id}', [SuratControlller::class, 'destroy'])->name('delete');
             Route::get('/suratmasuk/data', [SuratControlller::class, 'json'])->name('kategori_data');
+            Route::get('/suratmasuk/Form_tanggal', [TanggalPenuhController::class, 'create'])->name('Form_tanggal');
+             Route::post('/suratmasuk/Form_tanggal/store', [TanggalPenuhController::class, 'store'])->name('store_tanggal');
+             Route::get('/suratmasuk/data_tanggal', [TanggalPenuhController::class, 'json'])->name('kategori_data');
+           
         });
         Route::prefix('dashboardd')->group(function () {
             Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');

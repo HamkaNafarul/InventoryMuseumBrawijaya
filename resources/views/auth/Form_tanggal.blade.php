@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('asset/css/Form.css') }}" rel="stylesheet">
+  <link href="{{ asset('asset/css/FormTanggal.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')
-      <div class="content-wrapper" style="background-image: url('{{ asset('gambar/bg5.png') }}');">
-    <section class="content-header">
+      <div class="content-wrapper" style="height: 680px; background-image: url('{{ asset('gambar/bg5.png') }}');">
+        <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6" style="color: white;">
@@ -52,13 +52,14 @@
                           </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ url('dashboardd/koleksipameran/Form/store') }}" method="POST" role="form" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="tanggal_penuh">Tanggal Penuh</label>
-                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
-                            </div>
+                    <form action="{{ route('store_tanggal') }}" method="POST" role="form" enctype="multipart/form-data">
+                      @csrf
+                      <div class="card-body">
+                          <div class="form-group">
+                              <label for="tanggal_penuh">Tanggal Penuh</label>
+                              <input type="date" class="form-control" id="tanggal_penuh" name="tanggal_penuh" placeholder="Tanggal Penuh">
+                          </div>
+                      </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
