@@ -1,213 +1,75 @@
-<script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+    <!-- Favicon -->
 
-<style>
-  .site-footer {
-    background-color: blue;
-    padding: 45px 0 20px;
-    font-size: 15px;
-    line-height: 48px;
-    color: #ffffff;
-  }
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  .site-footer hr {
-    border-top-color: #ffffff;
-    opacity: 0.5;
-  }
+    <!-- Libraries Stylesheet -->
+    <!-- <link href="lib/animate/animate.min.css" rel="stylesheet"> -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-  .site-footer hr.small {
-    margin: 10px 0;
-  }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css\bootstrap.min.css" rel="stylesheet">
 
-  .site-footer h6 {
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    margin-top: 5px;
-    letter-spacing: 2px;
-  }
+    <!-- Template Stylesheet -->
+    <link href="css\style.css" rel="stylesheet">
 
-  .site-footer a {
-    color: #ffffff;
-  }
-
-  .site-footer a:hover {
-    color: #3366cc;
-    text-decoration: none;
-  }
-
-  .footer-links {
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .footer-links li {
-    display: block;
-  }
-
-  .footer-links a {
-    color: #ffffff;
-  }
-
-  .footer-links a:active,
-  .footer-links a:focus,
-  .footer-links a:hover {
-    color: #3366cc;
-    text-decoration: none;
-  }
-
-  .footer-links.inline li {
-    display: inline-block;
-  }
-
-  .site-footer .social-icons {
-    text-align: right;
-  }
-
-  .site-footer .social-icons a {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-left: 6px;
-    margin-right: 0;
-    border-radius: 100%;
-    background-color: #2148e6;
-  }
-
-  .copyright-text {
-    margin: 0;
-  }
-
-  @media (max-width: 991px) {
-    .site-footer [class^=col-] {
-      margin-bottom: 30px;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .site-footer {
-      padding-bottom: 0;
-    }
-
-    .site-footer .copyright-text,
-    .site-footer .social-icons {
-      text-align: center;
-    }
-  }
-
-  .social-icons {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-  }
-
-  .social-icons li {
-    display: inline-block;
-    margin-bottom: 4px;
-  }
-
-  .social-icons li.title {
-    margin-right: 15px;
-    text-transform: uppercase;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 13px;
-  }
-
-  .social-icons a {
-    background-color: #eceeef;
-    color: #ffffff;
-    font-size: 16px;
-    display: inline-block;
-    line-height: 44px;
-    width: 44px;
-    height: 44px;
-    text-align: center;
-    margin-right: 8px;
-    border-radius: 100%;
-    -webkit-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    transition: all 0.2s linear;
-  }
-
-  .social-icons a:active,
-  .social-icons a:focus,
-  .social-icons a:hover {
-    color: #fff;
-    background-color: #29aafe;
-  }
-
-  .social-icons.size-sm a {
-    line-height: 34px;
-    height: 34px;
-    width: 34px;
-    font-size: 14px;
-  }
-
-  .social-icons a.facebook:hover {
-    background-color: #3b5998;
-  }
-
-  .social-icons a.twitter:hover {
-    background-color: #00aced;
-  }
-
-  .social-icons a.linkedin:hover {
-    background-color: #007bb6;
-  }
-
-  .social-icons a.dribbble:hover {
-    background-color: #ea4c89;
-  }
-
-  @media (max-width: 767px) {
-    .social-icons li.title {
-      display: block;
-      margin-right: 0;
-      font-weight: 600;
-    }
-  }
-</style>
-
-
-<footer class="site-footer">
-    <div class="container">
-      <div class="row">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-sm-6 col-xs-12">
-          <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by 
-       <a href="#">MuseumBrawijaya</a>.
-          </p>
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <a class="btn btn-link text-white-50" href="">About Us</a>
+                <a class="btn btn-link text-white-50" href="">Contact Us</a>
+                <a class="btn btn-link text-white-50" href="">Our Services</a>
+                <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
+                <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Photo Gallery</h3>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="gambar\bg5.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="gambar\bg5.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="gambar\bg5.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="gambar\bg5.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="gambar\bg5.png" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="gambar\bg5.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Newsletter</h3>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+            </div>
         </div>
-
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <ul class="social-icons">
-            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-          </ul>
-        </div>
-      </div>
     </div>
-</footer>
-<script>
-  // Animasi untuk footer
-  anime({
-      targets: '.site-footer',
-      translateY: [50, 0],
-      opacity: [0, 1],
-      duration: 1000,
-      easing: 'easeOutExpo',
-  });
-
-  // Animasi untuk ikon sosial media
-  anime({
-      targets: '.social-icons a',
-      translateY: [50, 0],
-      opacity: [0, 1],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      delay: anime.stagger(100),
-  });
-</script>
+<!-- Footer End -->

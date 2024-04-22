@@ -2,150 +2,330 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage - Museum Brawijaya Malang</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{ asset('asset/css/surat.css') }}" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+        :root {
+            --primary-color: #f90a39;
+            --text-color: #1d1d1d;
+            --bg-color: #f1f1fb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: var(--bg-color);
+        }
+
+        .calendar .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .calendar .header .month {
+            display: flex;
+            align-items: center;
+            font-size: 25px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .calendar .header .btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar .header .btns .btn {
+            width: 50px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            color: #fff;
+            background-color: var(--primary-color);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calendar .header .btns .btn:hover {
+            background-color: #db0933;
+            transform: scale(1.05);
+        }
+
+        .weekdays {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .weekdays .day {
+            width: calc(100% / 7 - 10px);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .days {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .days .day {
+            width: calc(100% / 7 - 10px);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-color);
+            background-color: #fff;
+            transition: all 0.3s;
+        }
+
+        .days .day:not(.next):not(.prev):hover {
+            color: #fff;
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .days .day.today {
+            color: #fff;
+            background-color: var(--primary-color);
+        }
+
+        .days .day.next,
+        .days .day.prev {
+            color: #ccc;
+        }
+
+        /* Credits */
+        .credits a {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .credits span {
+            color: var(--primary-color);
+        }
+    </style>
+    <title>Mini Calendar</title>
 </head>
 
 <body>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-image: url('{{ asset('gambar/bg5.png') }}');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
-
-    <div class="row">
-        <div class="col-lg-5" style="background-color: #5347D8;padding: 30px;">
-            <div class="navigation-buttons">
-                <a href="home" class="btn btn-primary">Kembali ke Beranda</a>
-                <a href="surat" class="btn btn-primary">Surat Observasi/Kunjungan</a>
-            </div>
-            
-            <h3 class="poppins-text-bold">
-                Isikan Formulir Berikut Jika Ingin Melakukan Kunjungan atau<br> Observasi
-            </h3>
-            <p style="color: white;">Kontak</p>
-            <div class="row">
-                <div class="col-sm-1">
-                    <img src="gambar/building.png">
-                </div>
-                <div class="col-sm-6">
-                    <small style="color: white;">Jl. Idjen Gading Asri<br>Kota Malang</small>
-                </div>
-            </div>
-            <div class="row" style="padding-bottom: 2%;">
-                <div class="col-sm-1">
-                    <img src="gambar/telephone.png">
-                </div>
-                <div class="col-sm-6">
-                    <small style="color: white;">62-6545-2041</small>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-1">
-                    <img src="gambar/mail.png">
-                </div>
-                <div class="col-sm-6">
-                    <small style="color: white;">museumbrawijaya@gmail.com</small>
-                </div>
-            </div>
-            <br>
-            <p style="color: white;">Social Media</p>
-            <div class="row">
-                <div class="col-sm-1">
-                    <img src="gambar/facebook.png">
-                </div>
-                <div class="col-sm-1">
-                    <img src="gambar/twitter.png">
-                </div>
-                <div class="col-sm-1">
-                    <img src="gambar/instagram.png">
-                </div>
-                <div class="col-sm-1">
-                    <small style="color: white;">MuseumBrawijaya</small>
-                </div>
-            </div>
-            <div style="min-width: 520px;height: 340px;background-color: white;margin-top: 2%;">
-                <div style="padding: 20px;">
-                    <p>Perhatikan untuk tanggal kunjungan/observasi yang sudah penuh</p>
-                </div>
-                <div style="width: 408px;height: 214px;background-color: #C4C4C4;margin-left: 10%;">
-                    <div
-                        style="display: flex;flex-direction: row;gap: 50px;padding: 20px;border-bottom: 1px solid black;padding-bottom: 2px;">
-                        <h4>MM-DD-YYYY</h4>
-                        <button class="btn btn-danger" style="height: 30px;width: 150px;padding: 2px;border-radius: 0;">
-                            <b>Penuh</b>
-                        </button>
+    <div class="container">
+        <div class="calendar">
+            <div class="header">
+                <div class="month"></div>
+                <div class="btns">
+                    <div class="btn today-btn">
+                        <i class="fas fa-calendar-day"></i>
                     </div>
-                    <div
-                        style="display: flex;flex-direction: row;gap: 50px;padding: 20px;border-bottom: 1px solid black;padding-bottom: 2px;">
-                        <h4>MM-DD-YYYY</h4>
-                        <button class="btn btn-danger" style="height: 30px;width: 150px;padding: 2px;border-radius: 0;">
-                            <b>Penuh</b>
-                        </button>
+                    <div class="btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
-                    <div
-                        style="display: flex;flex-direction: row;gap: 50px;padding: 20px;border-bottom: 1px solid black;padding-bottom: 2px;">
-                        <h4>MM-DD-YYYY</h4>
-                        <button class="btn btn-danger" style="height: 30px;width: 150px;padding: 2px;border-radius: 0;">
-                            <b>Penuh</b>
-                        </button>
+                    <div class="btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-7" style="padding: 20px;height: 200px;">
-            <h2 class="poppins-text-bold" style="color: #ffffff;text-align: center;margin-top: 7%;margin-bottom: 7%;">
-                Form Surat
-            </h2>
-            <form action="{{ route('store_surat') }}" method="POST" role="form"
-                enctype="multipart/form-data">
-                @csrf
-                <div style="display: flex; flex-direction: column; gap: 20px; margin-left: 20%; margin-right: 20%;">
-                    <input type="text" class="form-control" name="nama" placeholder="Nama"
-                        style="background-color: #C4C4C4;min-height: 55px;">
-                    <input type="text" class="form-control" name="nomor_hp" placeholder="Nomor HP"
-                        style="background-color: #C4C4C4;min-height: 55px;">
-                    <input type="text" class="form-control" name="asal_intansi" placeholder="Asal Instansi"
-                        style="background-color: #C4C4C4;min-height: 55px;">
-                        <input type="date" class="form-control" name="tanggal" id="tanggalInput" style="background-color: #C4C4C4; min-height: 55px">
-                    <input type="text" class="form-control" name="agenda" placeholder="Agenda"
-                        style="background-color: #C4C4C4;min-height: 55px;">
-                    <input type="file" class="form-control" name="file"
-                        style="background-color: #C4C4C4;min-height: 48px;padding: 30px;">
-                    <div class="col-md-12" style="padding-top: 10%;">
-                        <button type="submit" class="btn-custom">KIRIM</button>
-                    </div>
-                </div>
-            </form>
+            <div class="weekdays">
+                <div class="day">Sun</div>
+                <div class="day">Mon</div>
+                <div class="day">Tue</div>
+                <div class="day">Wed</div>
+                <div class="day">Thu</div>
+                <div class="day">Fri</div>
+                <div class="day">Sat</div>
+            </div>
+            <div class="days">
+                <!-- lets add days using js -->
+            </div>
         </div>
     </div>
-    @include('footer1') 
+
+    <!-- Credits -->
+    <div class="credits">
+        <a href="https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ">
+            Created with <span><i class="fas fa-heart"></i></span> by
+            <span>Open Source Coding</span>
+        </a>
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var tanggalTerbatas = ['2024-04-01', '2024-04-02']; // Tanggal tertentu yang tidak bisa dipilih
-    
-            var inputTanggal = document.getElementById('tanggalInput');
-            inputTanggal.addEventListener('input', function() {
-                var tanggalInput = this.value;
-                if (tanggalTerbatas.includes(tanggalInput)) {
-                    alert('Tanggal tidak tersedia karena sudah penuh');
-                    this.value = ''; // Reset nilai input
+        const daysContainer = document.querySelector(".days"),
+            nextBtn = document.querySelector(".next-btn"),
+            prevBtn = document.querySelector(".prev-btn"),
+            month = document.querySelector(".month"),
+            todayBtn = document.querySelector(".today-btn");
+
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        // get current date
+        const date = new Date();
+
+        // get current month
+        let currentMonth = date.getMonth();
+
+        // get current year
+        let currentYear = date.getFullYear();
+
+        // function to render days
+        function renderCalendar() {
+            // get prev month current month and next month days
+            date.setDate(1);
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const lastDayIndex = lastDay.getDay();
+            const lastDayDate = lastDay.getDate();
+            const prevLastDay = new Date(currentYear, currentMonth, 0);
+            const prevLastDayDate = prevLastDay.getDate();
+            const nextDays = 7 - lastDayIndex - 1;
+
+            // update current year and month in header
+            month.innerHTML = `${months[currentMonth]} ${currentYear}`;
+
+            // update days html
+            let days = "";
+
+            // prev days html
+            for (let x = firstDay.getDay(); x > 0; x--) {
+                days += `<div class="day prev">${prevLastDayDate - x + 1}</div>`;
+            }
+
+            // current month days
+            for (let i = 1; i <= lastDayDate; i++) {
+                // check if its today then add today class
+                if (
+                    i === new Date().getDate() &&
+                    currentMonth === new Date().getMonth() &&
+                    currentYear === new Date().getFullYear()
+                ) {
+                    // if date month year matches add today
+                    days += `<div class="day today">${i}</div>`;
+                } else {
+                    //else dont add today
+                    days += `<div class="day ">${i}</div>`;
                 }
-            });
+            }
+
+            // next MOnth days
+            for (let j = 1; j <= nextDays; j++) {
+                days += `<div class="day next">${j}</div>`;
+            }
+
+            // run this function with every calendar render
+            hideTodayBtn();
+            daysContainer.innerHTML = days;
+        }
+
+        renderCalendar();
+
+        nextBtn.addEventListener("click", () => {
+            // increase current month by one
+            currentMonth++;
+            if (currentMonth > 11) {
+                // if month gets greater that 11 make it 0 and increase year by one
+                currentMonth = 0;
+                currentYear++;
+            }
+            // rerender calendar
+            renderCalendar();
         });
+
+        // prev monyh btn
+        prevBtn.addEventListener("click", () => {
+            // increase by one
+            currentMonth--;
+            // check if let than 0 then make it 11 and deacrease year
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        });
+
+        // go to today
+        todayBtn.addEventListener("click", () => {
+            // set month and year to current
+            currentMonth = date.getMonth();
+            currentYear = date.getFullYear();
+            // rerender calendar
+            renderCalendar();
+        });
+
+        // lets hide today btn if its already current month and vice versa
+
+        function hideTodayBtn() {
+            if (
+                currentMonth === new Date().getMonth() &&
+                currentYear === new Date().getFullYear()
+            ) {
+                todayBtn.style.display = "none";
+            } else {
+                todayBtn.style.display = "flex";
+            }
+        }
     </script>
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

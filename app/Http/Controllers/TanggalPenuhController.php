@@ -34,7 +34,7 @@ class TanggalPenuhController extends Controller
             $editUrl = url('/' . $row->id);
             $deleteUrl = url('/' . $row->id);
             $detailUrl = url('/' . $row->id);
-            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
+            return '<a href="' . $editUrl . '">-</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">-</a> | <a href="' . $detailUrl .'">=</a>';
         })
         
         ->toJson();

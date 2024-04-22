@@ -72,7 +72,7 @@
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="{{ route('Form_tanggal') }}" class="btn btn-success btn-block">Tambah</a>
+                                                <a href="{{ route('Form_tanggal') }}" class="btn btn-danger btn-block">Tambah Tanggal Penuh</a>
                                             </div>
                                         </div>
                                     </div> 

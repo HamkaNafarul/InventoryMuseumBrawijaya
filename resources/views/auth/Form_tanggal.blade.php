@@ -13,7 +13,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')
-      <div class="content-wrapper" style="height: 680px; background-image: url('{{ asset('gambar/bg5.png') }}');">
+          
         <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">

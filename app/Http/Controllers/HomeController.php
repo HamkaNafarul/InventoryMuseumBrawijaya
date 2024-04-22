@@ -11,14 +11,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-          {
-        $koleksi = Koleksi::all();
-        $koleksibuku = koleksibuku::all();
-        $jumlah_koleksi_buku = $koleksibuku->count();
-        $jumlah_koleksi_pameran = $koleksi->count();
-
-        return view('index', compact('jumlah_koleksi_buku', 'jumlah_koleksi_pameran'));    
-    }
+        {
+            // Mengambil tiga koleksi terbaru berdasarkan ID
+            $latestKoleksi = Koleksi::orderBy('id', 'desc')->take(3)->get();
+        
+            // Mengambil tiga buku terbaru berdasarkan ID
+            $latestkoleksibuku = koleksibuku::orderBy('id', 'desc')->take(3)->get();
+        
+            return view('index', compact('latestKoleksi', 'latestkoleksibuku'));
+        }
+        
     }
     public function koleksi(Request $request)
     {
@@ -47,6 +49,7 @@ class HomeController extends Controller
     public function detailkoleksi($id)
     {
         $koleksi = Koleksi::findOrFail($id);
+        // dd($koleksi);                                                                                     
         return view('detailkoleksi',compact('koleksi'));
     }
     public function detailkoleksibuku($id)
