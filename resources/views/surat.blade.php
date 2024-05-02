@@ -2,329 +2,260 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <title>Web</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <script type="text/javascript">
+        (function () {
+            var css = document.createElement('link');
+            css.href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(css);
+        })();
+    </script>
 
-    <!-- STYLESHEET -->
-    <link rel="stylesheet" href="style.css" />
+    <!-- Favicon -->
 
-    <!-- FONTAWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap"
+        rel="stylesheet">
 
-        :root {
-            --primary-color: #f90a39;
-            --text-color: #1d1d1d;
-            --bg-color: #f1f1fb;
-        }
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-        body {
-            background-color: #fff;
-        }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css\bootstrap.min.css" rel="stylesheet">
 
-        .container {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .calendar {
-            width: 100%;
-            max-width: 600px;
-            padding: 30px 20px;
-            border-radius: 10px;
-            background-color: var(--bg-color);
-        }
-
-        .calendar .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #ccc;
-        }
-
-        .calendar .header .month {
-            display: flex;
-            align-items: center;
-            font-size: 25px;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .calendar .header .btns {
-            display: flex;
-            gap: 10px;
-        }
-
-        .calendar .header .btns .btn {
-            width: 50px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            color: #fff;
-            background-color: var(--primary-color);
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .calendar .header .btns .btn:hover {
-            background-color: #db0933;
-            transform: scale(1.05);
-        }
-
-        .weekdays {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .weekdays .day {
-            width: calc(100% / 7 - 10px);
-            text-align: center;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .days {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .days .day {
-            width: calc(100% / 7 - 10px);
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 400;
-            color: var(--text-color);
-            background-color: #fff;
-            transition: all 0.3s;
-        }
-
-        .days .day:not(.next):not(.prev):hover {
-            color: #fff;
-            background-color: var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .days .day.today {
-            color: #fff;
-            background-color: var(--primary-color);
-        }
-
-        .days .day.next,
-        .days .day.prev {
-            color: #ccc;
-        }
-
-        /* Credits */
-        .credits a {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        .credits span {
-            color: var(--primary-color);
-        }
-    </style>
-    <title>Mini Calendar</title>
+    <!-- Template Stylesheet -->
+    <link href="css\style.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+    <link rel="stylesheet" href="galeri\css\app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
 </head>
+<style>
+   .fc-day.fc-day-disabled {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    cursor: not-allowed !important;
+    }
+    </style>
+
 
 <body>
-    <div class="container">
-        <div class="calendar">
-            <div class="header">
-                <div class="month"></div>
-                <div class="btns">
-                    <div class="btn today-btn">
-                        <i class="fas fa-calendar-day"></i>
-                    </div>
-                    <div class="btn prev-btn">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="btn next-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+    <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
+        <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
+        <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+    </a>
+  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav mx-auto">
+        <a href="/" class="nav-item nav-link ">Home</a>
+        <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
+        <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
+        <a href="surat" class="nav-item nav-link active">Surat Observasi/Kunjungan</a>
+    </div>
+  </div>
+  </nav>
+    <!-- Navbar End -->
+
+    <br />
+    <br />
+    <main role="main"> 
+           <div class="container">
+        <div id="calendar"></div>
+    </div>
+    </main>
+
+    <!-- Card Form -->
+    <!-- Card Form -->
+    <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalLabel">Surat/Observasi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <div class="weekdays">
-                <div class="day">Sun</div>
-                <div class="day">Mon</div>
-                <div class="day">Tue</div>
-                <div class="day">Wed</div>
-                <div class="day">Thu</div>
-                <div class="day">Fri</div>
-                <div class="day">Sat</div>
-            </div>
-            <div class="days">
-                <!-- lets add days using js -->
+                <div class="modal-body">
+                    <form id="FormEvent" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="nomor_hp">Nomor HP:</label>
+                            <input type="text" class="form-control" id="nomor_hp" name="nomor_hp"
+                                placeholder="Nomor HP">
+                        </div>
+                        <div class="form-group">
+                            <label for="asal_instansi">Asal Instansi:</label>
+                            <input type="text" class="form-control" id="asal_intansi" name="asal_intansi"
+                                placeholder="Asal Instansi">
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal">Tanggal:</label>
+                            <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="YYYY-MM-DD"
+                                readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="agenda">Agenda:</label>
+                            <input type="text" class="form-control" id="agenda" name="agenda" placeholder="Agenda">
+                        </div>
+                        <div class="form-group">
+                            <label for="file">File:</label>
+                            <input type="file" class="form-control" id="file" name="file" placeholder="File">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="closeModalButton">Close</button>
+                    <button type="submit" class="btn btn-primary" id="submitForm">Submit</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Credits -->
-    <div class="credits">
-        <a href="https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ">
-            Created with <span><i class="fas fa-heart"></i></span> by
-            <span>Open Source Coding</span>
-        </a>
+
+
+
+    <!-- Classes End -->
+    @include('footer1')
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- SCRIPT -->
-    <script src="script.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="galeri\js\app.js"></script>
+    <script src="galeri\js\theme.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
     <script>
-        const daysContainer = document.querySelector(".days"),
-            nextBtn = document.querySelector(".next-btn"),
-            prevBtn = document.querySelector(".prev-btn"),
-            month = document.querySelector(".month"),
-            todayBtn = document.querySelector(".today-btn");
+    $(document).ready(function () {
+        var disabledDates = {!! json_encode($data_penuh) !!};
 
-        const months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-        ];
 
-        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-        // get current date
-        const date = new Date();
-
-        // get current month
-        let currentMonth = date.getMonth();
-
-        // get current year
-        let currentYear = date.getFullYear();
-
-        // function to render days
-        function renderCalendar() {
-            // get prev month current month and next month days
-            date.setDate(1);
-            const firstDay = new Date(currentYear, currentMonth, 1);
-            const lastDay = new Date(currentYear, currentMonth + 1, 0);
-            const lastDayIndex = lastDay.getDay();
-            const lastDayDate = lastDay.getDate();
-            const prevLastDay = new Date(currentYear, currentMonth, 0);
-            const prevLastDayDate = prevLastDay.getDate();
-            const nextDays = 7 - lastDayIndex - 1;
-
-            // update current year and month in header
-            month.innerHTML = `${months[currentMonth]} ${currentYear}`;
-
-            // update days html
-            let days = "";
-
-            // prev days html
-            for (let x = firstDay.getDay(); x > 0; x--) {
-                days += `<div class="day prev">${prevLastDayDate - x + 1}</div>`;
-            }
-
-            // current month days
-            for (let i = 1; i <= lastDayDate; i++) {
-                // check if its today then add today class
-                if (
-                    i === new Date().getDate() &&
-                    currentMonth === new Date().getMonth() &&
-                    currentYear === new Date().getFullYear()
-                ) {
-                    // if date month year matches add today
-                    days += `<div class="day today">${i}</div>`;
-                } else {
-                    //else dont add today
-                    days += `<div class="day ">${i}</div>`;
-                }
-            }
-
-            // next MOnth days
-            for (let j = 1; j <= nextDays; j++) {
-                days += `<div class="day next">${j}</div>`;
-            }
-
-            // run this function with every calendar render
-            hideTodayBtn();
-            daysContainer.innerHTML = days;
-        }
-
-        renderCalendar();
-
-        nextBtn.addEventListener("click", () => {
-            // increase current month by one
-            currentMonth++;
-            if (currentMonth > 11) {
-                // if month gets greater that 11 make it 0 and increase year by one
-                currentMonth = 0;
-                currentYear++;
-            }
-            // rerender calendar
-            renderCalendar();
-        });
-
-        // prev monyh btn
-        prevBtn.addEventListener("click", () => {
-            // increase by one
-            currentMonth--;
-            // check if let than 0 then make it 11 and deacrease year
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            renderCalendar();
-        });
-
-        // go to today
-        todayBtn.addEventListener("click", () => {
-            // set month and year to current
-            currentMonth = date.getMonth();
-            currentYear = date.getFullYear();
-            // rerender calendar
-            renderCalendar();
-        });
-
-        // lets hide today btn if its already current month and vice versa
-
-        function hideTodayBtn() {
-            if (
-                currentMonth === new Date().getMonth() &&
-                currentYear === new Date().getFullYear()
-            ) {
-                todayBtn.style.display = "none";
+    var calendar = $('#calendar').fullCalendar({
+        selectable: true,
+        selectHelper: true,
+        select: function (start, allDay) {
+            var selectedDate = start.format('YYYY-MM-DD');
+            if (disabledDates.includes(selectedDate)) {
+                alert('Tanggal ini tidak bisa dipilih');
             } else {
-                todayBtn.style.display = "flex";
+                $('#eventModal').modal('show');
+                $('#tanggal').val(moment(start).format('YYYY-MM-DD'));
+            }
+        },
+
+        editable: true,
+        eventResize: function (event) {
+            // your code here
+        },
+        eventDrop: function (event) {
+            // your code here
+        },
+        eventClick: function (event) {
+            // your code here
+        },
+        dayRender: function (date, cell) {
+            var dateString = date.format('YYYY-MM-DD');
+            if (disabledDates.includes(dateString)) {
+                cell.addClass('fc-day-disabled');
+                cell.attr('title', 'Tanggal ini tidak bisa dipilih');
             }
         }
+    });
+
+    $('#submitForm').unbind().click(function () {
+        var nama = $('#nama').val();
+        var nomor_hp = $('#nomor_hp').val();
+        var asal_intansi = $('#asal_intansi').val();
+        var agenda = $('#agenda').val();
+        var file = $('#file')[0].files[0];
+        var form_data = new FormData();
+        var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+        form_data.append('nama', nama);
+        form_data.append('nomor_hp', nomor_hp);
+        form_data.append('asal_intansi', asal_intansi);
+        form_data.append('agenda', agenda);
+        form_data.append('file', file);
+        form_data.append('tanggal', $('#tanggal').val());
+
+        if (nama && nomor_hp && asal_intansi && agenda && file) {
+            $.ajax({
+                url: "{{ url('surat/Form/store') }}",
+                type: "POST",
+                data: form_data,
+                headers: {
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                contentType: false,
+                processData: false,
+                success: function () {
+                    calendar.fullCalendar('refetchEvents');
+                    $('#eventModal').modal('hide');
+                }
+            });
+        } else {
+            alert('Harap isi semua kolom');
+        }
+    });
+
+    $('#closeModalButton').on('click', function () {
+        $('#eventModal').modal('hide');
+    });
+});
+
+
     </script>
 </body>
 

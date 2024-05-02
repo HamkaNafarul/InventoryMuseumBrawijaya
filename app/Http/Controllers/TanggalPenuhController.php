@@ -39,4 +39,8 @@ class TanggalPenuhController extends Controller
         
         ->toJson();
     }
+    public function suratpenuh()
+    {
+        return view('auth/suratpenuh');
+    }
 }

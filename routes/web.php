@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
         Route::get('/koleksipameran/data', [KoleksiController::class, 'json'])->name('kategori_data');
         Route::get('/koleksipameran/PdfView', [KoleksiController::class, 'pdf'])->name('PdfView');
+
         
     });
     Route::prefix('dashboardd')->group(function () {
@@ -73,7 +74,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('/suratmasuk/Form_tanggal', [TanggalPenuhController::class, 'create'])->name('Form_tanggal');
              Route::post('/suratmasuk/Form_tanggal/store', [TanggalPenuhController::class, 'store'])->name('store_tanggal');
              Route::get('/suratmasuk/data_tanggal', [TanggalPenuhController::class, 'json'])->name('kategori_data');
-           
+             Route::get('/suratpenuh', [TanggalPenuhController::class, 'suratpenuh'])->name('suratpenuh');
         });
         Route::prefix('dashboardd')->group(function () {
             Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');

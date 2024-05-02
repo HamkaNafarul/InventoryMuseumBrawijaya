@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>Web</title>
-    {{-- <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
-    <meta content="" name="description"> --}}
+    <meta content="" name="description">
 
     <!-- Favicon -->
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
-    
+  <!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -29,6 +29,11 @@
     <!-- Template Stylesheet -->
     <link href="css\style.css" rel="stylesheet">
 </head>
+<style>
+    body {
+        font-family: 'Heebo', sans-serif; /* Menggunakan font Heebo */
+    }
+</style>
 
 <body>
    <!-- Navbar Start -->
@@ -46,7 +51,7 @@
         <a href="/" class="nav-item nav-link active">Home</a>
         <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
         <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
-        <a href="contact.html" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+        <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
   </nav>
   <!-- Navbar End -->
     
@@ -55,7 +60,7 @@
         <div class="container-fluid p-0 mb-5">
             <div class="owl-carousel header-carousel position-relative">
                 <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="gambar\bg5.png" alt="">
+                    <img class="img-fluid" src="gambar\bbg.jpg" alt="">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
@@ -69,7 +74,7 @@
                     </div>
                 </div>
                 <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="gambar\bg5.png" alt="">
+                    <img class="img-fluid" src="gambar\bgg.jpg" alt="">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
@@ -88,22 +93,52 @@
 
 
       <!-- Tampilan untuk koleksi -->
+      <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="mb-3">Koleksi Terbaru</h1>
+                <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print</p>
+            </div>
+            <div class="row g-4">
+                @foreach($latestKoleksi as $item)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card shadow card-sm">
+                        <img class="card-img-top rounded w-100 mx-auto mt-3" src="{{ asset('storage/' . $item->gambar) }}" alt="">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ $item->nama_barang }}</h5>
+                            <p class="card-text">{{ $item->tahun_abad_masa }}</p>
+                            <p class="card-text">{{ $item->cara_didapat }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>    
+    
+
+<!-- Tampilan untuk katalog buku -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="mb-3">Koleksi Terbaru</h1>
+            <h1 class="mb-3">Katalog Buku Terbaru</h1>
+            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print</p>
         </div>
-        <br>
-        <br>
         <div class="row g-4">
-            @foreach($latestKoleksi as $item)
+            @foreach($latestkoleksibuku as $item)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item position-relative">
-                    <img class="img-fluid rounded-circle w-75" src="{{ asset('storage/' . $item->gambar) }}" alt="">
-                    <div class="team-text">
-                        <h3>{{ $item->nama_barang }}</h3>
-                        <p>{{ $item->tahun_abad_masa }}</p>
-                        <p>{{ $item->cara_didapat }}</p>
+                <div class="card shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid rounded-start" src="{{ asset('storage/' . $item->sampul) }}" alt="" style="height: 200px;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->judul }}</h5>
+                                <p class="card-text">{{ $item->pengarang }}</p>
+                                <p class="card-text">{{ $item->tahun_terbit }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,28 +147,10 @@
     </div>
 </div>
 
-<!-- Tampilan untuk katalog buku -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="mb-3">Katalog Buku Terbaru</h1>
-        </div>
-        <div class="row g-4">
-            @foreach($latestkoleksibuku as $item)
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item position-relative">
-                    <img class="img-fluid rounded-circle w-75" src="{{ asset('storage/' . $item->sampul) }}" alt="">
-                    <div class="team-text">
-                        <h3>{{ $item->judul }}</h3>
-                        <p>{{ $item->pengarang }}</p>
-                        <p>{{ $item->tahun_terbit }}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+
+
+
+
 
 
 

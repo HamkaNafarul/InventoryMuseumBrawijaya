@@ -28,7 +28,7 @@ class SuratControlller extends Controller
 
         surat::create($validatedData);
 
-        return redirect('/surat')->with('success', 'Data berhasil disimpan');
+        return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
     public function destroy($id)
     {

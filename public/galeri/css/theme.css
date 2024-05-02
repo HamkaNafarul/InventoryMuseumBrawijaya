@@ -91,7 +91,7 @@ a, .a:hover {
 
 /* line 66, src/assets/scss/theme.scss */
 .card-pin:hover .card-title {
-  color: #ffffff;
+  color: #000000;
   margin-top: 10px;
   text-align: center;
   font-size: 1.2em; }
@@ -99,12 +99,12 @@ a, .a:hover {
 /* line 73, src/assets/scss/theme.scss */
 .card-pin:hover .more a {
   text-decoration: none;
-  color: #ffffff; }
+  color: #000000; }
 
 /* line 78, src/assets/scss/theme.scss */
 .card-pin:hover .download a {
   text-decoration: none;
-  color: #ffffff; }
+  color: #000000; }
 
 /* line 83, src/assets/scss/theme.scss */
 .social {

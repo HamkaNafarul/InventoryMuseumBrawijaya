@@ -29,8 +29,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
+                               
                                 <div class="card-header">
-                                    <h3 class="card-title">Surat Masuk</h3>
+                                    <h3 class="card-title">Tanggal Penuh</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                             data-toggle="tooltip" title="Collapse">
@@ -40,24 +41,27 @@
                                             <i class="fas fa-times"></i></button>
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{{ route('Form_tanggal') }}" class="btn btn-danger btn-block">Tambah Tanggal Penuh</a>
+                                            </div>
+                                        </div>
+                                    </div> 
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-nowrap" id="surat">
+                                    <table class="table table-hover text-nowrap" id="tanggal">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nomor HP</th>
-                                                <th>Nama</th>
-                                                <th>Asal Intansi</th>
                                                 <th>Tanggal</th>
-                                                <th>Agenda</th>
-                                                <th>File</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         </tbody>
                                     </table>
                                 </div>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,41 +80,18 @@
     <script src="{{ asset('asset/js/demo.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#surat').DataTable({
+            $('#tanggal').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('/dashboardd/suratmasuk/data') }}',
+                ajax: '{{ url('/dashboardd/suratmasuk/data_tanggal') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
                     },
                     {
-                        data: 'nomor_hp',
-                        name: 'nomor_hp'
+                        data: 'tanggal_penuh',
+                        name: 'tanggal_penuh'
                     },
-                    {
-                        data: 'nama',
-                        name: 'nama'
-                    },
-                    {
-                        data: 'asal_intansi',
-                        name: 'asal_intansi'
-                    },
-                    {
-                        data: 'tanggal',
-                        name: 'tanggal'
-                    },
-                    {
-                        data: 'agenda',
-                        name: 'agenda'
-                    },
-                    {
-        data: 'file',
-        name: 'file',
-        render: function (data, type, full, meta) {
-    return '<a href="/storage/' + data + '" target="_blank">Download</a>';
-}
-    },
                     {
                         data: 'action',
                         name: 'action'
@@ -147,7 +128,6 @@
             });
         });
     </script>
-    
 </body>
 
 </html>

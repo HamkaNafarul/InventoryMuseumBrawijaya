@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
+use App\Models\tanggal;
 use App\Models\koleksibuku;
 use Illuminate\Http\Request;
 
@@ -44,7 +45,9 @@ class HomeController extends Controller
     }
     public function surat()
     {
-        return view('surat');
+        $data_penuh = tanggal::pluck('tanggal_penuh')->toArray();
+        // dd($data_penuh);
+        return view('surat', compact('data_penuh'));
     }
     public function detailkoleksi($id)
     {

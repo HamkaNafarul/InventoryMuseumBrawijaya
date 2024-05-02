@@ -4963,6 +4963,23 @@ input[type="button"].btn-block {
       color: #fff; }
 
 /* line 5, node_modules/bootstrap/scss/_card.scss */
+/* Menjadikan card sebagai kotak sempurna */
+.card {
+  border-radius: 0; /* Menghilangkan border-radius bawaan Bootstrap */
+}
+
+/* Mengatur jarak antara card */
+.card-columns {
+  column-count: 4; /* Atur jumlah kolom sesuai kebutuhan */
+  column-gap: 0; /* Menghilangkan jarak antara kolom */
+}
+
+/* Mengatur gambar dalam card agar tidak terpotong */
+
+
+
+
+/* Nyobak */
 .card {
   position: relative;
   display: -webkit-box;

@@ -30,7 +30,6 @@
     <!-- Template Stylesheet -->
     <link href="css\style.css" rel="stylesheet">
     <link rel="stylesheet" href="galeri\css\app.css">
-    {{-- <link rel="stylesheet" href="galeri\css\theme.css"> --}}
 </head>
 <style>
   .search-box {
@@ -79,13 +78,13 @@
 <body>
         <!-- Spinner End -->
 
-
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
           <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
-              <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
-              <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
-          </a>
+            <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
+            <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+            <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        </a>
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -94,7 +93,7 @@
               <a href="/" class="nav-item nav-link">Home</a>
               <a href="koleksi" class="nav-item nav-link active">Koleksi Pameran</a>
               <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
-              <a href="contact.html" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+              <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
   </nav>
   <!-- Navbar End -->
 
