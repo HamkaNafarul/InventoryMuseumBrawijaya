@@ -36,14 +36,18 @@ Route::prefix('dashboardd')->group(function () {
 });
 
 
-Route::get('/koleksi', [HomeController::class, 'koleksi'])->name('koleksi');
+// Route::get('/koleksi', [HomeController::class, 'koleksi'])->name('koleksi');
 Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalogbuku');
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');
 Route::prefix('surat')->group(function () {
     Route::post('/Form/store', [SuratControlller::class, 'store'])->name('store_surat');
 
 });
-Route::get('/detailkoleksi/{id}', [HomeController::class, 'detailkoleksi'])->name('detailkoleksi_landing');
+Route::prefix('koleksi')->group(function () {
+    Route::get('/detailkoleksi/{id}', [HomeController::class, 'detailkoleksi'])->name('detailkoleksi_landing');
+    Route::get('/', [HomeController::class, 'koleksi'])->name('koleksi');
+});
+// Route::get('/detailkoleksi/{id}', [HomeController::class, 'detailkoleksi'])->name('detailkoleksi_landing');
 Route::get('/detailkoleksibuku/{id}', [HomeController::class, 'detailkoleksibuku'])->name('detailkoleksibuku_landing');
 Route::middleware(['guest'])->group(function(){
     Route::get('/login', [LoginController::class, 'viewLogin'])->name('login');

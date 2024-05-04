@@ -21,11 +21,9 @@
     <!-- Favicon -->
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet"> --}}
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -44,6 +42,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
     <link rel="stylesheet" href="galeri\css\app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
+
 </head>
 <style>
    .fc-day.fc-day-disabled {
@@ -51,12 +51,21 @@
     color: #721c24 !important;
     cursor: not-allowed !important;
     }
+/* Untuk memperkecil ukuran section */
+.content {
+  max-width: 1000px; /* Lebar maksimum section */
+  margin: 0 auto; /* Posisi section di tengah */
+}
+#calendar {
+    background-color: #ffffff; /* Memberikan warna putih pada background kalender */
+    border-radius: 5px; /* Memberikan sudut lengkung pada border kalender */
+    padding: 20px; /* Memberikan padding agar konten tidak terlalu dekat dengan border */
+}
     </style>
 
 
 <body>
     <!-- Spinner End -->
-
 
     <!-- Navbar Start -->
     <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
@@ -81,6 +90,43 @@
 
     <br />
     <br />
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Surat Masuk</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive p-0 collapse" id="collapseExample">
+                            <table class="table table-hover text-nowrap" id="surat">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Nama</th>
+                                        <th>Intansi</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Isi tabel -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main role="main"> 
            <div class="container">
         <div id="calendar"></div>
@@ -254,9 +300,13 @@
         $('#eventModal').modal('hide');
     });
 });
+</script>
 
-
-    </script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script> 
 </body>
 
 </html>

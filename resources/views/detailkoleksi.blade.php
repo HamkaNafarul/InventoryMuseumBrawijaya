@@ -29,64 +29,44 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../../lib/owlcarousel/assets/owl.carousel.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('../../css/bootstrap.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('galeri/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('galeri/css/theme.css') }}">
+    <link href="css\style.css" rel="stylesheet">
+    
+
     
 </head>
 <style>
-    .search-box {
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-        padding: 5px;
-        overflow: hidden;
-        width: 90%;
-        max-width: 850px;
-        height: 70px;
-        /* Atur tinggi sesuai kebutuhan */
-    }
-
-    .search-input {
-        flex: 1;
-        /* Membuat input memanjang sejauh mungkin */
-        border: none;
-        outline: none;
-        padding: 5px;
-        font-size: 16px;
-        border-radius: 0;
-    }
-
-    .search-button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 0;
-        transition: background-color 0.3s;
-    }
-
-
-    /* Media query untuk layar dengan lebar kurang dari 600px */
-    @media (max-width: 600px) {
-        .search-input {
-            font-size: 14px;
-            /* Mengurangi ukuran font untuk layar kecil */
-        }
-    }
-
-    .search-button:hover {
-        background-color: #0056b3;
+    body{
+        padding-top: 0;
     }
 </style>
 
 <body>
     <!-- Spinner End -->
-
+ <!-- Navbar Start -->
+ <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+    <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
+        <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
+        <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+    </a>
+  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav mx-auto">
+        <a href="/" class="nav-item nav-link ">Home</a>
+        <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
+        <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
+        <a href="surat" class="nav-item nav-link active">Surat Observasi/Kunjungan</a>
+    </div>
+  </div>
+  </nav>
+    <!-- Navbar End -->
 
     <main role="main">
         <section class="bg-gray200 pt-5 pb-5">
@@ -109,7 +89,7 @@
                 </div>
             </div>
         
-            {{-- <div class="container-fluid mt-5">
+            <div class="container-fluid mt-5 ">
                 <div class="row">
                     <h5 class="font-weight-bold">More like this</h5>
                     <div class="card-columns">
@@ -235,14 +215,16 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </section>
 
     </main>
 
     <!-- Classes End -->
-    @include('footer1')
-
+    @include('footer')
+    {{-- <div class="footer" style="background-color: black">
+        
+    </div> --}}
 
     <!-- Back to Top -->
    
