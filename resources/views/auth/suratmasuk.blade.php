@@ -52,34 +52,51 @@
                                                 <th>Agenda</th>
                                                 <th>File</th>
                                                 <th>Action</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         </tbody>
                                     </table>
                                 </div>
-                            
+
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
+
         </div>
-        </section>
-        
-    </div>
     </div>
     </div>
     <!-- /.row -->
-    
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ asset('asset/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('asset/js/demo.js') }}"></script>
     <script>
+        function accSurat(id) {
+            $.ajax({
+                url: '/dashboardd/suratmasuk/acc/' + id,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    $('#surat').DataTable().ajax.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+    
         $(document).ready(function () {
             $('#surat').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('/dashboardd/suratmasuk/data') }}',
+                ajax: '{{ url('/dashboardd/suratmasuk/data')}}',
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
@@ -105,24 +122,39 @@
                         name: 'agenda'
                     },
                     {
-        data: 'file',
-        name: 'file',
-        render: function (data, type, full, meta) {
-    return '<a href="/storage/' + data + '" target="_blank">Download</a>';
-}
-    },
-    
+                        data: 'file',
+                        name: 'file',
+                        render: function (data, type, full, meta) {
+                            return '<a href="/storage/' + data +
+                                '" target="_blank">Download</a>';
+                        }
+                    },
                     {
                         data: 'action',
                         name: 'action'
                     },
+                    {
+                        data: 'status',
+                        name: 'status',
+                        render: function (data, type, full, meta) {
+                            console.log(full.id)
+                            if (data == 0) {
+                                return '<button class="btn btn-sm btn-primary" onclick="accSurat(' +
+                                    full.id + ')">ACC</button>';
+                            } else if (data == 1) {
+                                return '<span class="badge badge-success">Diterima</span>';
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
                 ]
             });
-
+    
             $('#surat').on('click', 'a.delete-users', function (e) {
                 e.preventDefault();
                 var deleteUrl = $(this).data('url');
-
+    
                 if (confirm('Are you sure?')) {
                     fetch(deleteUrl, {
                             method: 'DELETE',
@@ -149,10 +181,7 @@
         });
     </script>
     
+
 </body>
 
 </html>
-
-
-
-

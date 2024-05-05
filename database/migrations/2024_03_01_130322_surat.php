@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('asal_intansi');
             $table->date('tanggal');
             $table->string('agenda');
+            $table->tinyInteger('status')->comment('0:menunggu,1:diterima');
             $table->string('file'); // Kolom gambar
             $table->timestamps();
+
         });
     }
 

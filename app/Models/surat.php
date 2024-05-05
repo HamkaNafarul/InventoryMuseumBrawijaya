@@ -19,6 +19,7 @@ class surat extends Model
         'tanggal',
         'agenda',
         'file',
+        'status',
     ];
 
     protected $casts = [

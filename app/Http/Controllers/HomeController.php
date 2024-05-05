@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
+use App\Models\surat;
 use App\Models\tanggal;
 use App\Models\koleksibuku;
 use Illuminate\Http\Request;
@@ -44,21 +45,36 @@ class HomeController extends Controller
         return view('katalogbuku',compact('koleksibuku'));
     }
     public function surat()
-    {
-        $data_penuh = tanggal::pluck('tanggal_penuh')->toArray();
-        // dd($data_penuh);
-        return view('surat', compact('data_penuh'));
-    }
-    public function detailkoleksi($id)
-    {
-        $koleksi = Koleksi::findOrFail($id);
-        // dd($koleksi);                                                                                     
-        return view('detailkoleksi',compact('koleksi'));
-    }
+{
+    $surat = surat::all();
+    $data_penuh = Tanggal::pluck('tanggal_penuh')->toArray();
+    // dd($data_penuh);
+    return view('surat', compact('surat', 'data_penuh'));
+}
+
+    // public function detailkoleksi($id)
+    // {
+    //     $koleksi = Koleksi::findOrFail($id);
+    //     // dd($koleksi);                                                                                     
+    //     return view('detailkoleksi',compact('koleksi'));
+    // }
     public function detailkoleksibuku($id)
     {
         $koleksibuku = koleksibuku::findOrFail($id);
         return view('detailkoleksibuku',compact('koleksibuku'));
     }
+    public function detailkoleksi($id)
+    {
+    $koleksi = Koleksi::findOrFail($id);
+    
+    // Mengambil koleksi yang mirip berdasarkan tahun_abad_masa
+    $similarCollections = Koleksi::where('tahun_abad_masa', $koleksi->tahun_abad_masa)
+                                ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
+                                ->limit(3) // batasi jumlah koleksi yang ditampilkan
+                                ->get();
+
+    return view('detailkoleksi', compact('koleksi', 'similarCollections'));
+}
+
 
 }

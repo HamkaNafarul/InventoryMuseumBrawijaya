@@ -117,7 +117,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Isi tabel -->
+                                    @foreach($surat as $surats)
+                                    <tr>
+                                        <td>{{ $surats->tanggal }}</td>
+                                        <td>{{ $surats->nama }}</td>
+                                        <td>{{ $surats->asal_intansi }}</td>
+                                        <td>
+                                            @if($surats->status == 0)
+                                                <span class="badge bg-secondary">Belum di-ACC</span>
+                                            @elseif($surats->status == 1)
+                                                <span class="badge bg-success">Sudah di-ACC</span>
+                                            @endif
+                                        </td>                                        
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -125,7 +138,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>    
+    
 
     <main role="main"> 
            <div class="container">
@@ -305,8 +319,15 @@
 <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
+       
     });
 </script> 
+<script>
+    $(document).ready(function () {
+        
+    });
+</script>
+
 </body>
 
 </html>

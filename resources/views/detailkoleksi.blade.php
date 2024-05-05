@@ -19,10 +19,11 @@
 
     <!-- Favicon -->
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+     <!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -32,8 +33,8 @@
     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('../../lib/owlcarousel/assets/owl.carousel.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('../../css/bootstrap.min.css') }}" >
-    <link rel="stylesheet" href="{{ asset('galeri/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('galeri/css/theme.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('galeri/css/themee.css') }}">
     <link href="css\style.css" rel="stylesheet">
     
 
@@ -43,6 +44,8 @@
     body{
         padding-top: 0;
     }
+    /*** Heading ***/
+
 </style>
 
 <body>
@@ -51,8 +54,8 @@
  <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
     <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
         <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
-        <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
-        <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="{{ asset('gambar/image1.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />        
     </a>
   <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
@@ -70,161 +73,51 @@
 
     <main role="main">
         <section class="bg-gray200 pt-5 pb-5">
-            <!-- resources/views/detailkoleksi.blade.php -->
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <img src="{{ asset('storage/' . $koleksi['gambar']) }}" class="product-image" alt="Product Image">
+                    </div>
+                    <div class="col-md-6 col-12">
                         <div class="card">
-                            <p>hamka</P>
                             <div class="card-header">{{ $koleksi->nama_barang }}</div>
-                            {{-- @dd($koleksi->nama_barang) --}}
-
                             <div class="card-body">
                                 <p><strong>Tahun/Abad/Masa:</strong> {{ $koleksi->tahun_abad_masa }}</p>
                                 <p><strong>Cara Didapat:</strong> {{ $koleksi->cara_didapat }}</p>
-                                <!-- Tambahkan informasi lainnya sesuai kebutuhan -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="container-fluid mt-5 ">
-                <div class="row">
-                    <h5 class="font-weight-bold">More like this</h5>
-                    <div class="card-columns">
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1518707399486-6d702a84ff00?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b5bb16fa7eaed1a1ed47614488f7588d&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1519408299519-b7a0274f7d67?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d4891b98f4554cc55eab1e4a923cbdb1&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1506706435692-290e0c5b4505?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0bb464bb1ceea5155bc079c4f50bc36a&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1512355144108-e94a235b10af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c622d56d975113a08c71c912618b5f83&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1518542331925-4e91e9aa0074?ixlib=rb-0.3.5&s=6958cfb3469de1e681bf17587bed53be&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1513028179155-324cfec2566c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=32ce1df4016dadc177d6fce1b2df2429&auto=format&fit=crop&w=350&q=80"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1516601255109-506725109807?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ce4f3db9818f60686e8e9b62d4920ce5&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1505210512658-3ae58ae08744?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2ef2e23adda7b89a804cf232f57e3ca3&auto=format&fit=crop&w=333&q=80"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1488353816557-87cd574cea04?ixlib=rb-0.3.5&s=06371203b2e3ad3e241c45f4e149a1b3&auto=format&fit=crop&w=334&q=80"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-pin">
-                            <img class="card-img"
-                                src="https://images.unsplash.com/photo-1518450757707-d21c8c53c8df?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c88b5f311958f841525fdb01ab3b5deb&auto=format&fit=crop&w=500&q=60"
-                                alt="Card image">
-                            <div class="overlay">
-                                <h2 class="card-title title">Some Title</h2>
-                                <div class="more">
-                                    <a href="post.html">
-                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-                                </div>
+                                <p><strong>Deskripsi:</strong> {{ $koleksi->deskripsi }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
+    
+        <section class="bg-gray200 pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h5>More Like This</h5>
+                        <div class="row">
+                            @foreach($similarCollections as $collection)
+                                <div class="col-md-4 mb-4">
+                                    <div class="card shadow">
+                                        <img src="{{ asset('storage/' . $collection->gambar) }}" class="card-img-top" alt="Collection Image">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $collection->nama_barang }}</h5>
+                                            <p class="card-text">{{ $collection->deskripsi }}</p>
+                                            <a href="{{ route('detailkoleksi_landing', $collection->id) }}" class="btn btn-primary">Detail Koleksi</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <!-- Classes End -->
     @include('footer')
-    {{-- <div class="footer" style="background-color: black">
-        
-    </div> --}}
+    
 
     <!-- Back to Top -->
    

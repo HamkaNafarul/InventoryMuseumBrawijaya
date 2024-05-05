@@ -124,8 +124,7 @@
                             <p>{{ $item->tahun_abad_masa }}</p>
                             <p>{{ $item->cara_didapat }}</p>
                             <div class="more">
-                                <a href="{{ route('detailkoleksi_landing', $item->id) }}">
-                                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
+                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
                                 </a>
                             </div>
                         </div>

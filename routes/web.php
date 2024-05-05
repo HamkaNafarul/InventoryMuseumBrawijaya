@@ -40,6 +40,7 @@ Route::prefix('dashboardd')->group(function () {
 Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalogbuku');
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');
 Route::prefix('surat')->group(function () {
+    Route::get('/data', [SuratControlller::class, 'jsonstatus'])->name('surat.data');
     Route::post('/Form/store', [SuratControlller::class, 'store'])->name('store_surat');
 
 });
@@ -79,7 +80,9 @@ Route::middleware(['auth'])->group(function(){
              Route::post('/suratmasuk/Form_tanggal/store', [TanggalPenuhController::class, 'store'])->name('store_tanggal');
              Route::get('/suratmasuk/data_tanggal', [TanggalPenuhController::class, 'json'])->name('kategori_data');
              Route::get('/suratpenuh', [TanggalPenuhController::class, 'suratpenuh'])->name('suratpenuh');
-        });
+             Route::post('/suratmasuk/acc/{id}', [SuratControlller::class, 'acc'])->name('acc');
+
+            });
         Route::prefix('dashboardd')->group(function () {
             Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
             Route::get('/koleksibuku', [LoginController::class, 'koleksibuku'])->name('koleksibuku');
