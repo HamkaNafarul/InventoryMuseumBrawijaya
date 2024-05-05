@@ -47,10 +47,14 @@
 </head>
 <style>
    .fc-day.fc-day-disabled {
-    background-color: #f8d7da !important;
-    color: #721c24 !important;
+    background-color: transparent !important;
+    color: transparent !important;
     cursor: not-allowed !important;
-    }
+    background-image: url('gambar/silang.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 /* Untuk memperkecil ukuran section */
 .content {
   max-width: 1000px; /* Lebar maksimum section */
