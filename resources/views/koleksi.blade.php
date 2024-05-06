@@ -115,26 +115,24 @@
           </div>
           <div class="container-fluid">
             <div class="row">
-              <div class="card-columns">
-                @foreach($koleksi as $item)
-                    <div class="card card-pin">
-                        <img class="card-img" src="{{ asset('storage/' . $item->gambar) }}" alt="Card image">
-                        <div class="overlay">
-                            <h2 class="card-title title">{{ $item->nama_barang }}</h2>
-                            <p>{{ $item->tahun_abad_masa }}</p>
-                            <p>{{ $item->cara_didapat }}</p>
-                            <div class="more">
+                <div class="card-columns">
+                    @foreach($koleksi as $item)
+                        <div class="card card-pin">
+                            <img class="card-img" src="{{ asset('storage/' . $item->gambar) }}" alt="Card image">
+                            <div class="overlay">
+                                <h2 class="card-title title">{{ $item->nama_barang }}</h2>
+                                <div class="more">
+                                    <a href="{{ url('detailkoleksi/' . $item->id) }}">
                                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>                     
-
-              </div>
+                    @endforeach
+                </div>
             </div>
-          </div>
+        </div>
+        
         </div>
         
 

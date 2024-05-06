@@ -122,7 +122,7 @@
                   <img class="card-img" src="{{ asset('storage/' . $buku->sampul) }}" alt="Card image">
                   <div class="overlay">
                         <h2 class="card-title title">{{ $buku->judul }}</h2>
-                        <p>{{ $buku->pengarang }}</p>
+                        {{-- <p>{{ $buku->pengarang }}</p> --}}
                         <div class="more">
                           <a href="{{ route('detailkoleksibuku_landing', $buku->id) }}">
                               <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More

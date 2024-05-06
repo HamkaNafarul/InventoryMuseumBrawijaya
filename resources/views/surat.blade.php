@@ -99,15 +99,15 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Surat Masuk</h3>
+                         <div class="card-header">
+                            <h3 class="card-title">Status Surat</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                                <button type="button" class="btn btn-tool btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    Cek Status
+                                </button>                                                           
+                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
                                     <i class="fas fa-times"></i>
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0 collapse" id="collapseExample">
