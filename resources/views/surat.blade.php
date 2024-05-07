@@ -44,6 +44,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
 
+    
+
+
 </head>
 <style>
    .fc-day.fc-day-disabled {
@@ -54,6 +57,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+.fc-day-before{
+    background-color: silver !important;
 }
 /* Untuk memperkecil ukuran section */
 .content {
@@ -105,9 +111,6 @@
                                 <button type="button" class="btn btn-tool btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     Cek Status
                                 </button>                                                           
-                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button> --}}
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0 collapse" id="collapseExample">
@@ -238,14 +241,18 @@
     <!-- Owl Carousel JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+    <!-- Data Tabel -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+
 
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-    $(document).ready(function () {
-        var disabledDates = {!! json_encode($data_penuh) !!};
-
+ $(document).ready(function () {
+    var disabledDates = {!! json_encode($data_penuh) !!};
 
     var calendar = $('#calendar').fullCalendar({
         selectable: true,
@@ -259,7 +266,15 @@
                 $('#tanggal').val(moment(start).format('YYYY-MM-DD'));
             }
         },
-
+        select: function (start, allDay) {
+            var selectedDate = start.format('YYYY-MM-DD');
+            if (start.isBefore(moment(), 'day')) {
+                alert('Tanggal ini tidak bisa dipilih');
+            } else {
+                $('#eventModal').modal('show');
+                $('#tanggal').val(moment(start).format('YYYY-MM-DD'));
+            }
+        },
         editable: true,
         eventResize: function (event) {
             // your code here
@@ -271,12 +286,19 @@
             // your code here
         },
         dayRender: function (date, cell) {
-            var dateString = date.format('YYYY-MM-DD');
-            if (disabledDates.includes(dateString)) {
-                cell.addClass('fc-day-disabled');
-                cell.attr('title', 'Tanggal ini tidak bisa dipilih');
-            }
-        }
+    var dateString = date.format('YYYY-MM-DD');
+    if (disabledDates.includes(dateString)) {
+        cell.addClass('fc-day-disabled');
+        cell.attr('title', 'Tanggal ini tidak bisa dipilih');
+    } else if (date.isBefore(moment(), 'day')) {
+        // Tanggal sudah lewat, berikan ikon pertama
+        cell.addClass('fc-day-before');
+    } else {
+        // Tanggal masih dapat dipilih, berikan ikon kedua
+        cell.addClass('fc-day-enabled');
+    }
+}
+
     });
 
     $('#submitForm').unbind().click(function () {
@@ -318,6 +340,7 @@
         $('#eventModal').modal('hide');
     });
 });
+
 </script>
 
 <script>
@@ -329,6 +352,19 @@
 <script>
     $(document).ready(function () {
         
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#surat').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
     });
 </script>
 

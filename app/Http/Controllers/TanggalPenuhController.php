@@ -24,20 +24,26 @@ class TanggalPenuhController extends Controller
     }
     public function json()
     {
-        $tanggal= tanggal::select(['id','tanggal_penuh']);
+        $tanggal = Tanggal::select(['id','tanggal_penuh']);
         $index = 1;
         return DataTables::of($tanggal)
-        ->addColumn('DT_RowIndex',function($data) use ($index) {
-            return $index++;
-        })
-        ->addColumn('action', function ($row) {
-            $editUrl = url('/' . $row->id);
-            $deleteUrl = url('/' . $row->id);
-            $detailUrl = url('/' . $row->id);
-            return '<a href="' . $editUrl . '">-</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">-</a> | <a href="' . $detailUrl .'">=</a>';
-        })
-        
-        ->toJson();
+            ->addColumn('DT_RowIndex',function($data) use ($index) {
+                return $index++;
+            })
+            ->addColumn('action', function ($row) {
+                $deleteUrl = url('dashboardd/suratpenuh/Form_tanggal/delete/' . $row->id);
+                return '<a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a>';
+            })  
+            ->toJson();
+    }
+    
+    public function destroy($id)
+    {
+        $tanggal = Tanggal::findOrFail($id);
+    
+        $tanggal->delete();
+    
+        return response()->json(['message' => 'Data berhasil dihapus']);
     }
     public function suratpenuh()
     {

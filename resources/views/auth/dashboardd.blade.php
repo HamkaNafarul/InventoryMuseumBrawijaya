@@ -57,7 +57,7 @@
                   <!-- /.col -->
                   <div class="col-md-3 col-6">
                     <div class="description-block border-right">
-                      <h5 class="description-header">1</h5>
+                      <h5 class="description-header">{{ $jumlah_users }}</h5>
                       <span class="description-text">Admin</span>
                     </div>
                     <!-- /.description-block -->

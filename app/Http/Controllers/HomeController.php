@@ -52,17 +52,18 @@ class HomeController extends Controller
     return view('surat', compact('surat', 'data_penuh'));
 }
 
-    // public function detailkoleksi($id)
-    // {
-    //     $koleksi = Koleksi::findOrFail($id);
-    //     // dd($koleksi);                                                                                     
-    //     return view('detailkoleksi',compact('koleksi'));
-    // }
     public function detailkoleksibuku($id)
     {
-        $koleksibuku = koleksibuku::findOrFail($id);
-        return view('detailkoleksibuku',compact('koleksibuku'));
+    $koleksibuku = koleksibuku::findOrFail($id);
+    
+    $similarCollections = koleksibuku::where('bahasa', $koleksibuku->bahasa)
+                                ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
+                                ->limit(3) // batasi jumlah koleksi yang ditampilkan
+                                ->get();
+
+    return view('detailkoleksibuku', compact('koleksibuku', 'similarCollections'));
     }
+
     public function detailkoleksi($id)
     {
     $koleksi = Koleksi::findOrFail($id);

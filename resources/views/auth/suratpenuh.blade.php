@@ -99,7 +99,7 @@
                 ]
             });
 
-            $('#surat').on('click', 'a.delete-users', function (e) {
+            $('#tanggal').on('click', 'a.delete-users', function (e) {
                 e.preventDefault();
                 var deleteUrl = $(this).data('url');
 
@@ -116,7 +116,7 @@
                                 alert(data.warning);
                             } else {
                                 // Handle success, e.g., reload the DataTable
-                                $('#usersTablePNS').DataTable().ajax.reload();
+                                $('#tanggal').DataTable().ajax.reload();
                                 location.reload();
                             }
                         })

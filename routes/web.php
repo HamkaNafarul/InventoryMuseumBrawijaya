@@ -81,6 +81,7 @@ Route::middleware(['auth'])->group(function(){
              Route::get('/suratmasuk/data_tanggal', [TanggalPenuhController::class, 'json'])->name('kategori_data');
              Route::get('/suratpenuh', [TanggalPenuhController::class, 'suratpenuh'])->name('suratpenuh');
              Route::post('/suratmasuk/acc/{id}', [SuratControlller::class, 'acc'])->name('acc');
+             Route::delete('/suratpenuh/Form_tanggal/delete/{id}', [TanggalPenuhController::class, 'destroy'])->name('destroy');
 
             });
         Route::prefix('dashboardd')->group(function () {
@@ -95,6 +96,12 @@ Route::middleware(['auth'])->group(function(){
             Route::get('/koleksibuku/DetailKoleksiAdminBuku/{id}', [KoleksiBukuControlller::class, 'DetailKoleksiAdminBuku'])->name('DetailKoleksiAdminBuku');
             Route::get('/koleksibuku/PdfView_Buku', [KoleksiBukuControlller::class, 'pdf'])->name('PdfView_Buku');
         });
+        Route::prefix('dashboardd')->group(function () {
+            Route::get('/Admin', [LoginController::class, 'Admin'])->name('Admin');
+            Route::get('/Admin/User', [LoginController::class, 'json'])->name('admin_data');
+            Route::get('/Admin/Form_Admin', [LoginController::class, 'create'])->name('Form_Admin');
+            Route::post('/Admin/Form_Admin/store', [LoginController::class, 'store'])->name('store');
+            });
     });
     
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
