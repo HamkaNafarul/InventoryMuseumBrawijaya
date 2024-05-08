@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script type="text/javascript">
         (function () {
             var css = document.createElement('link');
@@ -196,6 +198,17 @@
                             <label for="file">File:</label>
                             <input type="file" class="form-control" id="file" name="file" placeholder="File">
                         </div>
+                        <div class="captcha">
+                            <div class="input-group-prepend captcha_img">
+                                <span>{!! captcha_img('math') !!}</span>
+                                
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                            <span id="captcha-error" class="text-danger"></span>
+                        </div>
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -302,39 +315,63 @@
     });
 
     $('#submitForm').unbind().click(function () {
-        var nama = $('#nama').val();
-        var nomor_hp = $('#nomor_hp').val();
-        var asal_intansi = $('#asal_intansi').val();
-        var agenda = $('#agenda').val();
-        var file = $('#file')[0].files[0];
-        var form_data = new FormData();
-        var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
-        form_data.append('nama', nama);
-        form_data.append('nomor_hp', nomor_hp);
-        form_data.append('asal_intansi', asal_intansi);
-        form_data.append('agenda', agenda);
-        form_data.append('file', file);
-        form_data.append('tanggal', $('#tanggal').val());
+    var nama = $('#nama').val();
+    var nomor_hp = $('#nomor_hp').val();
+    var asal_intansi = $('#asal_intansi').val();
+    var agenda = $('#agenda').val();
+    var file = $('#file')[0].files[0];
+    var captcha = $('#captcha').val();
+    var form_data = new FormData();
+    var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+    form_data.append('nama', nama);
+    form_data.append('nomor_hp', nomor_hp);
+    form_data.append('asal_intansi', asal_intansi);
+    form_data.append('agenda', agenda);
+    form_data.append('file', file);
+    form_data.append('tanggal', $('#tanggal').val());
+    form_data.append('captcha', captcha);
 
-        if (nama && nomor_hp && asal_intansi && agenda && file) {
-            $.ajax({
-                url: "{{ url('surat/Form/store') }}",
-                type: "POST",
-                data: form_data,
-                headers: {
-                    'X-CSRF-TOKEN': csrf_token
-                },
-                contentType: false,
-                processData: false,
-                success: function () {
-                    calendar.fullCalendar('refetchEvents');
-                    $('#eventModal').modal('hide');
-                }
-            });
+    if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
+        $.ajax({
+            url: "{{ url('surat/Form/store') }}",
+            type: "POST",
+            data: form_data,
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            contentType: false,
+            processData: false,
+            success: function () {
+                calendar.fullCalendar('refetchEvents');
+                $('#eventModal').modal('hide');
+            },
+            error: function(xhr, textStatus, errorThrown) {
+        if (xhr.status === 422) {
+            var errors = xhr.responseJSON.errors;
+            if (errors.hasOwnProperty('captcha')) {
+                $('#captcha-error').text(errors.captcha[0]);
+                location.reload();
+            }
         } else {
-            alert('Harap isi semua kolom');
+            // Jika terjadi kesalahan selain 422, reload halaman
+            location.reload();
         }
-    });
+    }
+        });
+    } else {
+        // Tambahkan pesan error untuk captcha
+        if (!captcha) {
+            $('#captcha-error').text('The captcha field is required.');
+            $('.captcha_img').html(data.captcha_img);
+        } else {
+            $('#captcha-error').text('Hasil Perhitungan Salah');
+            $('.captcha_img').html(data.captcha_img);
+            
+        }
+
+    }
+});
+
 
     $('#closeModalButton').on('click', function () {
         $('#eventModal').modal('hide');

@@ -35,7 +35,9 @@ Route::prefix('dashboardd')->group(function () {
     Route::get('/koleksipameran', [LoginController::class, 'koleksipameran'])->name('koleksipameran');
 });
 
-
+Route::get('captcha/math', function () {
+    return captcha_img('math');
+});
 Route::get('/koleksi', [HomeController::class, 'koleksi'])->name('koleksi');
 Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalogbuku');
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');

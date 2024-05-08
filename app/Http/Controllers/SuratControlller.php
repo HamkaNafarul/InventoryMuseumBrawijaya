@@ -13,6 +13,7 @@ class SuratControlller extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'captcha' => 'required|captcha',
             'nomor_hp' => 'required',
             'nama' => 'required',
             'asal_intansi' => 'required',
