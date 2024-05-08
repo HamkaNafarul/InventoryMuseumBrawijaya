@@ -52,7 +52,7 @@ class SuratControlller extends Controller
         // dd($surat);
         $index = 1;
         return DataTables::of($surat)
-            ->addColumn('DT_RowIndex', function ($data) use ($index) {
+            ->addColumn('DT_RowIndex', function ($data) use (&$index) {
                 return $index++;
             })
             ->addColumn('action', function ($row) {

@@ -113,7 +113,7 @@ class KoleksiBukuControlller extends Controller
         $koleksibuku= koleksibuku::select(['id','nomor','judul','pengarang','edisi','tahun_terbit','issn','penerbit']);
         $index=1;
         return DataTables::of($koleksibuku)
-        ->addColumn('DT_RowIndex',function($data) use ($index) {
+        ->addColumn('DT_RowIndex',function($data) use (&$index) {
             return $index++;
         })
         ->addColumn('action', function ($row) {

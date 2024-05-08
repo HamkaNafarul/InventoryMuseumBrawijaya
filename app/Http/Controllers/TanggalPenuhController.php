@@ -27,7 +27,7 @@ class TanggalPenuhController extends Controller
         $tanggal = Tanggal::select(['id','tanggal_penuh']);
         $index = 1;
         return DataTables::of($tanggal)
-            ->addColumn('DT_RowIndex',function($data) use ($index) {
+            ->addColumn('DT_RowIndex',function($data) use (&$index) {
                 return $index++;
             })
             ->addColumn('action', function ($row) {

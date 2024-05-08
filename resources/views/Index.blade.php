@@ -90,14 +90,30 @@
             </div>
         </div>
         <!-- Carousel End -->
-
+        <div class="sambutan mt-5" style="background-color: white; width: 80%; margin: 0 auto;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                        <h2>Website Inventaris Museum Brawijaya Malang</h2>
+                        <hr>
+                        <p>
+                            Selamat datang di website resmi Inventaris Museum Brawijaya Malang! Di sini, Anda akan menemukan koleksi yang mengagumkan dari museum kontemporer dan benda-benda bersejarah yang menjadi bagian penting dari warisan budaya kami. Selain itu, kami juga menyediakan katalog buku museum untuk memperluas pengetahuan Anda tentang sejarah dan budaya. Jika Anda mencari informasi yang lebih lengkap atau ingin mengatur kunjungan, kami menyediakan fitur pengiriman surat observasi/kunjungan untuk memudahkan Anda. Selamat mengeksplorasi dan menikmati pengalaman kami di Museum Brawijaya Malang!
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 mx-auto">
+                        <img src="{{ asset('gambar/museum.png') }}" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+                    </div>
+                </div>
+            </div>
+        </div>        
+        
 
       <!-- Tampilan untuk koleksi -->
       <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1 class="mb-3">Koleksi Terbaru</h1>
-                <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print</p>
+                <p>Mari jelajahi koleksi terbaru di Museum Brawijaya Malang! Temuan ini menambah kekayaan dan keunikan museum kami. Nikmati keindahan dan cerita di balik setiap benda yang ditambahkan ke perpustakaan sejarah kami. Jangan lewatkan kesempatan untuk mengeksplorasi yang terbaru dari warisan budaya kita.</p>
             </div>
             <div class="row g-4">
                 @foreach($latestKoleksi as $item)
@@ -122,7 +138,7 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h1 class="mb-3">Katalog Buku Terbaru</h1>
-            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print</p>
+            <p>Mari jelajahi koleksi terbaru di Museum Brawijaya Malang! Temuan ini menambah kekayaan museum kami. Nikmati keindahan dan cerita di balik setiap benda yang ditambahkan ke perpustakaan sejarah kami. Jangan lewatkan kesempatan untuk mengeksplorasi yang terbaru dari warisan budaya kita.</p>
         </div>
         <div class="row g-4">
             @foreach($latestkoleksibuku as $item)
