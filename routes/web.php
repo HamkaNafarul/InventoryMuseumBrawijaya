@@ -97,6 +97,7 @@ Route::middleware(['auth'])->group(function(){
             Route::delete('/koleksibuku/FormDeleteKoleksiBuku/delete/{id}', [KoleksiBukuControlller::class, 'destroy'])->name('delete_kategori');
             Route::get('/koleksibuku/DetailKoleksiAdminBuku/{id}', [KoleksiBukuControlller::class, 'DetailKoleksiAdminBuku'])->name('DetailKoleksiAdminBuku');
             Route::get('/koleksibuku/PdfView_Buku', [KoleksiBukuControlller::class, 'pdf'])->name('PdfView_Buku');
+            Route::get('/dashboardd/koleksibuku/search',[KoleksiBukuControlller::class, 'search'])->name('search');
         });
         Route::prefix('dashboardd')->group(function () {
             Route::get('/Admin', [LoginController::class, 'Admin'])->name('Admin');

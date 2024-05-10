@@ -314,7 +314,206 @@
 
     });
 
-    $('#submitForm').unbind().click(function () {
+    //PERTAMA
+//     $('#submitForm').unbind().click(function () {
+//     var nama = $('#nama').val();
+//     var nomor_hp = $('#nomor_hp').val();
+//     var asal_intansi = $('#asal_intansi').val();
+//     var agenda = $('#agenda').val();
+//     var file = $('#file')[0].files[0];
+//     var captcha = $('#captcha').val();
+//     var form_data = new FormData();
+//     var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+//     form_data.append('nama', nama);
+//     form_data.append('nomor_hp', nomor_hp);
+//     form_data.append('asal_intansi', asal_intansi);
+//     form_data.append('agenda', agenda);
+//     form_data.append('file', file);
+//     form_data.append('tanggal', $('#tanggal').val());
+//     form_data.append('captcha', captcha);
+
+//     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
+//         $.ajax({
+//             url: "{{ url('surat/Form/store') }}",
+//             type: "POST",
+//             data: form_data,
+//             headers: {
+//                 'X-CSRF-TOKEN': csrf_token
+//             },
+//             contentType: false,
+//             processData: false,
+//             success: function () {
+//                 calendar.fullCalendar('refetchEvents');
+//                 $('#eventModal').modal('hide');
+//             },
+//             error: function(xhr, textStatus, errorThrown) {
+//         if (xhr.status === 422) {
+//             var errors = xhr.responseJSON.errors;
+//             if (errors.hasOwnProperty('captcha')) {
+//                 $('#captcha-error').text(errors.captcha[0]);
+//                 location.reload();
+//             }
+//         } else {
+//             // Jika terjadi kesalahan selain 422, reload halaman
+//             location.reload();
+//         }
+//     }
+//         });
+//     } else {
+//         // Tambahkan pesan error untuk captcha
+//         if (!captcha) {
+//             $('#captcha-error').text('The captcha field is required.');
+//             $('.captcha_img').html(data.captcha_img);
+//         } else {
+//             $('#captcha-error').text('Hasil Perhitungan Salah');
+//             $('.captcha_img').html(data.captcha_img);
+            
+//         }
+
+//     }
+// });
+
+    //KEDUA
+// $('#submitForm').unbind().click(function () {
+//     // Mengambil nilai input
+//     var nama = $('#nama').val();
+//     var nomor_hp = $('#nomor_hp').val();
+//     var asal_intansi = $('#asal_intansi').val();
+//     var agenda = $('#agenda').val();
+//     var file = $('#file')[0].files[0];
+//     var captcha = $('#captcha').val();
+//     var form_data = new FormData();
+//     var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+//     form_data.append('nama', nama);
+//     form_data.append('nomor_hp', nomor_hp);
+//     form_data.append('asal_intansi', asal_intansi);
+//     form_data.append('agenda', agenda);
+//     form_data.append('file', file);
+//     form_data.append('tanggal', $('#tanggal').val());
+//     form_data.append('captcha', captcha);
+
+//     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
+//         $.ajax({
+//             url: "{{ url('surat/Form/store') }}",
+//             type: "POST",
+//             data: form_data,
+//             headers: {
+//                 'X-CSRF-TOKEN': csrf_token
+//             },
+//             contentType: false,
+//             processData: false,
+//             success: function () {
+//                 // Mengganti gambar captcha dengan yang baru
+//                 $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//                 // Mengosongkan field captcha
+//                 $('#captcha').val('');
+//                 // Memperbarui kalender
+//                 calendar.fullCalendar('refetchEvents');
+//                 // Menutup modal
+//                 $('#eventModal').modal('hide');
+//                 // Menampilkan alert bahwa submit berhasil tanpa reload halaman
+//                 alert('Form berhasil disubmit!');
+//             },
+//             error: function(xhr, textStatus, errorThrown) {
+//                 if (xhr.status === 422) {
+//                     var errors = xhr.responseJSON.errors;
+//                     if (errors.hasOwnProperty('captcha')) {
+//                         $('#captcha-error').text(errors.captcha[0]);
+//                         // Memperbarui gambar captcha jika submit tidak berhasil
+//                         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//                     }
+//                 }
+//             }
+//         });
+//     } else {
+//         // Tambahkan pesan error untuk captcha
+//         if (!captcha) {
+//             $('#captcha-error').text('The captcha field is required.');
+//             // Memperbarui gambar captcha jika submit tidak berhasil
+//             $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//         } else {
+//             $('#captcha-error').text('Hasil Perhitungan Salah');
+//             // Memperbarui gambar captcha jika submit tidak berhasil
+//             $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//         }
+//     }
+// });
+
+    //KETIGA
+// Menghitung jumlah percobaan salah
+// Menghitung jumlah percobaan salah
+var captchaAttempts = 0;
+
+// $('#submitForm').unbind().click(function () {
+//     // Mengambil nilai input
+//     var nama = $('#nama').val();
+//     var nomor_hp = $('#nomor_hp').val();
+//     var asal_intansi = $('#asal_intansi').val();
+//     var agenda = $('#agenda').val();
+//     var file = $('#file')[0].files[0];
+//     var captcha = $('#captcha').val();
+//     var form_data = new FormData();
+//     var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+//     form_data.append('nama', nama);
+//     form_data.append('nomor_hp', nomor_hp);
+//     form_data.append('asal_intansi', asal_intansi);
+//     form_data.append('agenda', agenda);
+//     form_data.append('file', file);
+//     form_data.append('tanggal', $('#tanggal').val());
+//     form_data.append('captcha', captcha);
+
+//     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
+//         $.ajax({
+//             url: "{{ url('surat/Form/store') }}",
+//             type: "POST",
+//             data: form_data,
+//             headers: {
+//                 'X-CSRF-TOKEN': csrf_token
+//             },
+//             contentType: false,
+//             processData: false,
+//             success: function () {
+//                 // Mengganti gambar captcha dengan yang baru
+//                 $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//                 // Mengosongkan field captcha
+//                 $('#captcha').val('');
+//                 // Memperbarui kalender
+//                 calendar.fullCalendar('refetchEvents');
+//                 // Menutup modal
+//                 $('#eventModal').modal('hide');
+//                 // Menampilkan alert bahwa submit berhasil tanpa reload halaman
+//                 alert('Form berhasil disubmit!');
+//             },
+//             error: function(xhr, textStatus, errorThrown) {
+//                 if (xhr.status === 422) {
+//                     var errors = xhr.responseJSON.errors;
+//                     if (errors.hasOwnProperty('captcha')) {
+//                         $('#captcha-error').text('Hasil Perhitungan Salah');
+//                         // Memperbarui gambar captcha jika submit tidak berhasil
+//                         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//                         captchaAttempts++;
+//                         if (captchaAttempts >= 2) {
+//                             // Jika dua kali captcha salah, reload halaman
+//                             window.location.reload();
+//                         }
+//                     }
+//                 }
+//             }
+//         });
+//     } else {
+//         // Tambahkan pesan error untuk captcha
+//         $('#captcha-error').text('The captcha field is required.');
+//         // Memperbarui gambar captcha jika submit tidak berhasil
+//         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+//     }
+// });
+
+//KEAMPAT
+// Menghitung jumlah percobaan salah
+var captchaAttempts = 0;
+
+$('#submitForm').unbind().click(function () {
+    // Mengambil nilai input
     var nama = $('#nama').val();
     var nomor_hp = $('#nomor_hp').val();
     var asal_intansi = $('#asal_intansi').val();
@@ -342,35 +541,50 @@
             contentType: false,
             processData: false,
             success: function () {
+                // Mengganti gambar captcha dengan yang baru
+                $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+                // Mengosongkan field captcha
+                $('#captcha').val('');
+                // Memperbarui kalender
                 calendar.fullCalendar('refetchEvents');
+                // Menutup modal
                 $('#eventModal').modal('hide');
+                // Menampilkan alert bahwa submit berhasil tanpa reload halaman
+                alert('Form berhasil disubmit!');
             },
             error: function(xhr, textStatus, errorThrown) {
-        if (xhr.status === 422) {
-            var errors = xhr.responseJSON.errors;
-            if (errors.hasOwnProperty('captcha')) {
-                $('#captcha-error').text(errors.captcha[0]);
-                location.reload();
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+                    if (errors.hasOwnProperty('captcha')) {
+                        captchaAttempts++;
+                        if (captchaAttempts == 2) {
+                            alert('Captcha salah dua kali, halaman akan di-refresh.');
+                        }
+                        if (captchaAttempts >= 2) {
+                            // Jika dua kali captcha salah, reload halaman
+                            window.location.reload();
+                        } else {
+                            $('#captcha-error').text('Hasil Perhitungan Salah');
+                            // Memperbarui gambar captcha jika submit tidak berhasil
+                            $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
+                        }
+                    }
+                }
             }
-        } else {
-            // Jika terjadi kesalahan selain 422, reload halaman
-            location.reload();
-        }
-    }
         });
     } else {
         // Tambahkan pesan error untuk captcha
-        if (!captcha) {
-            $('#captcha-error').text('The captcha field is required.');
-            $('.captcha_img').html(data.captcha_img);
-        } else {
-            $('#captcha-error').text('Hasil Perhitungan Salah');
-            $('.captcha_img').html(data.captcha_img);
-            
-        }
-
+        $('#captcha-error').text('The captcha field is required.');
+        // Memperbarui gambar captcha jika submit tidak berhasil
+        $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
     }
 });
+
+
+
+
+
+
 
 
     $('#closeModalButton').on('click', function () {

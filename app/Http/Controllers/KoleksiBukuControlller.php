@@ -11,12 +11,26 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class KoleksiBukuControlller extends Controller
 {
+//     public function pdf(Request $request)
+// {
+//     $search = $request->get('search');
+
+//     $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
+//                                 ->orWhere('pengarang', 'like', "%$search%")
+//                                 ->orWhere('penerbit', 'like', "%$search%")
+//                                 ->get();
+
+//     $pdf = PDF::loadView('auth.PdfView_Buku', compact('koleksiBuku','search'));
+//     return $pdf->stream('laporan_pencarian.pdf');
+// }
+
     public function pdf()
     {
         $koleksibuku = koleksibuku::all();
         $pdf=Pdf::loadView('auth.PdfView_Buku', compact('koleksibuku'));
         return $pdf->stream();
     }
+
     public function create()
     {
         return view('auth.FormBuku');
@@ -125,4 +139,17 @@ class KoleksiBukuControlller extends Controller
         
         ->toJson();
     }
+    // public function search(Request $request)
+    // {
+    // $search = $request->get('search');
+
+    // $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
+    //                             ->orWhere('pengarang', 'like', "%$search%")
+    //                             ->orWhere('penerbit', 'like', "%$search%")
+    //                             ->get();
+
+    // // Kirim data ke view
+    // return view('auth.dashboardd.koleksibuku', compact('koleksiBuku', 'search'));
+    // }
+
 }

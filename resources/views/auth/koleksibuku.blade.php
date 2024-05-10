@@ -54,6 +54,7 @@
                                                 </div>                                                
                                                 
                                                 <div class="card-body table-responsive p-0">
+                                                    
                                                     <table class="table table-hover text-nowrap" id="koleksi_tabel">
                                                         <thead>
                                                             <tr>
@@ -141,5 +142,14 @@
             });
         });
     </script>
+
+    {{-- seacrch --}}
+    
+    <script>
+        $('#searchInput').on('keyup', function() {
+    $('#koleksi_tabel').DataTable().search($(this).val()).draw();
+});
+
+        </script>
     </body>
     </html>
