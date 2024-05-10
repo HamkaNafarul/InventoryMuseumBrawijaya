@@ -15,12 +15,17 @@ class KoleksiController extends Controller
     {
         return view('auth.Form');
     }
-    public function pdf()
+    public function pdf(Request $request)
     {
-        $koleksi = Koleksi::all();
-        // dd($koleksi);
-        $pdf=Pdf::loadView('auth.PdfView', compact('koleksi'));
-        return $pdf->stream();
+        $search = $request->get('search');
+    
+        $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
+                                    ->orWhere('no_inventaris', 'like', "%$search%")
+                                    ->orWhere('nama_barang', 'like', "%$search%")
+                                    ->get();
+    
+        $pdf = PDF::loadView('auth.PdfView', compact('koleksi','search'));
+        return $pdf->stream('laporan_pencarian.pdf');
     }
 
     public function store(Request $request)
@@ -101,28 +106,21 @@ public function DetailKoleksiAdmin($id)
     $koleksi = Koleksi::findOrFail($id);
     return view('auth.DetailKoleksiAdmin',compact('koleksi'));
 }
-    // public function json()
-    //     {
-    //         $koleksi= koleksi::select(['id','no_inventaris','nama_barang','asal_ditemukan','ukuran','keterangan']);
-    //         $index = 1;
-    //         return DataTables::of($koleksi)
-    //         ->addColumn('DT_RowIndex',function($data) use ($index) {
-    //             return $index++;
-    //         })
-    //         ->addColumn('action', function ($row) {
-    //             $editUrl = url('/dashboardd/koleksipameran/FormEditKoleksi/edit/' . $row->id);
-    //             $deleteUrl = url('/dashboardd/koleksipameran/FormDeleteKoleksi/delete/' . $row->id);
-    //             $detailUrl = url('/dashboardd/koleksipameran/DetailKoleksiAdmin/' . $row->id);
-    //             return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
-    //         })
-            
-    //         ->toJson();
-    //     }
+    
 
 
-    public function json()
+public function json(Request $request)
     {
+        $search = $request->input('search.value');
         $koleksi= koleksi::select(['id','no_inventaris','nama_barang','asal_ditemukan','ukuran','keterangan']);
+
+    if (!empty($search)) {
+        $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
+        ->orWhere('no_inventaris', 'like', "%$search%")
+        ->orWhere('nama_barang', 'like', "%$search%")
+        ->get();
+    }
+        $koleksi= Koleksi::select(['id','no_inventaris','nama_barang','asal_ditemukan','ukuran','keterangan']);
         $index = 1;
         return DataTables::of($koleksi)
             ->addColumn('DT_RowIndex',function($data) use (&$index) {
@@ -135,6 +133,38 @@ public function DetailKoleksiAdmin($id)
                 return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
             })
             ->toJson();
+    }public function printPDF(Request $request)
+    {
+        $search = $request->input('search');
+        // dd($search);
+        $koleksi= Koleksi::select(['id','no_inventaris','nama_barang','asal_ditemukan','ukuran','keterangan']);
+    
+        if (!empty($search)) {
+            $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
+        ->orWhere('no_inventaris', 'like', "%$search%")
+        ->orWhere('nama_barang', 'like', "%$search%")
+        ->get();
+        }
+    
+        $koleksi = $koleksi->all();
+        // dd($koleksibuku);
+        $pdf = PDF::loadView('auth.PdfView', ['koleksi' => $koleksi]);
+    
+        return $pdf->stream();
     }
+        public function search(Request $request)
+        {
+        $search = $request->get('search');
+    
+        $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
+        ->orWhere('no_inventaris', 'like', "%$search%")
+        ->orWhere('nama_barang', 'like', "%$search%")
+        ->get();
+    
+        // Kirim data ke view
+        $pdf=Pdf::loadView('auth.PdfView', compact('koleksi'));
+        return $pdf->stream();
+        }
+    
 
 }

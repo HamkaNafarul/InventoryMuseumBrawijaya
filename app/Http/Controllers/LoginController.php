@@ -35,11 +35,17 @@ class LoginController extends Controller
         $surats = surat::all();
     return view('auth/suratmasuk',compact('surats'));
     }
-    public function koleksipameran()
+    public function koleksipameran(Request $request)
     {
-        $koleksis = Koleksi::all();
-        // dd($koleksis);
-    return view('auth/koleksipameran',compact('koleksis'));
+        $search = $request->get('search');
+
+        $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
+        ->orWhere('no_inventaris', 'like', "%$search%")
+        ->orWhere('nama_barang', 'like', "%$search%")
+        ->get();
+        // dd($koleksi);
+    
+    return view('auth/koleksipameran', compact('koleksi', 'search'));
     }
     function login_proses(Request $request)
     {
@@ -70,9 +76,16 @@ class LoginController extends Controller
     }
 
 
-    public function koleksibuku()
+    public function koleksibuku(Request $request)
     {
-    return view('auth/koleksibuku');
+        $search = $request->get('search');
+
+        $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
+                                    ->orWhere('pengarang', 'like', "%$search%")
+                                    ->orWhere('penerbit', 'like', "%$search%")
+                                    ->get();
+    
+    return view('auth/koleksibuku', compact('koleksiBuku', 'search'));
     }
     public function admin()
     {
@@ -88,7 +101,7 @@ class LoginController extends Controller
         })
         ->addColumn('action', function ($row) {
             $editUrl = url('/dashboardd/koleksipameran/FormEditKoleksi/edit/' . $row->id);
-            $deleteUrl = url('/dashboardd/koleksipameran/FormDeleteKoleksi/delete/' . $row->id);
+            $deleteUrl = url('/dashboardd/Admin/delete/' . $row->id);
             $detailUrl = url('/dashboardd/koleksipameran/DetailKoleksiAdmin/' . $row->id);
             return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
         })
@@ -117,6 +130,20 @@ class LoginController extends Controller
     ]);
 
     return redirect('dashboardd/Admin')->with('success', 'Data berhasil disimpan');
+}
+public function destroy($id)
+{
+    $user = User::findOrFail($id);
+    if($user->id===Auth::id()){
+        return response()->json(['message' => 'Data Tidak Bisa Dihapus']);
+    }
+
+    
+    // Hapus gambar jika ada
+
+    $user->delete();
+
+    return response()->json(['message' => 'Data berhasil dihapus']);
 }
 
     function logout()

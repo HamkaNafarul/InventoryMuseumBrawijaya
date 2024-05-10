@@ -11,25 +11,25 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class KoleksiBukuControlller extends Controller
 {
-//     public function pdf(Request $request)
-// {
-//     $search = $request->get('search');
+public function pdf(Request $request)
+{
+    $search = $request->get('search');
 
-//     $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
-//                                 ->orWhere('pengarang', 'like', "%$search%")
-//                                 ->orWhere('penerbit', 'like', "%$search%")
-//                                 ->get();
+    $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
+                                ->orWhere('pengarang', 'like', "%$search%")
+                                ->orWhere('penerbit', 'like', "%$search%")
+                                ->get();
 
-//     $pdf = PDF::loadView('auth.PdfView_Buku', compact('koleksiBuku','search'));
-//     return $pdf->stream('laporan_pencarian.pdf');
-// }
+    $pdf = PDF::loadView('auth.PdfView_Buku', compact('koleksiBuku','search'));
+    return $pdf->stream('laporan_pencarian.pdf');
+}
 
-    public function pdf()
-    {
-        $koleksibuku = koleksibuku::all();
-        $pdf=Pdf::loadView('auth.PdfView_Buku', compact('koleksibuku'));
-        return $pdf->stream();
-    }
+    // public function pdf()
+    // {
+    //     $koleksibuku = koleksibuku::all();
+    //     $pdf=Pdf::loadView('auth.PdfView_Buku', compact('koleksibuku'));
+    //     return $pdf->stream();
+    // }
 
     public function create()
     {
@@ -122,34 +122,81 @@ class KoleksiBukuControlller extends Controller
     $koleksibuku = koleksibuku::findOrFail($id);
     return view('auth.DetailKoleksiAdminBuku',compact('koleksibuku'));
 }
-    public function json()
-    {
-        $koleksibuku= koleksibuku::select(['id','nomor','judul','pengarang','edisi','tahun_terbit','issn','penerbit']);
-        $index=1;
-        return DataTables::of($koleksibuku)
-        ->addColumn('DT_RowIndex',function($data) use (&$index) {
+    // public function json()
+    // {
+    //     $koleksibuku= koleksibuku::select(['id','nomor','judul','pengarang','edisi','tahun_terbit','issn','penerbit']);
+    //     $index=1;
+    //     return DataTables::of($koleksibuku)
+    //     ->addColumn('DT_RowIndex',function($data) use (&$index) {
+    //         return $index++;
+    //     })
+    //     ->addColumn('action', function ($row) {
+    //         $editUrl = url('dashboardd/koleksibuku/FormBukuEdit/edit/' . $row->id);
+    //         $deleteUrl = url('/dashboardd/koleksibuku/FormDeleteKoleksiBuku/delete/' . $row->id);
+    //         $detailUrl = url('/dashboardd/koleksibuku/DetailKoleksiAdminBuku/' . $row->id);
+    //         return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
+    //     })        
+        
+    //     ->toJson();
+    // }
+    public function json(Request $request)
+{
+    $search = $request->input('search.value');
+    $koleksibuku = koleksibuku::select(['id', 'nomor', 'judul', 'pengarang', 'edisi', 'tahun_terbit', 'issn', 'penerbit']);
+
+    if (!empty($search)) {
+        $koleksibuku->where('judul', 'like', '%' . $search . '%')
+            ->orWhere('pengarang', 'like', '%' . $search . '%')
+            ->orWhere('penerbit', 'like', '%' . $search . '%')
+            ->orWhere('tahun_terbit', 'like', '%' . $search . '%');
+    }
+
+    $index = 1;
+    return DataTables::of($koleksibuku)
+        ->addColumn('DT_RowIndex', function ($data) use (&$index) {
             return $index++;
         })
         ->addColumn('action', function ($row) {
             $editUrl = url('dashboardd/koleksibuku/FormBukuEdit/edit/' . $row->id);
             $deleteUrl = url('/dashboardd/koleksibuku/FormDeleteKoleksiBuku/delete/' . $row->id);
             $detailUrl = url('/dashboardd/koleksibuku/DetailKoleksiAdminBuku/' . $row->id);
-            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
-        })        
-        
+            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl . '">Delete</a> | <a href="' . $detailUrl . '">Detail</a>';
+        })
+        ->rawColumns(['action'])
         ->toJson();
+}
+
+public function printPDF(Request $request)
+{
+    $search = $request->input('search');
+    // dd($search);
+    $koleksibuku = koleksibuku::select(['id', 'nomor', 'judul', 'pengarang', 'edisi', 'tahun_terbit', 'issn', 'penerbit','tempat_terbit','kualifikasi','bahasa','subjek',]);
+
+    if (!empty($search)) {
+        $koleksibuku->where('judul', 'like', '%' . $search . '%') ->orWhere('pengarang', 'like', "%$search%")
+        ->orWhere('penerbit', 'like', "%$search%")
+        ->orWhere('tahun_terbit', 'like', "%$search%");
     }
-    // public function search(Request $request)
-    // {
-    // $search = $request->get('search');
 
-    // $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
-    //                             ->orWhere('pengarang', 'like', "%$search%")
-    //                             ->orWhere('penerbit', 'like', "%$search%")
-    //                             ->get();
+    $koleksibuku = $koleksibuku->get();
+    // dd($koleksibuku);
+    $pdf = PDF::loadView('auth.PdfView_Buku', ['koleksibuku' => $koleksibuku]);
 
-    // // Kirim data ke view
-    // return view('auth.dashboardd.koleksibuku', compact('koleksiBuku', 'search'));
-    // }
+    return $pdf->stream();
+}
+    public function search(Request $request)
+    {
+    $search = $request->get('search');
+
+    $koleksibuku = KoleksiBuku::where('judul', 'like', "%$search%")
+                                ->orWhere('pengarang', 'like', "%$search%")
+                                ->orWhere('penerbit', 'like', "%$search%")
+                                ->orWhere('tahun_terbit', 'like', "%$search%")
+                                ->get();
+
+    // Kirim data ke view
+    $pdf=Pdf::loadView('auth.PdfView_Buku', compact('koleksibuku'));
+    return $pdf->stream();
+    }
 
 }

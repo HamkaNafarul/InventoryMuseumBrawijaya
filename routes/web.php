@@ -71,6 +71,8 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/koleksipameran/DetailKoleksiAdmin/{id}', [KoleksiController::class, 'DetailKoleksiAdmin'])->name('DetailKoleksiAdmin');
         Route::get('/koleksipameran/data', [KoleksiController::class, 'json'])->name('kategori_data');
         Route::get('/koleksipameran/PdfView', [KoleksiController::class, 'pdf'])->name('PdfView');
+        Route::get('/koleksipameran/search',[KoleksiController::class, 'search'])->name('search');
+        Route::get('/koleksipameran/buku',[KoleksiController::class, 'printPDF'])->name('PdfView');
 
         
     });
@@ -97,13 +99,16 @@ Route::middleware(['auth'])->group(function(){
             Route::delete('/koleksibuku/FormDeleteKoleksiBuku/delete/{id}', [KoleksiBukuControlller::class, 'destroy'])->name('delete_kategori');
             Route::get('/koleksibuku/DetailKoleksiAdminBuku/{id}', [KoleksiBukuControlller::class, 'DetailKoleksiAdminBuku'])->name('DetailKoleksiAdminBuku');
             Route::get('/koleksibuku/PdfView_Buku', [KoleksiBukuControlller::class, 'pdf'])->name('PdfView_Buku');
-            Route::get('/dashboardd/koleksibuku/search',[KoleksiBukuControlller::class, 'search'])->name('search');
+            Route::get('/koleksibuku/search',[KoleksiBukuControlller::class, 'search'])->name('search');
+            Route::get('/koleksibuku/buku',[KoleksiBukuControlller::class, 'printPDF'])->name('PdfView_Buku');
         });
         Route::prefix('dashboardd')->group(function () {
             Route::get('/Admin', [LoginController::class, 'Admin'])->name('Admin');
             Route::get('/Admin/User', [LoginController::class, 'json'])->name('admin_data');
             Route::get('/Admin/Form_Admin', [LoginController::class, 'create'])->name('Form_Admin');
             Route::post('/Admin/Form_Admin/store', [LoginController::class, 'store'])->name('store');
+            Route::delete('/Admin/delete/{id}', [LoginController::class, 'destroy'])->name('destroy');
+
             });
     });
     

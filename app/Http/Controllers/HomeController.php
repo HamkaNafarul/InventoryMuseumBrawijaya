@@ -46,7 +46,12 @@ class HomeController extends Controller
     }
     public function surat()
 {
-    $surat = surat::all();
+    $tanggalsekarang = now()->format('Y-m-d'); // Format tanggal: YYYY-MM-DD
+
+    // dd($tanggalsekarang);
+
+    $surat = surat::where('tanggal', '>=', $tanggalsekarang)->get();
+    // dd($surat);
     $data_penuh = Tanggal::pluck('tanggal_penuh')->toArray();
     // dd($data_penuh);
     return view('surat', compact('surat', 'data_penuh'));
