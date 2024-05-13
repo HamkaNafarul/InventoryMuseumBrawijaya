@@ -49,6 +49,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav mx-auto">
         <a href="/" class="nav-item nav-link active">Home</a>
+        <a href="/about" class="nav-item nav-link ">Tentang</a>
         <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
         <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
         <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
@@ -90,7 +91,8 @@
             </div>
         </div>
         <!-- Carousel End -->
-        <div class="sambutan mt-5" style="background-color: white; width: 80%; margin: 0 auto;">
+
+        {{-- <div class="sambutan mt-5" style="background-color: white; width: 80%; margin: 0 auto;">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
@@ -105,7 +107,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>         --}}
         
 
       <!-- Tampilan untuk koleksi -->

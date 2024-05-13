@@ -1,4 +1,22 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
+
+    <style>
+        .main-sidebar{
+            max-width: auto;
+            margin: auto;
+            z-index: 3;
+        }
+    </style>
+</head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -64,6 +82,17 @@
             </nav>
         </div>
     </aside>
-    
+    <script>
+        var sidebar = document.querySelector('.main-sidebar');
+        var menuToggle = document.querySelector('.navbar-toggler');
+
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('toggled');
+        });
+    </script>
+</body>
+
+</html>
+
     
       

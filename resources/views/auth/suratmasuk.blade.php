@@ -10,7 +10,11 @@
     <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-
+<style>
+    html {
+        background-color: #212529;
+    }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('auth/sidebar')
@@ -31,16 +35,39 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Surat Masuk</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                            data-toggle="tooltip" title="Collapse">
-                                            <i class="fas fa-minus"></i></button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove"
-                                            data-toggle="tooltip" title="Remove">
-                                            <i class="fas fa-times"></i></button>
-                                    </div>
+                                   
                                 </div>
-                                <div class="card-body table-responsive p-0">
+                               
+                                <div class="card-body table-responsive">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="bulan" class="form-label">Filter Bulan:</label>
+                                            <select id="bulan" name="bulan" class="form-control">
+                                                <option value="">-- Pilih Bulan --</option>
+                                                <option value="01">Januari</option>
+                                                <option value="02">Februari</option>
+                                                <option value="03">Maret</option>
+                                                <option value="04">April</option>
+                                                <option value="05">Mei</option>
+                                                <option value="06">Juni</option>
+                                                <option value="07">Juli</option>
+                                                <option value="08">Agustus</option>
+                                                <option value="09">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">Desember</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="tahun" class="form-label">Filter Tahun:</label>
+                                            <select id="tahun" name="tahun" class="form-control">
+                                                <option value="">-- Pilih Tahun --</option>
+                                                @for($i = date('Y'); $i >= 2000; $i--)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
                                     <table class="table table-hover text-nowrap" id="surat">
                                         <thead>
                                             <tr>
@@ -55,18 +82,19 @@
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            <!-- Data tabel -->
                                         </tbody>
                                     </table>
                                 </div>
-
+                                
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
         </div>
-    </div>
     </div>
     <!-- /.row -->
 
@@ -93,10 +121,16 @@
         }
     
         $(document).ready(function () {
-            $('#surat').DataTable({
+            var table = $('#surat').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('/dashboardd/suratmasuk/data')}}',
+                ajax: {
+                    url: '{{ url('/dashboardd/suratmasuk/data')}}',
+                    data: function (d) {
+                        d.bulan = $('#bulan').val().padStart(2, '0');
+                        d.tahun = $('#tahun').val();
+                    }
+                },
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
@@ -150,38 +184,12 @@
                     },
                 ]
             });
-    
-            $('#surat').on('click', 'a.delete-users', function (e) {
-                e.preventDefault();
-                var deleteUrl = $(this).data('url');
-    
-                if (confirm('Are you sure?')) {
-                    fetch(deleteUrl, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.warning) {
-                                alert(data.warning);
-                            } else {
-                                // Handle success, e.g., reload the DataTable
-                                $('#usersTablePNS').DataTable().ajax.reload();
-                                location.reload();
-                            }
-                        })
-                        .catch(error => {
-                            // Handle error
-                            console.error(error);
-                        });
-                }
+
+            $('#bulan, #tahun').change(function () {
+                table.ajax.reload();
             });
         });
     </script>
-    
-
 </body>
 
 </html>

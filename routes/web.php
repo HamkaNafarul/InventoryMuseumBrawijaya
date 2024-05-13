@@ -40,6 +40,7 @@ Route::get('captcha/math', function () {
 });
 Route::get('/koleksi', [HomeController::class, 'koleksi'])->name('koleksi');
 Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalogbuku');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');
 Route::prefix('surat')->group(function () {
     Route::get('/data', [SuratControlller::class, 'jsonstatus'])->name('surat.data');
@@ -55,7 +56,6 @@ Route::get('/detailkoleksibuku/{id}', [HomeController::class, 'detailkoleksibuku
 Route::middleware(['guest'])->group(function(){
     Route::get('/login', [LoginController::class, 'viewLogin'])->name('login');
     Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
-    
     }
     );
 Route::middleware(['auth'])->group(function(){

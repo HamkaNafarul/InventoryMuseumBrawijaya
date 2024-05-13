@@ -9,6 +9,11 @@
   <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+<style>
+  html {
+      background-color: #212529;
+  }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')

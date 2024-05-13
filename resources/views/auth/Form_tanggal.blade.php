@@ -10,10 +10,15 @@
   <link href="{{ asset('asset/css/FormTanggal.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+<style>
+  html {
+      background-color: #212529;
+  }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
       @include('auth/sidebar')
-          
+      <div class="content-wrapper" style="background-image: url('{{ asset('gambar/bg5.png') }}');">
         <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">

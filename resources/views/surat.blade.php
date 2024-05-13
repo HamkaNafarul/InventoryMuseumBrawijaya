@@ -92,6 +92,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav mx-auto">
         <a href="/" class="nav-item nav-link ">Home</a>
+        <a href="/about" class="nav-item nav-link ">Tentang</a>
         <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
         <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
         <a href="surat" class="nav-item nav-link active">Surat Observasi/Kunjungan</a>
@@ -102,6 +103,7 @@
 
     <br />
     <br />
+    
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -551,6 +553,9 @@ $('#submitForm').unbind().click(function () {
                 $('#eventModal').modal('hide');
                 // Menampilkan alert bahwa submit berhasil tanpa reload halaman
                 alert('Form berhasil disubmit!');
+
+                  // Mereset formulir
+                 document.getElementById('FormEvent').reset();
             },
             error: function(xhr, textStatus, errorThrown) {
                 if (xhr.status === 422) {
@@ -579,14 +584,6 @@ $('#submitForm').unbind().click(function () {
         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
     }
 });
-
-
-
-
-
-
-
-
     $('#closeModalButton').on('click', function () {
         $('#eventModal').modal('hide');
     });

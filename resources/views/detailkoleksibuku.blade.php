@@ -76,8 +76,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-12">
-                        <img src="{{ asset('storage/' . $koleksibuku['sampul']) }}" class="product-image" alt="Product Image">
-                    </div>
+                        <img src="{{ asset('storage/' . $koleksibuku['sampul']) }}" class="product-image img-fluid rounded" style="height: 550px;" alt="Product Image">
+                    </div>                    
                     <div class="col-md-6 col-12">
                         <div class="card">
                             <div class="card-header">{{ $koleksibuku->judul }}</div>
@@ -107,10 +107,10 @@
                         <h5>More Like This</h5>
                         <div class="row">
                             @foreach($similarCollections as $collection)
-                                <div class="col-md-4 mb-4">
-                                    <div class="card shadow">
-                                        <img src="{{ asset('storage/' . $collection->sampul) }}" class="card-img-top" alt="Collection Image">
-                                        <div class="card-body">
+                                <div class="col">
+                                    <div class="card shadow" style =" max-width: 210px;">
+                                        <img style =" max-width: 210px; height:250px;" src="{{ asset('storage/' . $collection->sampul) }}" class="card-img-top" alt="Collection Image">
+                                        <div class="card-body"style ="height:180px;">
                                             <h5 class="card-title">{{ $collection->judul }}</h5>
                                             <p class="card-text">{{ $collection->bahasa }}</p>
                                             <a href="{{ route('detailkoleksibuku_landing', $collection->id) }}" class="btn btn-primary">Detail Koleksi</a>

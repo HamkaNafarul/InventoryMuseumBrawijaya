@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
     <style>
-        body {
+        html {
             background-color: #212529;
         }
     </style>
@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="card-body table-responsive p-0">
+                                        <div class="card-body table-responsive">
                                             <table class="table table-hover text-nowrap" id="koleksi_tabel">
                                                 <thead>
                                                     <tr>
