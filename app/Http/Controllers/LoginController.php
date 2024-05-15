@@ -100,10 +100,8 @@ class LoginController extends Controller
             return $index++;
         })
         ->addColumn('action', function ($row) {
-            $editUrl = url('/dashboardd/koleksipameran/FormEditKoleksi/edit/' . $row->id);
             $deleteUrl = url('/dashboardd/Admin/delete/' . $row->id);
-            $detailUrl = url('/dashboardd/koleksipameran/DetailKoleksiAdmin/' . $row->id);
-            return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
+            return '<a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a>';
         })
         
         ->toJson();

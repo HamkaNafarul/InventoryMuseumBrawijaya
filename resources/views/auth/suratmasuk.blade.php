@@ -188,6 +188,33 @@
             $('#bulan, #tahun').change(function () {
                 table.ajax.reload();
             });
+            $('#surat').on('click', 'a.delete-users', function (e) {
+                e.preventDefault();
+                var deleteUrl = $(this).data('url');
+
+                if (confirm('Are you sure?')) {
+                    fetch(deleteUrl, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.warning) {
+                                alert(data.warning);
+                            } else {
+                                // Handle success, e.g., reload the DataTable
+                                $('surat').DataTable().ajax.reload();
+                                location.reload();
+                            }
+                        })
+                        .catch(error => {
+                            // Handle error
+                            console.error(error);
+                        });
+                }
+            });
         });
     </script>
 </body>

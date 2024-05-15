@@ -32,6 +32,10 @@
             font-size: 10px;
             margin-top: 10px;
         }
+        .kop-surat {
+            border-bottom: 1px solid #000; /* Garis di bawah kop surat */
+            padding-bottom: 10px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -53,15 +57,47 @@
 </head>
 <body>
     <header>
-        <div class="address">
-            Alamat Museum Brawijaya Malang<br>
-            Jalan Museum No. 1, Kota Malang, Indonesia<br>
-            Telepon: (123) 456-7890 | Email: info@museum.com
-        </div>
+        <table style="margin-top: 0px;">
+            <thead>
+                <tr style="border: none;">
+                    <td style="border: none;">
+                        <div >
+                            @php
+                            $img = asset('gambar/image2.png');
+                            $base_64 = base64_encode($img);
+                            $img = 'data:image/png;base64,' . $base_64;
+                            @endphp
+                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('gambar/image2.png'))) }}"
+                            {{-- class="app-image-style" style="height: 120px;position: absolute;top:10px" /> --}}
+                            class="app-image-style" style="height: 90px;"/>
+                        </div>
+                    </td>
+                    <td style="text-align: center; border: none;">
+                        <div class="address">
+                            <h1>Alamat Museum Brawijaya Malang<br>
+                            Jalan Museum No. 1, Kota Malang, Indonesia<br>
+                            Telepon: (123) 456-7890 | Email: info@museum.com</h1>
+                        </div>
+                    </td>
+                    <td style="text-align: right; border: none;">
+                        <div >
+                            @php
+                            $img = asset('gambar/image1.png');
+                            $base_64 = base64_encode($img);
+                            $img = 'data:image/png;base64,' . $base_64;
+                            @endphp
+                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('gambar/image1.png'))) }}"
+                            class="app-image-style" style="height: 90px;" />
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+        </table>
     </header>
+    
     <h1 class="my-3">Katalog Buku Museum Brawijaya Malang</h1>
     <table>
-        <tr>
+        <tr>                                                                            
             <th>Judul</th>
             <th>Pengarang</th>
             <th>Edisi</th>

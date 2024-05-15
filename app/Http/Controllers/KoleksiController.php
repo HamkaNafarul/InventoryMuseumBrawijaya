@@ -142,11 +142,10 @@ public function json(Request $request)
         if (!empty($search)) {
             $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
         ->orWhere('no_inventaris', 'like', "%$search%")
-        ->orWhere('nama_barang', 'like', "%$search%")
-        ->get();
+        ->orWhere('nama_barang', 'like', "% $search%");
         }
     
-        $koleksi = $koleksi->all();
+        $koleksi = $koleksi->get();
         // dd($koleksibuku);
         $pdf = PDF::loadView('auth.PdfView', ['koleksi' => $koleksi]);
     

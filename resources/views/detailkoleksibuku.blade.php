@@ -46,34 +46,39 @@
     }
     /*** Heading ***/
 
-</style>
+    .navbar {
+    background-color: #103741 !important;
+}
 
+
+</style>
 <body>
-    <!-- Spinner End -->
- <!-- Navbar Start -->
- <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+   <!-- Navbar Start -->
+   <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
     <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
-        <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
+        <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
         <img src="{{ asset('gambar/image1.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
-        <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />        
+        <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" /> 
     </a>
-  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav mx-auto">
-        <a href="/" class="nav-item nav-link ">Home</a>
-        <a href="/koleksi" class="nav-item nav-link ">Koleksi Pameran</a>
-        <a href="/katalogbuku" class="nav-item nav-link active">Katalog Buku</a>
-        <a href="/surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+            <a href="/" class="nav-item nav-link ">Beranda</a>
+            <a href="/about" class="nav-item nav-link">Tentang</a>
+            <a href="/koleksi" class="nav-item nav-link ">Koleksi Pameran</a>
+            <a href="/katalogbuku" class="nav-item nav-link active">Katalog Buku</a>
+            <a href="/surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+        </div>
     </div>
-  </div>
-  </nav>
+</nav>
     <!-- Navbar End -->
 
     <main role="main">
         <section class="bg-gray200 pt-5 pb-5">
             <div class="container">
+                <div class="bg-light rounded shadow">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <img src="{{ asset('storage/' . $koleksibuku['sampul']) }}" class="product-image img-fluid rounded" style="height: 550px;" alt="Product Image">
@@ -97,6 +102,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     

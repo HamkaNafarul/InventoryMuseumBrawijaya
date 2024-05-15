@@ -32,28 +32,34 @@
 <style>
     body {
         font-family: 'Heebo', sans-serif; /* Menggunakan font Heebo */
-    }
-</style>
+}
+    .navbar {
+    background-color: #103741 !important;
+}
 
+
+</style>
 <body>
    <!-- Navbar Start -->
- <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+   <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
     <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
-        <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
+        <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav mx-auto">
-        <a href="/" class="nav-item nav-link active">Home</a>
-        <a href="/about" class="nav-item nav-link ">Tentang</a>
-        <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
-        <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
-        <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
-  </nav>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+            <a href="/" class="nav-item nav-link active">Beranda</a>
+            <a href="/about" class="nav-item nav-link">Tentang</a>
+            <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
+            <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
+            <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+        </div>
+    </div>
+</nav>
   <!-- Navbar End -->
     
 
@@ -66,9 +72,9 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8">
-                                    <h1 class="display-2 text-white animated slideInDown mb-4">Perpustakaan Museum Brawijaya</h1>
-                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                    <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">Inventaris Koleksi Buku</h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Jelajahi katalog buku perpustakaan dengan fitur "Jelajahi Katalog Buku"! Temukan beragam pengetahuan, cerita, dan petualangan yang menanti Anda di setiap halaman. Dari buku-buku klasik hingga terbitan terbaru, Anda dapat dengan mudah menelusuri judul, penulis, dan kategori yang menarik minat Anda</p>
+                                    <a href="/katalogbuku" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Jelajahi</a>
                                 </div>
                             </div>
                         </div>
@@ -80,9 +86,9 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8">
-                                    <h1 class="display-2 text-white animated slideInDown mb-4">Koleksi Benda Bersejarah</h1>
-                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                    <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">Inventaris Koleksi Pameran</h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Jelajahi koleksi pameran yang memukau dengan fitur "Jelajahi Inventaris Koleksi Pameran"! Nikmati pengalaman virtual yang mendalam dengan kemampuan untuk melihat detail setiap item, mulai dari deskripsi hingga gambar</p>
+                                    <a href="koleksi" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Jelajahi</a>
                                 </div>
                             </div>
                         </div>
@@ -91,23 +97,6 @@
             </div>
         </div>
         <!-- Carousel End -->
-
-        {{-- <div class="sambutan mt-5" style="background-color: white; width: 80%; margin: 0 auto;">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-                        <h2>Website Inventaris Museum Brawijaya Malang</h2>
-                        <hr>
-                        <p>
-                            Selamat datang di website resmi Inventaris Museum Brawijaya Malang! Di sini, Anda akan menemukan koleksi yang mengagumkan dari museum kontemporer dan benda-benda bersejarah yang menjadi bagian penting dari warisan budaya kami. Selain itu, kami juga menyediakan katalog buku museum untuk memperluas pengetahuan Anda tentang sejarah dan budaya. Jika Anda mencari informasi yang lebih lengkap atau ingin mengatur kunjungan, kami menyediakan fitur pengiriman surat observasi/kunjungan untuk memudahkan Anda. Selamat mengeksplorasi dan menikmati pengalaman kami di Museum Brawijaya Malang!
-                        </p>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-5 mx-auto">
-                        <img src="{{ asset('gambar/museum.png') }}" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-                    </div>
-                </div>
-            </div>
-        </div>         --}}
         
 
       <!-- Tampilan untuk koleksi -->
@@ -147,10 +136,10 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="card shadow">
                     <div class="row g-0">
-                        <div class="col-md-4">
+                        <div class="col-4">
                             <img class="img-fluid rounded-start" src="{{ asset('storage/' . $item->sampul) }}" alt="" style="height: 200px;">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-8 d-flex align-items-center">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->judul }}</h5>
                                 <p class="card-text">{{ $item->pengarang }}</p>
@@ -159,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
             @endforeach
         </div>
     </div>

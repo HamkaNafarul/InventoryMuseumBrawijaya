@@ -122,23 +122,7 @@ public function pdf(Request $request)
     $koleksibuku = koleksibuku::findOrFail($id);
     return view('auth.DetailKoleksiAdminBuku',compact('koleksibuku'));
 }
-    // public function json()
-    // {
-    //     $koleksibuku= koleksibuku::select(['id','nomor','judul','pengarang','edisi','tahun_terbit','issn','penerbit']);
-    //     $index=1;
-    //     return DataTables::of($koleksibuku)
-    //     ->addColumn('DT_RowIndex',function($data) use (&$index) {
-    //         return $index++;
-    //     })
-    //     ->addColumn('action', function ($row) {
-    //         $editUrl = url('dashboardd/koleksibuku/FormBukuEdit/edit/' . $row->id);
-    //         $deleteUrl = url('/dashboardd/koleksibuku/FormDeleteKoleksiBuku/delete/' . $row->id);
-    //         $detailUrl = url('/dashboardd/koleksibuku/DetailKoleksiAdminBuku/' . $row->id);
-    //         return '<a href="' . $editUrl . '">Edit</a> | <a href="#" class="delete-users" data-url="' . $deleteUrl .'">Delete</a> | <a href="' . $detailUrl .'">Detail</a>';
-    //     })        
-        
-    //     ->toJson();
-    // }
+
     public function json(Request $request)
 {
     $search = $request->input('search.value');

@@ -65,44 +65,63 @@
 }
 /* Untuk memperkecil ukuran section */
 .content {
-  max-width: 1000px; /* Lebar maksimum section */
+  max-width: 1150px; /* Lebar maksimum section */
   margin: 0 auto; /* Posisi section di tengah */
 }
 #calendar {
+    max-width: 1000px; /* Lebar maksimum section */
+    margin: 0 auto; /* Posisi section di tengah */
     background-color: #ffffff; /* Memberikan warna putih pada background kalender */
     border-radius: 5px; /* Memberikan sudut lengkung pada border kalender */
     padding: 20px; /* Memberikan padding agar konten tidak terlalu dekat dengan border */
 }
-    </style>
+.navbar {
+    background-color: #103741 !important;
+}
 
 
+
+
+</style>
 <body>
-    <!-- Spinner End -->
-
-    <!-- Navbar Start -->
-    <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+   <!-- Navbar Start -->
+   <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
     <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
-        <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
+        <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav mx-auto">
-        <a href="/" class="nav-item nav-link ">Home</a>
-        <a href="/about" class="nav-item nav-link ">Tentang</a>
-        <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
-        <a href="katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
-        <a href="surat" class="nav-item nav-link active">Surat Observasi/Kunjungan</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+            <a href="/" class="nav-item nav-link ">Beranda</a>
+            <a href="/about" class="nav-item nav-link ">Tentang</a>
+            <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
+            <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
+            <a href="surat" class="nav-item nav-link active">Surat Observasi/Kunjungan</a>
+        </div>
     </div>
-  </div>
-  </nav>
+</nav>
     <!-- Navbar End -->
 
     <br />
     <br />
+    <section class="description">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">SURAT OBSERVASI/KUNJUNGAN</h3>
+                            <p class="card-text">Kolom kalender di bawah menampilkan hari-hari yang sudah terisi (X) dan bisa dijadikan referensi untuk melihat tutorial penggunaannya <a href="about#tutorial">di sini</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section class="content">
         <div class="container-fluid">
@@ -152,10 +171,13 @@
     </section>    
     
 
+    
     <main role="main"> 
            <div class="container">
+            <div class="bg-light rounded shadow">
         <div id="calendar"></div>
     </div>
+           </div>
     </main>
 
     <!-- Card Form -->
@@ -166,7 +188,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="eventModalLabel">Surat/Observasi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalButton">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -266,7 +288,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
- $(document).ready(function () {
+$(document).ready(function () {
     var disabledDates = {!! json_encode($data_penuh) !!};
 
     var calendar = $('#calendar').fullCalendar({
@@ -274,16 +296,7 @@
         selectHelper: true,
         select: function (start, allDay) {
             var selectedDate = start.format('YYYY-MM-DD');
-            if (disabledDates.includes(selectedDate)) {
-                alert('Tanggal ini tidak bisa dipilih');
-            } else {
-                $('#eventModal').modal('show');
-                $('#tanggal').val(moment(start).format('YYYY-MM-DD'));
-            }
-        },
-        select: function (start, allDay) {
-            var selectedDate = start.format('YYYY-MM-DD');
-            if (start.isBefore(moment(), 'day')) {
+            if (disabledDates.includes(selectedDate) || start.isBefore(moment(), 'day')) {
                 alert('Tanggal ini tidak bisa dipilih');
             } else {
                 $('#eventModal').modal('show');
@@ -301,214 +314,22 @@
             // your code here
         },
         dayRender: function (date, cell) {
-    var dateString = date.format('YYYY-MM-DD');
-    if (disabledDates.includes(dateString)) {
-        cell.addClass('fc-day-disabled');
-        cell.attr('title', 'Tanggal ini tidak bisa dipilih');
-    } else if (date.isBefore(moment(), 'day')) {
-        // Tanggal sudah lewat, berikan ikon pertama
-        cell.addClass('fc-day-before');
-    } else {
-        // Tanggal masih dapat dipilih, berikan ikon kedua
-        cell.addClass('fc-day-enabled');
-    }
-}
-
+            var dateString = date.format('YYYY-MM-DD');
+            if (disabledDates.includes(dateString)) {
+                cell.addClass('fc-day-disabled');
+                cell.attr('title', 'Tanggal ini tidak bisa dipilih');
+            } else if (date.isBefore(moment(), 'day')) {
+                // Tanggal sudah lewat, berikan ikon pertama
+                cell.addClass('fc-day-before');
+            } else {
+                // Tanggal masih dapat dipilih, berikan ikon kedua
+                cell.addClass('fc-day-enabled');
+            }
+        }
     });
 
-    //PERTAMA
-//     $('#submitForm').unbind().click(function () {
-//     var nama = $('#nama').val();
-//     var nomor_hp = $('#nomor_hp').val();
-//     var asal_intansi = $('#asal_intansi').val();
-//     var agenda = $('#agenda').val();
-//     var file = $('#file')[0].files[0];
-//     var captcha = $('#captcha').val();
-//     var form_data = new FormData();
-//     var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
-//     form_data.append('nama', nama);
-//     form_data.append('nomor_hp', nomor_hp);
-//     form_data.append('asal_intansi', asal_intansi);
-//     form_data.append('agenda', agenda);
-//     form_data.append('file', file);
-//     form_data.append('tanggal', $('#tanggal').val());
-//     form_data.append('captcha', captcha);
 
-//     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
-//         $.ajax({
-//             url: "{{ url('surat/Form/store') }}",
-//             type: "POST",
-//             data: form_data,
-//             headers: {
-//                 'X-CSRF-TOKEN': csrf_token
-//             },
-//             contentType: false,
-//             processData: false,
-//             success: function () {
-//                 calendar.fullCalendar('refetchEvents');
-//                 $('#eventModal').modal('hide');
-//             },
-//             error: function(xhr, textStatus, errorThrown) {
-//         if (xhr.status === 422) {
-//             var errors = xhr.responseJSON.errors;
-//             if (errors.hasOwnProperty('captcha')) {
-//                 $('#captcha-error').text(errors.captcha[0]);
-//                 location.reload();
-//             }
-//         } else {
-//             // Jika terjadi kesalahan selain 422, reload halaman
-//             location.reload();
-//         }
-//     }
-//         });
-//     } else {
-//         // Tambahkan pesan error untuk captcha
-//         if (!captcha) {
-//             $('#captcha-error').text('The captcha field is required.');
-//             $('.captcha_img').html(data.captcha_img);
-//         } else {
-//             $('#captcha-error').text('Hasil Perhitungan Salah');
-//             $('.captcha_img').html(data.captcha_img);
-            
-//         }
 
-//     }
-// });
-
-    //KEDUA
-// $('#submitForm').unbind().click(function () {
-//     // Mengambil nilai input
-//     var nama = $('#nama').val();
-//     var nomor_hp = $('#nomor_hp').val();
-//     var asal_intansi = $('#asal_intansi').val();
-//     var agenda = $('#agenda').val();
-//     var file = $('#file')[0].files[0];
-//     var captcha = $('#captcha').val();
-//     var form_data = new FormData();
-//     var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
-//     form_data.append('nama', nama);
-//     form_data.append('nomor_hp', nomor_hp);
-//     form_data.append('asal_intansi', asal_intansi);
-//     form_data.append('agenda', agenda);
-//     form_data.append('file', file);
-//     form_data.append('tanggal', $('#tanggal').val());
-//     form_data.append('captcha', captcha);
-
-//     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
-//         $.ajax({
-//             url: "{{ url('surat/Form/store') }}",
-//             type: "POST",
-//             data: form_data,
-//             headers: {
-//                 'X-CSRF-TOKEN': csrf_token
-//             },
-//             contentType: false,
-//             processData: false,
-//             success: function () {
-//                 // Mengganti gambar captcha dengan yang baru
-//                 $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//                 // Mengosongkan field captcha
-//                 $('#captcha').val('');
-//                 // Memperbarui kalender
-//                 calendar.fullCalendar('refetchEvents');
-//                 // Menutup modal
-//                 $('#eventModal').modal('hide');
-//                 // Menampilkan alert bahwa submit berhasil tanpa reload halaman
-//                 alert('Form berhasil disubmit!');
-//             },
-//             error: function(xhr, textStatus, errorThrown) {
-//                 if (xhr.status === 422) {
-//                     var errors = xhr.responseJSON.errors;
-//                     if (errors.hasOwnProperty('captcha')) {
-//                         $('#captcha-error').text(errors.captcha[0]);
-//                         // Memperbarui gambar captcha jika submit tidak berhasil
-//                         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//                     }
-//                 }
-//             }
-//         });
-//     } else {
-//         // Tambahkan pesan error untuk captcha
-//         if (!captcha) {
-//             $('#captcha-error').text('The captcha field is required.');
-//             // Memperbarui gambar captcha jika submit tidak berhasil
-//             $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//         } else {
-//             $('#captcha-error').text('Hasil Perhitungan Salah');
-//             // Memperbarui gambar captcha jika submit tidak berhasil
-//             $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//         }
-//     }
-// });
-
-    //KETIGA
-// Menghitung jumlah percobaan salah
-// Menghitung jumlah percobaan salah
-var captchaAttempts = 0;
-
-// $('#submitForm').unbind().click(function () {
-//     // Mengambil nilai input
-//     var nama = $('#nama').val();
-//     var nomor_hp = $('#nomor_hp').val();
-//     var asal_intansi = $('#asal_intansi').val();
-//     var agenda = $('#agenda').val();
-//     var file = $('#file')[0].files[0];
-//     var captcha = $('#captcha').val();
-//     var form_data = new FormData();
-//     var csrf_token = document.querySelector('meta[name="csrf-token"]').content;
-//     form_data.append('nama', nama);
-//     form_data.append('nomor_hp', nomor_hp);
-//     form_data.append('asal_intansi', asal_intansi);
-//     form_data.append('agenda', agenda);
-//     form_data.append('file', file);
-//     form_data.append('tanggal', $('#tanggal').val());
-//     form_data.append('captcha', captcha);
-
-//     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
-//         $.ajax({
-//             url: "{{ url('surat/Form/store') }}",
-//             type: "POST",
-//             data: form_data,
-//             headers: {
-//                 'X-CSRF-TOKEN': csrf_token
-//             },
-//             contentType: false,
-//             processData: false,
-//             success: function () {
-//                 // Mengganti gambar captcha dengan yang baru
-//                 $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//                 // Mengosongkan field captcha
-//                 $('#captcha').val('');
-//                 // Memperbarui kalender
-//                 calendar.fullCalendar('refetchEvents');
-//                 // Menutup modal
-//                 $('#eventModal').modal('hide');
-//                 // Menampilkan alert bahwa submit berhasil tanpa reload halaman
-//                 alert('Form berhasil disubmit!');
-//             },
-//             error: function(xhr, textStatus, errorThrown) {
-//                 if (xhr.status === 422) {
-//                     var errors = xhr.responseJSON.errors;
-//                     if (errors.hasOwnProperty('captcha')) {
-//                         $('#captcha-error').text('Hasil Perhitungan Salah');
-//                         // Memperbarui gambar captcha jika submit tidak berhasil
-//                         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//                         captchaAttempts++;
-//                         if (captchaAttempts >= 2) {
-//                             // Jika dua kali captcha salah, reload halaman
-//                             window.location.reload();
-//                         }
-//                     }
-//                 }
-//             }
-//         });
-//     } else {
-//         // Tambahkan pesan error untuk captcha
-//         $('#captcha-error').text('The captcha field is required.');
-//         // Memperbarui gambar captcha jika submit tidak berhasil
-//         $('.captcha_img').html('<span>{!! captcha_img('math') !!}</span>');
-//     }
-// });
 
 //KEAMPAT
 // Menghitung jumlah percobaan salah

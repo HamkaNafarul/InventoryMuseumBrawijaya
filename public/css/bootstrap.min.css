@@ -4730,7 +4730,7 @@ fieldset:disabled .btn {
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: rgba(0, 0, 0, 0.55)
+    color: rgb(255, 255, 255)
 }
 
 .navbar-light .navbar-nav .nav-link:hover,

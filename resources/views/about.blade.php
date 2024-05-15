@@ -21,28 +21,24 @@
 
      <!-- Google Web Fonts -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('../../lib/owlcarousel/assets/owl.carousel.min.css') }}" >
-    <link rel="stylesheet" href="{{ asset('../../css/bootstrap.min.css') }}" >
-    
-    <link rel="stylesheet" href="{{ asset('galeri/css/themee.css') }}">
-    <link href="css\style.css" rel="stylesheet">
-    
-
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+  
+      <!-- Icon Font Stylesheet -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  
+      <!-- Libraries Stylesheet -->
+      <link href="lib/animate/animate.min.css" rel="stylesheet">
+      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  
+      <!-- Customized Bootstrap Stylesheet -->
+      <link href="css\bootstrap.min.css" rel="stylesheet">
+  
+      <!-- Template Stylesheet -->
+      <link href="css\style.css" rel="stylesheet">
     
 </head>
 <style>
@@ -53,30 +49,35 @@
 p{
     font-family: "Open Sans", sans-serif;
 }
-</style>
+.navbar {
+    background-color: #103741 !important;
+}
 
+
+
+
+</style>
 <body>
-    <!-- Spinner End -->
- <!-- Navbar Start -->
- <nav  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+   <!-- Navbar Start -->
+   <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
     <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
-        <h1 class="m-0 text-dark fw-bold">MUSEUM BRAWIJAYA</h1>
-        <img src="{{ asset('gambar/image1.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
-        <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />        
+        <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
+        <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav mx-auto">
-        <a href="/" class="nav-item nav-link ">Home</a>
-        <a href="/about" class="nav-item nav-link active">Tentang</a>
-        <a href="/koleksi" class="nav-item nav-link">Koleksi Pameran</a>
-        <a href="/katalogbuku" class="nav-item nav-link ">Katalog Buku</a>
-        <a href="/surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+            <a href="/" class="nav-item nav-link ">Beranda</a>
+            <a href="/about" class="nav-item nav-link active">Tentang</a>
+            <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
+            <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
+            <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+        </div>
     </div>
-  </div>
-  </nav>
+</nav>
     <!-- Navbar End -->
 
     <!-- About -->
@@ -122,7 +123,7 @@ p{
         <!-- Map -->
         <div class="container-xxl py-5">
             <div class="container">
-                <div class="bg-light rounded">
+                <div class="bg-light rounded shadow">
                     <div class="row g-0">
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
                             <div class="position-relative h-100">
@@ -143,44 +144,31 @@ p{
         <!-- Map -->
 
  <!-- Tutorial surat -->
- <div class="container-xxl py-5">
+ <div class="container-xxl py-5" id="tutorial">
     <div class="container">
         <div class="bg-light rounded p-5">
-            <h2 class="text-center mb-4">Tutorial Mengirim Surat Observasi/Kunjungan</h2>
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <div class="mb-3">
-                        <img src="gambar\langkah_satu.JPG" alt="Step 1" class="img-fluid">
-                    </div>
-                    <h3>Langkah 1</h3>
-                    <p>Pilih tanggal yang tersedia dan sesuai dengan rencana tanggal observasi/kunjungan anda</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="mb-3">
-                        <img src="gambar\langkah_dua.JPG" alt="Step 2" class="img-fluid">
-                    </div>
-                    <h3>Langkah 2</h3>
-                    <p>Isikan form pengiriman surat dengan lengkap dan kirim surat dengan format pdf</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="mb-3">
-                        <img src="gambar\langkah_tiga.JPG" alt="Step 3" class="img-fluid">
-                    </div>
-                    <h3>Langkah 3</h3>
-                    <p>Cek status di bagian atas apakah form yang anda kirim sudah diterima</p>
-                </div>
+            <h1 class="text-center mb-4">Tutorial Mengirim Surat</h1>
+            <div class="bg-light rounded shadow">
+            <div id="tutorial" class="text-center">
+                <h5 id="tutorialTitle">LANGKAH 1</h5>
+                <p id="tutorialDesc">
+                    Mohon untuk memilih tanggal yang tersedia yang sesuai dengan rencana tanggal observasi atau kunjungan Anda. Pastikan untuk memilih tanggal yang memungkinkan Anda hadir sesuai jadwal yang telah Anda atur.</p>
+                <img id="tutorialImg" src="gambar\langkah_satu.JPG" alt="Step 1" class="img-fluid">
+            </div>
             </div>
             <div class="text-center mt-4">
-                <a href="surat" class="btn btn-primary py-3 px-5">Kirim Surat Observasi/Kunjungan</a>
+                <button id="prevBtn" class="btn btn-primary py-3 px-5" onclick="prevTutorial()">Previous</button>
+                <button id="nextBtn" class="btn btn-primary py-3 px-5" onclick="nextTutorial()">Next</button>
             </div>
         </div>
     </div>
 </div>
 
+
   <!-- Tutorial surat -->
 
 
-    @include('footer')
+    @include('footer1')
     
 
     <!-- Back to Top -->
@@ -197,7 +185,60 @@ p{
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>    
+    <script src="{{ asset('js/main.js') }}"></script>  
+    <script>
+        let currentStep = 1;
+    
+        function showTutorial(step) {
+            let imgSrc, title, desc;
+            switch (step) {
+                case 1:
+                    imgSrc = "gambar\\langkah_satu.JPG";
+                    title = "LANGKAH 1";
+                    desc = "Mohon untuk memilih tanggal yang tersedia yang sesuai dengan rencana tanggal observasi atau kunjungan Anda. Pastikan untuk memilih tanggal yang memungkinkan Anda hadir sesuai jadwal yang telah Anda atur.";
+                    break;
+                case 2:
+                    imgSrc = "gambar\\langkah_dua.JPG";
+                    title = "LANGKAH 2";
+                    desc = "Isikan form pengiriman surat dengan lengkap dan kirim surat dengan format pdf";
+                    break;
+                case 3:
+                    imgSrc = "gambar\\langkah_tiga.JPG";
+                    title = "LANGKAH 3";
+                    desc = "Cek status di bagian atas apakah form yang anda kirim sudah diterima";
+                    break;
+                default:
+                    break;
+            }
+            document.getElementById("tutorialImg").src = imgSrc;
+            document.getElementById("tutorialTitle").innerText = title;
+            document.getElementById("tutorialDesc").innerText = desc;
+        }
+    
+        
+        function nextTutorial() {
+            if (currentStep < 3) {
+                currentStep++;
+                showTutorial(currentStep);
+            }
+            updateButtonState();
+        }
+
+        function prevTutorial() {
+            if (currentStep > 1) {
+                currentStep--;
+                showTutorial(currentStep);
+            }
+            updateButtonState();
+        }
+
+        function updateButtonState() {
+            document.getElementById("prevBtn").disabled = (currentStep === 1);
+            document.getElementById("nextBtn").disabled = (currentStep === 3);
+        }
+
+        showTutorial(currentStep);
+    </script>  
 </body>
 
 </html>
