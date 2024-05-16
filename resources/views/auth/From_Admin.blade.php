@@ -70,8 +70,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control" id="no_inventaris" name="password" placeholder="No Inventaris">
-                            </div>
+                                <input type="password" class="form-control" id="no_inventaris" name="password" placeholder="No Inventaris">
+                            </div>                                        
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
@@ -84,3 +84,6 @@
         </div>
     </div>
 </section>
+
+<body>
+</html>

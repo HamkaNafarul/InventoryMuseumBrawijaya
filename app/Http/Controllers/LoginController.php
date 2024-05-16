@@ -36,12 +36,13 @@ class LoginController extends Controller
         // dd($surats);
         $suratcount = surat::where('status', 0)->count();
         // dd($suratcount);
-    return view('auth/suratmasuk',compact('surats','suratcount'));
+        return view('auth/suratmasuk',compact('surats','suratcount'));
     }
     public function koleksipameran(Request $request)
-    {
+    {   
+        //koleksi pameran
         $search = $request->get('search');
-
+    
         $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
         ->orWhere('no_inventaris', 'like', "%$search%")
         ->orWhere('nama_barang', 'like', "%$search%")

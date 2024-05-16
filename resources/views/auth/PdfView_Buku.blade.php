@@ -18,7 +18,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            right: 0;  
             background-color: #f2f2f2;
             height: 100px;
             padding: 20px;
@@ -74,7 +74,7 @@
                     </td>
                     <td style="text-align: center; border: none;">
                         <div class="address">
-                            <h1>Alamat Museum Brawijaya Malang<br>
+                            <h1>MUSEUM BRAWIJAYA<br>
                             Jalan Museum No. 1, Kota Malang, Indonesia<br>
                             Telepon: (123) 456-7890 | Email: info@museum.com</h1>
                         </div>

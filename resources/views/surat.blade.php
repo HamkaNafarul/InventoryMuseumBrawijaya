@@ -239,7 +239,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="closeModalButton">Close</button>
+                        id="closeModalButtonn">Close</button>
                     <button type="submit" class="btn btn-primary" id="submitForm">Submit</button>
                 </div>
             </div>
@@ -289,6 +289,9 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+   
+
+    
     <script>
 $(document).ready(function () {
     var disabledDates = {!! json_encode($data_penuh) !!};
@@ -333,12 +336,13 @@ $(document).ready(function () {
 
 
 
-//KEAMPAT
-// Menghitung jumlah percobaan salah
+//SUBMIT
+
+var emptyFields = [];
 var captchaAttempts = 0;
 
 $('#submitForm').unbind().click(function () {
-    // Mengambil nilai input
+ 
     var nama = $('#nama').val();
     var nomor_hp = $('#nomor_hp').val();
     var asal_intansi = $('#asal_intansi').val();
@@ -354,6 +358,7 @@ $('#submitForm').unbind().click(function () {
     form_data.append('file', file);
     form_data.append('tanggal', $('#tanggal').val());
     form_data.append('captcha', captcha);
+
 
     if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
         $.ajax({
@@ -401,8 +406,8 @@ $('#submitForm').unbind().click(function () {
                 }
             }
         });
-    } else {
-
+    } else {                                                                                                                                                                                    
+        
         // Tambahkan pesan error untuk captcha
         $('#captcha-error').text('The captcha field is required.');
         // Memperbarui gambar captcha jika submit tidak berhasil
@@ -412,9 +417,13 @@ $('#submitForm').unbind().click(function () {
     $('#closeModalButton').on('click', function () {
         $('#eventModal').modal('hide');
     });
+    $('#closeModalButtonn').on('click', function () {
+        $('#eventModal').modal('hide');
+    });
 });
 
 </script>
+
 
 <script>
     $(document).ready(function(){
