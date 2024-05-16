@@ -33,7 +33,10 @@ class LoginController extends Controller
     public function suratmasuk()
     {
         $surats = surat::all();
-    return view('auth/suratmasuk',compact('surats'));
+        // dd($surats);
+        $suratcount = surat::where('status', 0)->count();
+        // dd($suratcount);
+    return view('auth/suratmasuk',compact('surats','suratcount'));
     }
     public function koleksipameran(Request $request)
     {

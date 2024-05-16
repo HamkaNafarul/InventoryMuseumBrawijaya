@@ -112,7 +112,7 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function (response) {
-                    $('#surat').DataTable().ajax.reload();
+                    location.reload();
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);

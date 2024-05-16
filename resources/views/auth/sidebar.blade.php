@@ -69,9 +69,9 @@
                     <li class="nav-item">
                         <a href="{{ route('suratmasuk') }}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Surat Masuk</p>
+                            <p>Surat Masuk <span class="badge badge-info right">{{ $suratcount }}</span></p>
                         </a>
-                    </li>
+                    </li>                    
                     <li class="nav-item">
                         <a href="{{ route('suratpenuh') }}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>

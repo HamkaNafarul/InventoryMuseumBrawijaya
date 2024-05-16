@@ -198,29 +198,31 @@
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                            <span id="nama-error" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="nomor_hp">Nomor HP:</label>
-                            <input type="text" class="form-control" id="nomor_hp" name="nomor_hp"
-                                placeholder="Nomor HP">
+                            <input type="text" class="form-control" id="nomor_hp" name="nomor_hp"placeholder="Nomor HP">
+                            <span id="nomor_hp-error" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="asal_instansi">Asal Instansi:</label>
-                            <input type="text" class="form-control" id="asal_intansi" name="asal_intansi"
-                                placeholder="Asal Instansi">
+                            <input type="text" class="form-control" id="asal_intansi" name="asal_intansi"placeholder="Asal Instansi">
+                            <span id="asal_intansi-error" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="tanggal">Tanggal:</label>
-                            <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="YYYY-MM-DD"
-                                readonly>
+                            <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="YYYY-MM-DD"readonly>
                         </div>
                         <div class="form-group">
                             <label for="agenda">Agenda:</label>
                             <input type="text" class="form-control" id="agenda" name="agenda" placeholder="Agenda">
+                            <span id="agenda-error" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="file">File:</label>
                             <input type="file" class="form-control" id="file" name="file" placeholder="File">
+                            <span id="file-error" class="text-danger"></span>
                         </div>
                         <div class="captcha">
                             <div class="input-group-prepend captcha_img">
@@ -376,6 +378,7 @@ $('#submitForm').unbind().click(function () {
                 alert('Form berhasil disubmit!');
 
                   // Mereset formulir
+                  location.reload();
                  document.getElementById('FormEvent').reset();
             },
             error: function(xhr, textStatus, errorThrown) {
@@ -399,6 +402,7 @@ $('#submitForm').unbind().click(function () {
             }
         });
     } else {
+
         // Tambahkan pesan error untuk captcha
         $('#captcha-error').text('The captcha field is required.');
         // Memperbarui gambar captcha jika submit tidak berhasil
