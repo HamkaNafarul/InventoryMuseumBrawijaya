@@ -30,11 +30,21 @@
     <link href="css\style.css" rel="stylesheet">
 </head>
 <style>
-    body {
-        font-family: 'Heebo', sans-serif; /* Menggunakan font Heebo */
-}
-    .navbar {
-    background-color: #103741 !important;
+
+
+/* Penyesuaian untuk layar lebih kecil */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        justify-content: space-between; /* Menyusun elemen secara sejajar */
+    }
+    .navbar-brand h1 {
+        font-size: 1em; /* Ukuran font lebih kecil */
+        margin-right: 0.5em; /* Jarak antara logo */
+    }
+    .navbar-logo {
+        height: 1.8em; /* Ukuran logo lebih kecil */
+    }
+   
 }
 
 
@@ -52,14 +62,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-            <a href="/" class="nav-item nav-link active">Beranda</a>
-            <a href="/about" class="nav-item nav-link">Tentang</a>
+            <a href="/" class="nav-item nav-link ">Beranda</a>
+            <a href="/about" class="nav-item nav-link active">Tentang</a>
             <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
             <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
             <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
         </div>
     </div>
 </nav>
+
+
+
+
   <!-- Navbar End -->
     
 

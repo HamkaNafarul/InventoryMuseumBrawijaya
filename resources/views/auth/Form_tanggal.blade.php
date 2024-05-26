@@ -17,7 +17,7 @@
 </style>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-      @include('auth/sidebar')
+      @include('auth/sidebar_dua')
       <div class="content-wrapper" style="background-image: url('{{ asset('gambar/bg5.png') }}');">
         <section class="content-header">
       <div class="container-fluid">

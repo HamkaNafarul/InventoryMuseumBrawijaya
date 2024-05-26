@@ -22,11 +22,6 @@
 
     <!-- Favicon -->
 
-    <!-- Google Web Fonts -->
-    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet"> --}}
-
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -41,7 +36,7 @@
     <!-- Template Stylesheet -->
     <link href="css\style.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> --}}
     <link rel="stylesheet" href="galeri\css\app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
@@ -74,12 +69,43 @@
     background-color: #ffffff; /* Memberikan warna putih pada background kalender */
     border-radius: 5px; /* Memberikan sudut lengkung pada border kalender */
     padding: 20px; /* Memberikan padding agar konten tidak terlalu dekat dengan border */
+    z-index: 9999;
 }
 .navbar {
     background-color: #103741 !important;
 }
 
-
+/* Penyesuaian untuk layar lebih kecil */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        justify-content: space-between; /* Menyusun elemen secara sejajar */
+    }
+    .navbar-brand h1 {
+        font-size: 1em; /* Ukuran font lebih kecil */
+        margin-right: 0.5em; /* Jarak antara logo */
+    }
+    .navbar-logo {
+        height: 1.8em; /* Ukuran logo lebih kecil */
+    }
+    #calendar {
+        display: block;
+    }
+   
+}
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .modal-content {
+        height: 100vh; /* Mengatur tinggi modal agar penuh layar */
+        overflow-y: auto; /* Menambahkan scroll jika konten terlalu panjang */
+    }
+    #calendar {
+        width: 100%;
+    }
+}
 
 
 </style>
@@ -97,10 +123,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
             <a href="/" class="nav-item nav-link ">Beranda</a>
-            <a href="/about" class="nav-item nav-link ">Tentang</a>
+            <a href="/about" class="nav-item nav-link active">Tentang</a>
             <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
             <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
-            <a href="surat" class="nav-item nav-link active">Surat Observasi/Kunjungan</a>
+            <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
         </div>
     </div>
 </nav>
@@ -115,14 +141,19 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">SURAT OBSERVASI/KUNJUNGAN</h3>
-                            <p class="card-text">Kolom kalender di bawah menampilkan hari-hari yang sudah terisi (X) dan bisa dijadikan referensi untuk melihat tutorial penggunaannya <a href="about#tutorial">di sini</a>.</p>
+                            <p class="card-text">
+                                Kolom kalender di bawah menampilkan hari-hari yang sudah terisi (X) dan bisa dijadikan referensi untuk melihat tutorial penggunaannya 
+                                <a href="about#tutorial">di sini</a>.
+                            </p>
+                            <!-- Add the button here -->
+                            <a href="{{ url('suratRespon') }}" class="btn btn-success mt-3">Kirim Surat</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -179,6 +210,9 @@
     </div>
            </div>
     </main>
+    
+
+
 
     <!-- Card Form -->
     <!-- Card Form -->
@@ -196,44 +230,56 @@
                     <form id="FormEvent" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
-                            <span id="nama-error" class="text-danger"></span>
+                            <div class="d-flex">
+                                <div class="flex-fill mr-2">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                                    <span id="nama-error" class="text-danger"></span>
+                                </div>
+                                <div class="flex-fill">
+                                    <label for="nomor_hp">Nomor HP:</label>
+                                    <input type="text" class="form-control" id="nomor_hp" name="nomor_hp" placeholder="Nomor HP">
+                                    <span id="nomor_hp-error" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="nomor_hp">Nomor HP:</label>
-                            <input type="text" class="form-control" id="nomor_hp" name="nomor_hp"placeholder="Nomor HP">
-                            <span id="nomor_hp-error" class="text-danger"></span>
+                            <div class="d-flex">
+                                <div class="flex-fill mr-2">
+                                    <label for="asal_instansi">Asal Instansi:</label>
+                                    <input type="text" class="form-control" id="asal_intansi" name="asal_intansi" placeholder="Asal Instansi">
+                                    <span id="asal_intansi-error" class="text-danger"></span>
+                                </div>
+                                <div class="flex-fill">
+                                    <label for="tanggal">Tanggal:</label>
+                                    <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="YYYY-MM-DD" readonly>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="asal_instansi">Asal Instansi:</label>
-                            <input type="text" class="form-control" id="asal_intansi" name="asal_intansi"placeholder="Asal Instansi">
-                            <span id="asal_intansi-error" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal:</label>
-                            <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="YYYY-MM-DD"readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="agenda">Agenda:</label>
-                            <input type="text" class="form-control" id="agenda" name="agenda" placeholder="Agenda">
-                            <span id="agenda-error" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="file">File:</label>
-                            <input type="file" class="form-control" id="file" name="file" placeholder="File">
-                            <span id="file-error" class="text-danger"></span>
+                            <div class="d-flex">
+                                <div class="flex-fill mr-2">
+                                    <label for="agenda">Agenda:</label>
+                                    <input type="text" class="form-control" id="agenda" name="agenda" placeholder="Agenda">
+                                    <span id="agenda-error" class="text-danger"></span>
+                                </div>
+                                <div class="flex-fill">
+                                    <label for="file">File:</label>
+                                    <input type="file" class="form-control" id="file" name="file" placeholder="File">
+                                    <span id="file-error" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="captcha">
                             <div class="input-group-prepend captcha_img">
                                 <span>{!! captcha_img('math') !!}</span>
-                                
-                            </div> 
+                            </div>
                         </div>
                         <div class="form-group">
                             <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
                             <span id="captcha-error" class="text-danger"></span>
                         </div>
+                        
                         
                     </form>
                 </div>
@@ -341,7 +387,7 @@ $(document).ready(function () {
 var emptyFields = [];
 var captchaAttempts = 0;
 
-$('#submitForm').unbind().click(function () {
+$('#submitForm').click(function () {
  
     var nama = $('#nama').val();
     var nomor_hp = $('#nomor_hp').val();

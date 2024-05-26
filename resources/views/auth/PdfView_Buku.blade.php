@@ -45,6 +45,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
+            page-break-inside: avoid;
         }
         th {
             background-color: #f2f2f2;
@@ -52,6 +53,7 @@
         .my-3 {
             margin-top: 1rem;
             margin-bottom: 1rem;
+           
         }
     </style>
 </head>
@@ -68,7 +70,6 @@
                             $img = 'data:image/png;base64,' . $base_64;
                             @endphp
                             <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('gambar/image2.png'))) }}"
-                            {{-- class="app-image-style" style="height: 120px;position: absolute;top:10px" /> --}}
                             class="app-image-style" style="height: 90px;"/>
                         </div>
                     </td>
@@ -94,7 +95,6 @@
             </thead>
         </table>
     </header>
-    
     <h1 class="my-3">Katalog Buku Museum Brawijaya Malang</h1>
     <table>
         <tr>                                                                            

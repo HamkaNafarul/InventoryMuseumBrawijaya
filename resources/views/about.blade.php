@@ -53,7 +53,20 @@ p{
     background-color: #103741 !important;
 }
 
-
+/* Penyesuaian untuk layar lebih kecil */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        justify-content: space-between; /* Menyusun elemen secara sejajar */
+    }
+    .navbar-brand h1 {
+        font-size: 1em; /* Ukuran font lebih kecil */
+        margin-right: 0.5em; /* Jarak antara logo */
+    }
+    .navbar-logo {
+        height: 1.8em; /* Ukuran logo lebih kecil */
+    }
+   
+}
 
 
 </style>

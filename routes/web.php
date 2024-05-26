@@ -42,6 +42,10 @@ Route::get('/koleksi', [HomeController::class, 'koleksi'])->name('koleksi');
 Route::get('/katalogbuku', [HomeController::class, 'katalogbuku'])->name('katalogbuku');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/surat', [HomeController::class, 'surat'])->name('surat');
+Route::get('/suratRespon', [HomeController::class, 'suratRespon']);
+Route::post('/suratRespon/Form/store', [HomeController::class, 'store'])->name('store_responsif');
+
+
 Route::prefix('surat')->group(function () {
     Route::get('/data', [SuratControlller::class, 'jsonstatus'])->name('surat.data');
     Route::post('/Form/store', [SuratControlller::class, 'store'])->name('store_surat');

@@ -86,4 +86,39 @@ class HomeController extends Controller
     return view('about');  
     }
 
+    public function suratRespon(){
+        $tanggalsekarang = now()->format('Y-m-d'); // Format tanggal: YYYY-MM-DD
+
+    // dd($tanggalsekarang);
+
+    $surat = surat::where('tanggal', '>=', $tanggalsekarang)->get();
+    // dd($surat);
+    $data_penuh = Tanggal::pluck('tanggal_penuh')->toArray();
+        return view('suratRespon', compact('data_penuh'));
+    }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'captcha' => 'required|captcha',
+            'nomor_hp' => 'required',
+            'nama' => 'required',
+            'asal_intansi' => 'required',
+            'tanggal' => 'required',
+            'agenda' => 'required',
+            'file' => 'required|mimes:pdf',
+        ]);
+
+        if ($request->hasFile('file')) {
+            $imagePath = $request->file('file')->store('submit', 'public');
+            $validatedData['file'] = $imagePath;
+        }
+
+ // Tambahkan status default 0
+ $validatedData['status'] = 0;
+
+        surat::create($validatedData);
+
+        return redirect('/surat')->with('success', 'Data berhasil disimpan');
+    }
+
 }

@@ -77,6 +77,27 @@
     background-color: #103741 !important;
 }
 
+/* Penyesuaian untuk layar lebih kecil */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        justify-content: space-between; /* Menyusun elemen secara sejajar */
+    }
+    .navbar-brand h1 {
+        font-size: 1em; /* Ukuran font lebih kecil */
+        margin-right: 0.5em; /* Jarak antara logo */
+    }
+    .navbar-logo {
+        height: 1.8em; /* Ukuran logo lebih kecil */
+    }
+   
+}
+/* Menghilangkan judul pada hover untuk layar kecil */
+@media (max-width: 767.98px) {
+    .card .overlay .title {
+        display: none;
+    }
+}
+
 
 </style>
 <body>
@@ -93,10 +114,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
             <a href="/" class="nav-item nav-link ">Beranda</a>
-            <a href="/about" class="nav-item nav-link">Tentang</a>
-            <a href="koleksi" class="nav-item nav-link active">Koleksi Pameran</a>
-            <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
-            <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
+            <a href="/about" class="nav-item nav-link active">Tentang</a>
+            <a href="/koleksi" class="nav-item nav-link">Koleksi Pameran</a>
+            <a href="/katalogbuku" class="nav-item nav-link">Katalog Buku</a>
+            <a href="/surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
         </div>
     </div>
 </nav>
@@ -111,7 +132,7 @@
             <div class="col-md-12" align="center">
               <h1 style="color: black;">KOLEKSI PAMERAN</h1>
           </div><br>
-        <div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
+        <div style="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
           <div class="search-box">
             <form action="#" method="GET" class="mb-4" style="display: flex; align-items: center; width: 100%;">
               <input type="text" name="query" class="form-control search-input" placeholder="Cari,Nama,Tahun...." style="flex: 1;">
@@ -125,7 +146,7 @@
                         <div class="card card-pin">
                             <img class="card-img" src="{{ asset('storage/' . $item->gambar) }}" alt="Card image">
                             <div class="overlay">
-                                <h2 class="card-title title">{{ $item->nama_barang }}</h2>
+                                {{-- <h2 class="card-title title">{{ $item->nama_barang }}</h2> --}}
                                 <div class="more">
                                     <a href="{{ url('detailkoleksi/' . $item->id) }}">
                                         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More

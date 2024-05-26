@@ -27,8 +27,9 @@ class LoginController extends Controller
         $jumlah_koleksi_buku = $koleksibuku->count();
         $jumlah_koleksi_pameran = $koleksi->count();
         $jumlah_users = $users->count(); // Menghitung jumlah user
+        $suratcount = surat::where('status', 0)->count();
     
-        return view('auth/dashboardd', compact('jumlah_koleksi_buku', 'jumlah_koleksi_pameran', 'jumlah_surat', 'jumlah_users'));    
+        return view('auth/dashboardd', compact('jumlah_koleksi_buku', 'jumlah_koleksi_pameran', 'jumlah_surat', 'jumlah_users','suratcount'));    
     }    
     public function suratmasuk()
     {
@@ -48,8 +49,9 @@ class LoginController extends Controller
         ->orWhere('nama_barang', 'like', "%$search%")
         ->get();
         // dd($koleksi);
+        $suratcount = surat::where('status', 0)->count();
     
-    return view('auth/koleksipameran', compact('koleksi', 'search'));
+    return view('auth/koleksipameran', compact('koleksi', 'search','suratcount'));
     }
     function login_proses(Request $request)
     {
@@ -88,12 +90,14 @@ class LoginController extends Controller
                                     ->orWhere('pengarang', 'like', "%$search%")
                                     ->orWhere('penerbit', 'like', "%$search%")
                                     ->get();
+                                    $suratcount = surat::where('status', 0)->count();
     
-    return view('auth/koleksibuku', compact('koleksiBuku', 'search'));
+    return view('auth/koleksibuku', compact('koleksiBuku', 'search','suratcount'));
     }
     public function admin()
     {
-        return view('auth/Admin');
+        $suratcount = surat::where('status', 0)->count();
+        return view('auth/Admin', compact('suratcount'));
     }
     public function json()
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tanggal;
+use App\Models\surat;
 use Illuminate\Http\Request;
 use yajra\DataTables\DataTables;
 
@@ -47,6 +48,8 @@ class TanggalPenuhController extends Controller
     }
     public function suratpenuh()
     {
-        return view('auth/suratpenuh');
+        $suratcount = surat::where('status', 0)->count();
+
+        return view('auth/suratpenuh', compact('suratcount'));
     }
 }
