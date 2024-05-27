@@ -104,7 +104,7 @@ class LoginController extends Controller
         $User= User::select(['id','name','email']);
         $index = 1;
         return DataTables::of($User)
-        ->addColumn('DT_RowIndex',function($data) use ($index) {
+        ->addColumn('DT_RowIndex',function($data) use (&$index) {
             return $index++;
         })
         ->addColumn('action', function ($row) {

@@ -89,8 +89,8 @@
    <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
     <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
         <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
-        <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
-        <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="{{ asset('gambar/image1.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
+        <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -98,9 +98,9 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
             <a href="/" class="nav-item nav-link ">Beranda</a>
-            <a href="/about" class="nav-item nav-link active">Tentang</a>
-            <a href="/koleksi" class="nav-item nav-link">Koleksi Pameran</a>
-            <a href="/katalogbuku" class="nav-item nav-link">Katalog Buku</a>
+            <a href="/about" class="nav-item nav-link ">Tentang</a>
+            <a href="/koleksi" class="nav-item nav-link ">Koleksi Pameran</a>
+            <a href="/katalogbuku" class="nav-item nav-link active">Katalog Buku</a>
             <a href="/surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>
         </div>
     </div>
@@ -142,7 +142,7 @@
             <div class="container">
                 <div class="row">
                         <div class="col-12">
-                        <h5>More Like This</h5>
+                        <h5>Katalog Yang Hampir Sama</h5>
                         <div class="row">
                             @foreach($similarCollections as $collection)
                                 <div class="col">

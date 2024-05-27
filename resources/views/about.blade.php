@@ -67,7 +67,29 @@ p{
     }
    
 }
-
+   /* Custom CSS for responsive design */
+   @media (max-width: 576px) {
+            #tutorial h1 {
+                font-size: 1.5rem;
+            }
+            #tutorial h5 {
+                font-size: 1.25rem;
+            }
+            #tutorial p {
+                font-size: 1rem;
+            }
+            #tutorial .btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+            .d-flex {
+                flex-direction: column;
+                gap: 10px;
+            }
+            #tutorialImg {
+                width: 100%;
+            }
+        }
 
 </style>
 <body>
@@ -156,29 +178,29 @@ p{
         </div>        
         <!-- Map -->
 
- <!-- Tutorial surat -->
- <div class="container-xxl py-5" id="tutorial">
+<!-- Tutorial surat -->
+<div class="container-xxl py-5" id="tutorial">
     <div class="container">
-        <div class="bg-light rounded p-5">
+        <div class="bg-light rounded shadow">
             <h1 class="text-center mb-4">Tutorial Mengirim Surat</h1>
             <div class="bg-light rounded shadow">
-            <div id="tutorial" class="text-center">
-                <h5 id="tutorialTitle">LANGKAH 1</h5>
-                <p id="tutorialDesc">
-                    Mohon untuk memilih tanggal yang tersedia yang sesuai dengan rencana tanggal observasi atau kunjungan Anda. Pastikan untuk memilih tanggal yang memungkinkan Anda hadir sesuai jadwal yang telah Anda atur.</p>
-                <img id="tutorialImg" src="gambar\langkah_satu.JPG" alt="Step 1" class="img-fluid">
-            </div>
-            </div>
-            <div class="text-center mt-4">
-                <button id="prevBtn" class="btn btn-primary py-3 px-5" onclick="prevTutorial()">Previous</button>
-                <button id="nextBtn" class="btn btn-primary py-3 px-5" onclick="nextTutorial()">Next</button>
+                <div id="tutorial" class="text-center p-3">
+                    <div class="d-flex justify-content-between mt-4">
+                        <button id="prevBtn" class="btn btn-primary py-3 px-5" onclick="prevTutorial()">Previous</button>
+                        <button id="nextBtn" class="btn btn-primary py-3 px-5" onclick="nextTutorial()">Next</button>
+                    </div>
+                    <h5 id="tutorialTitle" class="mt-3">LANGKAH 1</h5>
+                    <p id="tutorialDesc" class="mt-2">
+                        Mohon untuk memilih tanggal yang tersedia yang sesuai dengan rencana tanggal observasi atau kunjungan Anda. Pastikan untuk memilih tanggal yang memungkinkan Anda hadir sesuai jadwal yang telah Anda atur.
+                    </p>
+                    <img id="tutorialImg" src="gambar/langkah_satu.JPG" alt="Step 1" class="img-fluid mt-3">
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Tutorial surat -->
 
-
-  <!-- Tutorial surat -->
 
 
     @include('footer1')
@@ -188,6 +210,9 @@ p{
    
 
     <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="{{ asset('galeri/js/app.js') }}"></script>
     <script src="{{ asset('galeri/js/theme.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

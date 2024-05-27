@@ -62,8 +62,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-            <a href="/" class="nav-item nav-link ">Beranda</a>
-            <a href="/about" class="nav-item nav-link active">Tentang</a>
+            <a href="/" class="nav-item nav-link active">Beranda</a>
+            <a href="/about" class="nav-item nav-link ">Tentang</a>
             <a href="koleksi" class="nav-item nav-link">Koleksi Pameran</a>
             <a href="katalogbuku" class="nav-item nav-link">Katalog Buku</a>
             <a href="surat" class="nav-item nav-link">Surat Observasi/Kunjungan</a>

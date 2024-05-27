@@ -15,13 +15,11 @@
             margin: 1.5cm;
         }
         header {
-            position: fixed;
             top: 0;
             left: 0;
             right: 0;  
             background-color: #f2f2f2;
-            height: 100px;
-            padding: 20px;
+            padding: 10px 20px;
             text-align: center;
         }
         .logo {
@@ -39,7 +37,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 120px; /* Sesuaikan dengan tinggi header */
+            margin-top: 20px; /* Sesuaikan dengan tinggi header */
         }
         th, td {
             border: 1px solid #ddd;
@@ -53,7 +51,9 @@
         .my-3 {
             margin-top: 1rem;
             margin-bottom: 1rem;
-           
+        }
+        thead {
+            display: table-header-group; /* Menampilkan header tabel pada setiap halaman */
         }
     </style>
 </head>
@@ -63,7 +63,7 @@
             <thead>
                 <tr style="border: none;">
                     <td style="border: none;">
-                        <div >
+                        <div>
                             @php
                             $img = asset('gambar/image2.png');
                             $base_64 = base64_encode($img);
@@ -81,7 +81,7 @@
                         </div>
                     </td>
                     <td style="text-align: right; border: none;">
-                        <div >
+                        <div>
                             @php
                             $img = asset('gambar/image1.png');
                             $base_64 = base64_encode($img);
@@ -95,34 +95,37 @@
             </thead>
         </table>
     </header>
-    <h1 class="my-3">Katalog Buku Museum Brawijaya Malang</h1>
     <table>
-        <tr>                                                                            
-            <th>Judul</th>
-            <th>Pengarang</th>
-            <th>Edisi</th>
-            <th>Tahun Terbit</th>
-            <th>ISSN</th>
-            <th>Penerbit</th>
-            <th>Tempat Terbit</th>
-            <th>Kualifikasi</th>
-            <th>Bahasa</th>
-            <th>Subjek</th>
-        </tr>
-        @foreach($koleksibuku as $buku)
-        <tr>
-            <td>{{ $buku->judul }}</td>
-            <td>{{ $buku->pengarang }}</td>
-            <td>{{ $buku->edisi }}</td>
-            <td>{{ $buku->tahun_terbit }}</td>
-            <td>{{ $buku->issn }}</td>
-            <td>{{ $buku->penerbit }}</td>
-            <td>{{ $buku->tempat_terbit }}</td>
-            <td>{{ $buku->kualifikasi }}</td>
-            <td>{{ $buku->bahasa }}</td>
-            <td>{{ $buku->subjek }}</td>
-        </tr>
-        @endforeach
+        <thead>
+            <tr>                                                                            
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Edisi</th>
+                <th>Tahun Terbit</th>
+                <th>ISSN</th>
+                <th>Penerbit</th>
+                <th>Tempat Terbit</th>
+                <th>Kualifikasi</th>
+                <th>Bahasa</th>
+                <th>Subjek</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($koleksibuku as $buku)
+            <tr>
+                <td>{{ $buku->judul }}</td>
+                <td>{{ $buku->pengarang }}</td>
+                <td>{{ $buku->edisi }}</td>
+                <td>{{ $buku->tahun_terbit }}</td>
+                <td>{{ $buku->issn }}</td>
+                <td>{{ $buku->penerbit }}</td>
+                <td>{{ $buku->tempat_terbit }}</td>
+                <td>{{ $buku->kualifikasi }}</td>
+                <td>{{ $buku->bahasa }}</td>
+                <td>{{ $buku->subjek }}</td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 </body>
 </html>

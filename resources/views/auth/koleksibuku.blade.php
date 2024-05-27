@@ -67,11 +67,7 @@
                                                         <th>No</th>
                                                         <th>Nomor</th>
                                                         <th>Judul</th>
-                                                        <th>Pengarang</th>
-                                                        <th>Edisi</th>
                                                         <th>Tahun Terbit</th>
-                                                        <th>ISSN</th>
-                                                        <th>Penerbit</th>
                                                         <th>Action</th>
                                                         <!-- Kolom tambahan untuk tombol action -->
                                                     </tr>
@@ -105,9 +101,14 @@
                 serverSide: true,
                 ajax: '{{ url('/dashboardd/koleksibuku/data') }}',
                 columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
+            data: null,
+            name: 'DT_RowIndex',
+            orderable: false,
+            searchable: false,
+            render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            }
+        },
                     {
                         data: 'nomor',
                         name: 'nomor'
@@ -117,24 +118,8 @@
                         name: 'judul'
                     },
                     {
-                        data: 'pengarang',
-                        name: 'pengarang'
-                    },
-                    {
-                        data: 'edisi',
-                        name: 'edisi'
-                    },
-                    {
                         data: 'tahun_terbit',
                         name: 'tahun_terbit'
-                    },
-                    {
-                        data: 'issn',
-                        name: 'issn'
-                    },
-                    {
-                        data: 'penerbit',
-                        name: 'penerbit'
                     },
                     {
                         data: 'action',
