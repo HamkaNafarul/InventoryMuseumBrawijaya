@@ -132,13 +132,13 @@
             <div class="col-md-12" align="center">
               <h1 style="color: black;">KOLEKSI PAMERAN</h1>
           </div><br>
-        <div style="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
-          <div class="search-box">
-            <form action="#" method="GET" class="mb-4" style="display: flex; align-items: center; width: 100%;">
-              <input type="text" name="query" class="form-control search-input" placeholder="Cari,Nama,Tahun...." style="flex: 1;">
-              <button type="submit" class="btn btn-primary search-button">Cari</button>
-            </form>
-          </div>
+          <div align="center" class="col-lg-12" style="padding-left:20px;padding-right: 20px;min-height: 471px;">
+            <div class="search-box">
+              <form action="#" method="GET" class="mb-4" style="display: flex; align-items: center; width: 100%;">
+                <input type="text" name="query" class="form-control search-input" placeholder="Cari,Nama,Tahun...." style="flex: 1;">
+                <button type="submit" class="btn btn-primary search-button">Cari</button>
+              </form>
+            </div>
           <div class="container-fluid">
             <div class="row">
                 <div class="card-columns">

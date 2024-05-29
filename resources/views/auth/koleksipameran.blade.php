@@ -61,8 +61,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>no_inventaris</th>
                                                                 <th>Nama Barang</th>
+                                                                <th>Nomor Inventaris</th>
                                                                 <th>Asal Ditemukan</th>
                                                                 <th>Ukuran</th>
                                                                 <th>keterangan</th>
@@ -103,12 +103,12 @@
                         searchable: false
                     },
                     {
-                        data: 'no_inventaris',
-                        name: 'no_inventaris'
-                    },
-                    {
                         data: 'nama_barang',
                         name: 'nama_barang'
+                    },
+                    {
+                        data: 'no_inventaris',
+                        name: 'no_inventaris'
                     },
                     {
                         data: 'asal_ditemukan',

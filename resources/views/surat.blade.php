@@ -39,6 +39,7 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> --}}
     <link rel="stylesheet" href="galeri\css\app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/id.js"></script>
     <link href="{{ asset('asset/css/adminlte.min.css') }}" rel="stylesheet">
 
     
@@ -155,7 +156,7 @@
     </section>
 
     <section class="content">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -180,7 +181,7 @@
                                 <tbody>
                                     @foreach($surat as $surats)
                                     <tr>
-                                        <td>{{ $surats->tanggal }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($surats->tanggal)->format('d-m-Y') }}</td>
                                         <td>{{ $surats->nama }}</td>
                                         <td>{{ $surats->asal_intansi }}</td>
                                         <td>
@@ -317,6 +318,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/id.js"></script>
 
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -340,9 +342,11 @@
     
     <script>
 $(document).ready(function () {
+
     var disabledDates = {!! json_encode($data_penuh) !!};
 
     var calendar = $('#calendar').fullCalendar({
+        locale: 'id',
         selectable: true,
         selectHelper: true,
         select: function (start, allDay) {

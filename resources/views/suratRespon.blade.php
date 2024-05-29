@@ -81,6 +81,10 @@
     display: flex;
     justify-content: center;
 }
+/* Merubah warna pesan error menjadi merah */
+label.error {
+    color: red;
+}
 
 
 
@@ -115,21 +119,8 @@
     <div class="container my-5" >
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 bg-light rounded shadow">
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form action="{{ url('/suratRespon/Form/store') }}" method="POST" role="form" enctype="multipart/form-data">
+            
+                <form action="{{ url('/suratRespon/Form/store') }}" id="form" method="POST" role="form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <div class="row">
@@ -195,6 +186,10 @@
    
       <!-- JavaScript Libraries -->
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <!-- Memuat jQuery Validation -->
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
       <script src="lib/wow/wow.min.js"></script>
       <script src="lib/easing/easing.min.js"></script>
@@ -228,6 +223,58 @@
             });
         });
     </script>
+  <script>
+    $(document).ready(function() {
+        $("#form").validate({
+            rules: {
+                nama: {
+                    required: true,
+                },
+                nomor_hp: {
+                    required: true,
+                },
+                asal_intansi: {
+                    required: true,
+                },
+                tanggal: {
+                    required: true,
+                },
+                agenda: {
+                    required: true,
+                },
+                file: {
+                    required: true,
+                }
+            },
+            messages: { // Menambahkan pesan error untuk setiap field yang tidak diisi
+                nama: {
+                    required: "Nama harus diisi",
+                },
+                nomor_hp: {
+                    required: "Nomor HP harus diisi",
+                },
+                asal_intansi: {
+                    required: "Asal Instansi harus diisi",
+                },
+                tanggal: {
+                    required: "Tanggal harus diisi",
+                },
+                agenda: {
+                    required: "Agenda harus diisi",
+                },
+                file: {
+                    required: "File harus diunggah",
+                }
+            },
+            submitHandler: function(form) {
+                // Jika semua validasi terpenuhi, submit form
+                form.submit();
+            }
+        });
+    });
+    </script>
+    
+    
     
     
 </body>

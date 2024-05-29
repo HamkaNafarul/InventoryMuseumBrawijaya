@@ -63,23 +63,13 @@
     }
    
 }
-@media (max-width: 575.98px) {
-            .card {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
 
-            .card-img-top {
-                width: 100%;
-                height: auto;
-            }
-
-            .card-body {
-                height: auto;
-            }
-        }
         /* CSS untuk membuat tampilan scroll horizontal */
-
+        .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
 
 

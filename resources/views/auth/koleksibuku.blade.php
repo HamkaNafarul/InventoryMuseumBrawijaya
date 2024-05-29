@@ -65,8 +65,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
-                                                        <th>Nomor</th>
                                                         <th>Judul</th>
+                                                        <th>Nomor</th>
                                                         <th>Tahun Terbit</th>
                                                         <th>Action</th>
                                                         <!-- Kolom tambahan untuk tombol action -->
@@ -110,12 +110,12 @@
             }
         },
                     {
-                        data: 'nomor',
-                        name: 'nomor'
-                    },
-                    {
                         data: 'judul',
                         name: 'judul'
+                    },
+                    {
+                        data: 'nomor',
+                        name: 'nomor'
                     },
                     {
                         data: 'tahun_terbit',

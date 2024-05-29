@@ -57,6 +57,8 @@
                           </div>
                     <!-- /.card-header -->
                     <!-- form start -->
+  
+
                     <form action="{{ url('dashboardd/koleksipameran/Form/store') }}" method="POST" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
@@ -65,9 +67,12 @@
                                 <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
                             </div>
                             <div class="form-group">
-                                <label for="no_inventaris">No Inventaris</label>
-                                <input type="text" class="form-control" id="no_inventaris" name="no_inventaris" placeholder="No Inventaris">
-                            </div>
+                              <label for="no_inventaris">No Inventaris</label>
+                              <input type="text" class="form-control" id="no_inventaris" name="no_inventaris" placeholder="No Inventaris">
+                              @error('no_inventaris')
+                                  <span class="text-danger">Nomor Inventaris Sudah Ada</span>
+                              @enderror
+                          </div>
                             <div class="form-group">
                                 <label for="asal_ditemukan">Asal Ditemukan</label>
                                 <input type="text" class="form-control" id="asal_ditemukan" name="asal_ditemukan" placeholder="Asal Ditemukan">
@@ -108,3 +113,5 @@
         </div>
     </div>
 </section>
+</body>
+</html>

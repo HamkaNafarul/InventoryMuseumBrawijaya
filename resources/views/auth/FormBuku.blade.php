@@ -60,56 +60,59 @@
                     <form action="{{ url('dashboardd/koleksibuku/FormBuku/store') }}" method="POST" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
+                          <div class="form-group">
+                            <label for="nomor">Nomor</label>
+                            <input type="text" class="form-control" id="nomor" name="nomor" placeholder="nomor">
+                            @error('nomor')
+                                <span class="text-danger">Nomor Sudah Ada</span>
+                            @enderror
+                        </div>
                             <div class="form-group">
-                                <label for="nama_barang">Nomor</label>
-                                <input type="text" class="form-control" id="nomor" name="nomor" placeholder="nomor">
-                            </div>
-                            <div class="form-group">
-                                <label for="no_inventaris">Judul</label>
+                                <label for="judul">Judul</label>
                                 <input type="text" class="form-control" id="judul" name="judul" placeholder="judul">
                             </div>
                             <div class="form-group">
-                                <label for="asal_ditemukan">Pengarang</label>
+                                <label for="pengarang">Pengarang</label>
                                 <input type="text" class="form-control" id="pengarang" name="pengarang" placeholder="pengarang">
                             </div>
                             <div class="form-group">
-                                <label for="cara_didapat">Edisi</label>
+                                <label for="edisi">Edisi</label>
                                 <input type="text" class="form-control" id="edisi" name="edisi" placeholder="edisi">
                             </div>
                             <div class="form-group">
-                                <label for="deskripsi">Tahun Terbit</label>
+                                <label for="tahun_terbit">Tahun Terbit</label>
                                 <input type="text" class="form-control" id="tahun_terbit" name="tahun_terbit" placeholder="tahun_terbit">
                               </div>
                             <div class="form-group">
-                                <label for="keterangan">ISSN</label>
+                                <label for="issn">ISSN</label>
                                 <input type="text" class="form-control" id="issn" name="issn" placeholder="issn">
                             </div>
                             <div class="form-group">
-                                <label for="ukuran">Penerbit</label>
+                                <label for="penerbit">Penerbit</label>
                                 <input type="text" class="form-control" id="penerbit" name="penerbit" placeholder="penerbit">
                             </div>
                             <div class="form-group">
-                                <label for="tahun_abad_masa">Tempat Terbit</label>
+                                <label for="tempat_terbit">Tempat Terbit</label>
                                 <input type="text" class="form-control" id="tempat_terbit" name="tempat_terbit" placeholder="tempat_terbit">
                             </div>
                             <div class="form-group">
-                              <label for="tahun_abad_masa">Kualifikasi</label>
+                              <label for="kualifikasi">Kualifikasi</label>
                               <input type="text" class="form-control" id="kualifikasi" name="kualifikasi" placeholder="kualifikasi">
                           </div>
                           <div class="form-group">
-                            <label for="tahun_abad_masa">Bahasa</label>
+                            <label for="bahasa">Bahasa</label>
                             <input type="text" class="form-control" id="bahasa" name="bahasa" placeholder="bahasa">
                         </div>
                         <div class="form-group">
-                          <label for="tahun_abad_masa">Abstrak</label>
+                          <label for="abstrak">Abstrak</label>
                           <textarea class="form-control" id="abstrak" name="abstrak" placeholder="abstrak"></textarea>
                         </div>
                     <div class="form-group">
-                      <label for="tahun_abad_masa">Subjek</label>
+                      <label for="subjek">Subjek</label>
                       <input type="text" class="form-control" id="subjek" name="subjek" placeholder="subjek">
                   </div>
                             <div class="form-group">
-                                <label for="gambar">Sampul</label>
+                                <label for="sampul">Sampul</label>
                                 <input type="file" class="form-control-file" id="sampul" name="sampul">
                             </div>
                         </div>

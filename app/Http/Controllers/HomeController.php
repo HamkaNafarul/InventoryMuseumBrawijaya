@@ -64,6 +64,7 @@ class HomeController extends Controller
     $similarCollections = koleksibuku::where('bahasa', $koleksibuku->bahasa)
                                 ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
                                 ->limit(5) // batasi jumlah koleksi yang ditampilkan
+                                ->inRandomOrder() // mengacak urutan koleksi
                                 ->get();
 
     return view('detailkoleksibuku', compact('koleksibuku', 'similarCollections'));
@@ -77,6 +78,7 @@ class HomeController extends Controller
     $similarCollections = Koleksi::where('tahun_abad_masa', $koleksi->tahun_abad_masa)
                                 ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
                                 ->limit(3) // batasi jumlah koleksi yang ditampilkan
+                                ->inRandomOrder() // mengacak urutan koleksi
                                 ->get();
 
     return view('detailkoleksi', compact('koleksi', 'similarCollections'));

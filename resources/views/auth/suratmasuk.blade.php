@@ -72,10 +72,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nomor HP</th>
+                                                <th>Tanggal</th>
                                                 <th>Nama</th>
                                                 <th>Asal Intansi</th>
-                                                <th>Tanggal</th>
+                                                <th>Nomor HP</th>
                                                 <th>Agenda</th>
                                                 <th>File</th>
                                                 <th>Action</th>
@@ -101,6 +101,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="{{ asset('asset/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('asset/js/demo.js') }}"></script>
     <script>
@@ -140,10 +141,13 @@
                 return meta.row + meta.settings._iDisplayStart + 1;
             }
         },
-                    {
-                        data: 'nomor_hp',
-                        name: 'nomor_hp'
-                    },
+        {
+            data: 'tanggal',
+            name: 'tanggal',
+            render: function (data, type, row) {
+                return moment(data).format('DD-MM-YYYY');
+            }
+        },
                     {
                         data: 'nama',
                         name: 'nama'
@@ -153,8 +157,8 @@
                         name: 'asal_intansi'
                     },
                     {
-                        data: 'tanggal',
-                        name: 'tanggal'
+                        data: 'nomor_hp',
+                        name: 'nomor_hp'
                     },
                     {
                         data: 'agenda',
