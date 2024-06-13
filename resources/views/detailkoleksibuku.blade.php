@@ -82,9 +82,9 @@
         <img src="{{ asset('gambar/image1.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <button type="button" class="navbar-toggler" style="color: white;" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon" style="color: white;"></span>
+    </button> 
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
             <a href="/" class="nav-item nav-link ">Beranda</a>
@@ -111,15 +111,15 @@
                             <div class="card-body">
                                 <p><strong>nomor:</strong> {{ $koleksibuku->nomor }}</p>
                                 <p><strong>pengarang:</strong> {{ $koleksibuku->pengarang }}</p>
-                                <p><strong>edisi:</strong> {{ $koleksibuku->edisi }}</p>
+                                {{-- <p><strong>edisi:</strong> {{ $koleksibuku->edisi }}</p> --}}
 								<p><strong>tahun_terbit:</strong> {{ $koleksibuku->tahun_terbit }}</p>
-                                <p><strong>issn:</strong> {{ $koleksibuku->issn }}</p>
-                                <p><strong>penerbit:</strong> {{ $koleksibuku->penerbit }}</p>
-                                <p><strong>tempat_terbit:</strong> {{ $koleksibuku->tempat_terbit }}</p>
-                                <p><strong>kualifikasi:</strong> {{ $koleksibuku->kualifikasi }}</p>
+                                {{-- <p><strong>issn:</strong> {{ $koleksibuku->issn }}</p> --}}
+                                {{-- <p><strong>penerbit:</strong> {{ $koleksibuku->penerbit }}</p> --}}
+                                {{-- <p><strong>tempat_terbit:</strong> {{ $koleksibuku->tempat_terbit }}</p> --}}
+                                {{-- <p><strong>kualifikasi:</strong> {{ $koleksibuku->kualifikasi }}</p> --}}
                                 <p><strong>bahasa:</strong> {{ $koleksibuku->bahasa }}</p>
                                 <p><strong>abstrak:</strong> {{ $koleksibuku->abstrak }}</p>
-                                <p><strong>subjek:</strong> {{ $koleksibuku->subjek }}</p>
+                                {{-- <p><strong>subjek:</strong> {{ $koleksibuku->subjek }}</p> --}}
                             </div>
                         </div>
                     </div>

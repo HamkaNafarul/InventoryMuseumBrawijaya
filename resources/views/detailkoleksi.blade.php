@@ -150,9 +150,9 @@
             <img src="{{ asset('gambar/image1.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
             <img src="{{ asset('gambar/image2.png') }}" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <button type="button" class="navbar-toggler" style="color: white;" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon" style="color: white;"></span>
+        </button> 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto">
                 <a href="/" class="nav-item nav-link ">Beranda</a>
@@ -196,7 +196,7 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                             @foreach($similarCollections as $collection)
                             <div class="col mb-4">
-                                <div class="card h-100 d-flex flex-column">
+                                <div class="card shadow h-100 d-flex flex-column">
                                     <img src="{{ asset('storage/' . $collection->gambar) }}" class="card-img-top"
                                         alt="Collection Image">
                                     <div class="card-body d-flex flex-column">
@@ -214,6 +214,7 @@
                     </div>
                 </div>
             </div>
+        
         </section>
 
 

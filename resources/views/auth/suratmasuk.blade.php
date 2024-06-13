@@ -161,8 +161,8 @@
                         name: 'nomor_hp'
                     },
                     {
-                        data: 'agenda',
-                        name: 'agenda'
+                        data: 'nama_kategori',
+                        name: 'nama_kategori'
                     },
                     {
                         data: 'file',

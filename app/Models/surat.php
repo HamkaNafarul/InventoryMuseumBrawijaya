@@ -17,13 +17,16 @@ class surat extends Model
         'nama',
         'asal_intansi',
         'tanggal',
-        'agenda',
         'file',
         'status',
+        'kategori_surat_id',
     ];
 
     protected $casts = [
         'file' => 'string',
     ];
-
+    public function kategoriSurat()
+    {
+        return $this->belongsTo(kategori_surat::class, 'kategori_surat_id');
+    }
 }

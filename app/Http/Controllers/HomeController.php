@@ -6,6 +6,7 @@ use App\Models\Koleksi;
 use App\Models\surat;
 use App\Models\tanggal;
 use App\Models\koleksibuku;
+use App\Models\kategori_surat;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -54,7 +55,8 @@ class HomeController extends Controller
     // dd($surat);
     $data_penuh = Tanggal::pluck('tanggal_penuh')->toArray();
     // dd($data_penuh);
-    return view('surat', compact('surat', 'data_penuh'));
+    $kategori_surat=kategori_surat::all();
+    return view('surat', compact('surat', 'data_penuh','kategori_surat'));
 }
 
     public function detailkoleksibuku($id)
@@ -77,7 +79,7 @@ class HomeController extends Controller
     // Mengambil koleksi yang mirip berdasarkan tahun_abad_masa
     $similarCollections = Koleksi::where('tahun_abad_masa', $koleksi->tahun_abad_masa)
                                 ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
-                                ->limit(3) // batasi jumlah koleksi yang ditampilkan
+                                ->limit(3) // batasi jumlah koleksi yang ditampilkanr
                                 ->inRandomOrder() // mengacak urutan koleksi
                                 ->get();
 
@@ -96,7 +98,9 @@ class HomeController extends Controller
     $surat = surat::where('tanggal', '>=', $tanggalsekarang)->get();
     // dd($surat);
     $data_penuh = Tanggal::pluck('tanggal_penuh')->toArray();
-        return view('suratRespon', compact('data_penuh'));
+    $kategori_surat=kategori_surat::all();
+
+    return view('suratRespon', compact('data_penuh','kategori_surat'));
     }
     public function store(Request $request)
     {
@@ -106,7 +110,7 @@ class HomeController extends Controller
             'nama' => 'required',
             'asal_intansi' => 'required',
             'tanggal' => 'required',
-            'agenda' => 'required',
+            'kategori_surat_id' => 'required',
             'file' => 'required|mimes:pdf',
         ]);
 

@@ -118,9 +118,9 @@
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <button type="button" class="navbar-toggler" style="color: white;" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon" style="color: white;"></span>
+    </button> 
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
             <a href="/" class="nav-item nav-link ">Beranda</a>
@@ -260,9 +260,14 @@
                         <div class="form-group">
                             <div class="d-flex">
                                 <div class="flex-fill mr-2">
-                                    <label for="agenda">Agenda:</label>
-                                    <input type="text" class="form-control" id="agenda" name="agenda" placeholder="Agenda">
-                                    <span id="agenda-error" class="text-danger"></span>
+                                    <label for="kategori_surat_id">Kategori Surat:</label>
+                                    <select class="form-control" id="kategori_surat_id" name="kategori_surat_id">
+                                        <option value="" disabled selected>Pilih Kategori</option>
+                                        @foreach($kategori_surat as $kategori)
+                                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori_surat }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="kategori_surat-error" class="text-danger"></span>
                                 </div>
                                 <div class="flex-fill">
                                     <label for="file">File:</label>
@@ -396,7 +401,7 @@ $('#submitForm').click(function () {
     var nama = $('#nama').val();
     var nomor_hp = $('#nomor_hp').val();
     var asal_intansi = $('#asal_intansi').val();
-    var agenda = $('#agenda').val();
+    var kategori_surat_id = $('#kategori_surat_id').val();
     var file = $('#file')[0].files[0];
     var captcha = $('#captcha').val();
     var form_data = new FormData();
@@ -404,13 +409,13 @@ $('#submitForm').click(function () {
     form_data.append('nama', nama);
     form_data.append('nomor_hp', nomor_hp);
     form_data.append('asal_intansi', asal_intansi);
-    form_data.append('agenda', agenda);
+    form_data.append('kategori_surat_id', kategori_surat_id);
     form_data.append('file', file);
     form_data.append('tanggal', $('#tanggal').val());
     form_data.append('captcha', captcha);
 
 
-    if (nama && nomor_hp && asal_intansi && agenda && file && captcha) {
+    if (nama && nomor_hp && asal_intansi && kategori_surat_id && file && captcha) {
         $.ajax({
             url: "{{ url('surat/Form/store') }}",
             type: "POST",

@@ -105,9 +105,9 @@
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <button type="button" class="navbar-toggler" style="color: white;" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon" style="color: white;"></span>
+  </button> 
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
             <a href="/" class="nav-item nav-link ">Beranda</a>

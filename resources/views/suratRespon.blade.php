@@ -98,9 +98,9 @@ label.error {
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
     </a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <button type="button" class="navbar-toggler" style="color: white;" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon" style="color: white;"></span>
+    </button> 
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto"> <!-- Menggunakan class mr-auto di sini -->
             <a href="/" class="nav-item nav-link ">Beranda</a>
@@ -152,9 +152,14 @@ label.error {
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="agenda">Agenda:</label>
-                                <input type="text" class="form-control" id="agenda" name="agenda" placeholder="Agenda" value="{{ old('agenda') }}">
-                                <span id="agenda-error" class="text-danger"></span>
+                                <label for="kategori_surat_id">Kategori Surat:</label>
+                                <select class="form-control" id="kategori_surat_id" name="kategori_surat_id">
+                                    <option value="" disabled selected>Pilih Kategori</option>
+                                    @foreach($kategori_surat as $kategori)
+                                        <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori_surat }}</option>
+                                    @endforeach
+                                </select>
+                                <span id="kategori_surat-error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="file">File:</label>
@@ -239,7 +244,7 @@ label.error {
                 tanggal: {
                     required: true,
                 },
-                agenda: {
+                kategori_surat_id: {
                     required: true,
                 },
                 file: {
@@ -259,7 +264,7 @@ label.error {
                 tanggal: {
                     required: "Tanggal harus diisi",
                 },
-                agenda: {
+                kategori_surat_id: {
                     required: "Agenda harus diisi",
                 },
                 file: {

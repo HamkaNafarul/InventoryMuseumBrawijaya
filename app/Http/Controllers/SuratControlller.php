@@ -18,7 +18,7 @@ class SuratControlller extends Controller
             'nama' => 'required',
             'asal_intansi' => 'required',
             'tanggal' => 'required',
-            'agenda' => 'required',
+            'kategori_surat_id' => 'required',
             'file' => 'required|mimes:pdf',
         ]);
 
@@ -49,13 +49,16 @@ class SuratControlller extends Controller
     }
     public function json()
 {
-    $surat = surat::select(['id','nomor_hp','nama','asal_intansi','tanggal','agenda','file','status']);
+    $surat = Surat::with('kategoriSurat')->select(['id','nomor_hp','nama','asal_intansi','tanggal','file','status','kategori_surat_id']);
     $index = 1;
 
     if (request()->bulan == "" || request()->tahun == "") {
         return DataTables::of($surat)
             ->addColumn('DT_RowIndex', function ($data) use (&$index) {
                 return $index++;
+            })
+            ->addColumn('nama_kategori', function ($row) {
+                return $row->kategoriSurat->nama_kategori_surat;
             })
             ->addColumn('action', function ($row) {
                 $deleteUrl = url('/dashboardd/suratmasuk/FormDeleteSurat/delete/' . $row->id);
@@ -78,6 +81,9 @@ class SuratControlller extends Controller
     return DataTables::of($surat)
         ->addColumn('DT_RowIndex', function ($data) use (&$index) {
             return $index++;
+        })
+        ->addColumn('nama_kategori', function ($row) {
+            return $row->kategoriSurat->nama_kategori_surat;
         })
         ->addColumn('action', function ($row) {
             $deleteUrl = url('/dashboardd/suratmasuk/FormDeleteSurat/delete/' . $row->id);

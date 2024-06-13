@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('nama');
             $table->string('asal_intansi');
             $table->date('tanggal');
-            $table->string('agenda');
             $table->tinyInteger('status')->comment('0:menunggu,1:diterima');
             $table->string('file'); // Kolom gambar
+            $table->unsignedBigInteger('kategori_surat_id');
+            $table->foreign('kategori_surat_id')->references('id')->on('kategori_surat');
             $table->timestamps();
 
         });

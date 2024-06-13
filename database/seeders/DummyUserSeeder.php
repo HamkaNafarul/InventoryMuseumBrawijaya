@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DummyUserSeeder extends Seeder
@@ -27,5 +28,9 @@ class DummyUserSeeder extends Seeder
          User::create($val);
     }
 
+    DB::table('kategori_surat')->insert([
+        ['nama_kategori_surat' => 'Observasi'],
+        ['nama_kategori_surat' => 'Kunjungan'],
+    ]);
     }
 }
