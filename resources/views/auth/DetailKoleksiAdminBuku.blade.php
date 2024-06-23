@@ -50,15 +50,14 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-6 col-12">
-                                                <img src="{{ asset('storage/' . $koleksibuku['sampul']) }}"
-                                                    class="product-image img-fluid rounded" style="height: 550px;"
-                                                    alt="Product Image">
+                                                <img src="{{ asset('storage/' . $koleksibuku['sampul']) }}" class="product-image img-fluid rounded" style="height: 550px;"alt="Product Image">
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="card">
                                                     <div class="card-header">{{ $koleksibuku->judul }}</div>
                                                     <div class="card-body">
-                                                        <p><strong>nomor:</strong> {{ $koleksibuku->nomor }}</p>
+                                                        <p><strong>nomor inventaris:</strong> {{ $koleksibuku->nomorkoleksibuku->no_inventaris_buku }}</p>
+                                                        <p><strong>nomor registrasi:</strong> {{ $koleksibuku->nomorkoleksibuku->no_registrasi_buku }}</p>
                                                         <p><strong>pengarang:</strong> {{ $koleksibuku->pengarang }}</p>
                                                         <p><strong>edisi:</strong> {{ $koleksibuku->edisi }}</p>
                                                         <p><strong>tahun_terbit:</strong>

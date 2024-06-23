@@ -99,6 +99,7 @@
         <thead>
             <tr>                                                                            
                 <th>Nomor Inventaris</th>
+                <th>Nomor Registrasi</th>
                 <th>Nama Barang</th>
                 <th>Asal Ditemukan</th>
                 <th>Cara Didapat</th>
@@ -111,7 +112,8 @@
         <tbody>
             @foreach($koleksi as $koleksi)
             <tr>
-                <td>{{ $koleksi->no_inventaris }}</td>
+                <td>{{ $koleksi->nomorKoleksi->no_inventaris }}</td>
+                <td>{{ $koleksi->nomorKoleksi->no_registrasi }}</td>
                 <td>{{ $koleksi->nama_barang }}</td>
                 <td>{{ $koleksi->asal_ditemukan }}</td>
                 <td>{{ $koleksi->cara_didapat }}</td>

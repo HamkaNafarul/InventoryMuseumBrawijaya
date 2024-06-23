@@ -56,6 +56,7 @@
                                                             <a href="#" id="cetakPDF" class="btn btn-info btn-block">Cetak PDF</a>
                                                             </div>
                                                         </div>
+                                                </div>
                                                 <div class="card-body table-responsive p-0">
                                                     <table class="table table-hover text-nowrap" id="koleksi_tabel">
                                                         <thead>

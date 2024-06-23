@@ -40,19 +40,27 @@ class LoginController extends Controller
         return view('auth/suratmasuk',compact('surats','suratcount'));
     }
     public function koleksipameran(Request $request)
-    {   
-        //koleksi pameran
-        $search = $request->get('search');
-    
-        $koleksi = Koleksi::where('asal_ditemukan', 'like', "%$search%")
-        ->orWhere('no_inventaris', 'like', "%$search%")
-        ->orWhere('nama_barang', 'like', "%$search%")
-        ->get();
-        // dd($koleksi);
-        $suratcount = surat::where('status', 0)->count();
-    
-    return view('auth/koleksipameran', compact('koleksi', 'search','suratcount'));
+{
+    $search = $request->get('search');
+
+    $query = Koleksi::with('nomorKoleksi');
+
+    if (!empty($search)) {
+        $query->where(function ($q) use ($search) {
+            $q->where('asal_ditemukan', 'like', "%$search%")
+              ->orWhere('nama_barang', 'like', "%$search%")
+              ->orWhereHas('nomorKoleksi', function ($q) use ($search) {
+                  $q->where('no_inventaris', 'like', "%$search%");
+              });
+        });
     }
+
+    $koleksi = $query->get();
+    $suratcount = surat::where('status', 0)->count();
+
+    return view('auth.koleksipameran', compact('koleksi', 'search', 'suratcount'));
+}
+
     function login_proses(Request $request)
     {
         $request->validate([

@@ -14,7 +14,6 @@ class Koleksi extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'no_inventaris',
         'nama_barang',
         'asal_ditemukan',
         'cara_didapat',
@@ -28,5 +27,10 @@ class Koleksi extends Model
     protected $casts = [
         'gambar' => 'string',
     ];
+
+    public function nomorKoleksi()
+    {
+        return $this->hasOne(nomor_koleksi::class);
+    }
 }
 

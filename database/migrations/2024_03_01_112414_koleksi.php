@@ -17,12 +17,11 @@ return new class extends Migration
         {
             Schema::create('koleksi', function (Blueprint $table) {
                 $table->id(); 
-                $table->string('no_inventaris')->unique();
                 $table->string('nama_barang');
                 $table->string('asal_ditemukan')->nullable();
                 $table->string('cara_didapat')->nullable();
-                $table->text('deskripsi')->nullable();
-                $table->text('keterangan')->nullable();
+                $table->longText('deskripsi')->nullable();
+                $table->longText('keterangan')->nullable();
                 $table->string('ukuran')->nullable();
                 $table->string('tahun_abad_masa')->nullable();
                 $table->string('gambar')->nullable(); // Kolom gambar

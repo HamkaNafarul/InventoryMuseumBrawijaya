@@ -21,7 +21,7 @@ class TanggalPenuhController extends Controller
 
         tanggal::create($validatedData);
 
-        return redirect('dashboardd/suratmasuk')->with('success', 'Data berhasil disimpan');
+        return redirect('dashboardd/suratpenuh')->with('success', 'Data berhasil disimpan');
     }
     public function json()
     {

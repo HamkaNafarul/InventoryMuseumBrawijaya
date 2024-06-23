@@ -51,13 +51,14 @@
                       <div class="bg-light rounded shadow">
                       <div class="row">
                           <div class="col-md-6 col-12">
-                              <img src="{{ asset('storage/' . $koleksi['gambar']) }}" class="product-image" alt="Product Image">
-                          </div>
+                            <img src="{{ asset('storage/' . $koleksi['gambar']) }}" class="product-image img-fluid rounded" style="height: 550px;"alt="Product Image">
+                        </div>
                           <div class="col-md-6 col-12">
                               <div class="card">
                                   <div class="card-header">{{ $koleksi->nama_barang }}</div>
                                   <div class="card-body">
-                                    <p><strong>Nomor Inventaris:</strong> {{ $koleksi->no_inventaris }}</p>
+                                    <p><strong>Nomor Inventaris:</strong> {{ $koleksi->nomorKoleksi->no_inventaris }}</p>
+                                    <p><strong>Nomor Registrasi:</strong> {{ $koleksi->nomorKoleksi->no_registrasi }}</p>
                                       <p><strong>Tahun/Abad/Masa:</strong> {{ $koleksi->tahun_abad_masa }}</p>
                                       <p><strong>Cara Didapat:</strong> {{ $koleksi->cara_didapat }}</p>
                                       <p><strong>Asal Ditemukan:</strong> {{ $koleksi->asal_ditemukan }}</p>

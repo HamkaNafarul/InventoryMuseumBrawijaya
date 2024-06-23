@@ -62,9 +62,13 @@
                       @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="nama_barang">Nomor</label>
-                                <input type="text" class="form-control" id="nomor" name="nomor" placeholder="nomor"value="{{ $koleksibuku->nomor }}">
+                                <label for="nama_barang">Nomor Inventaris</label>
+                                <input type="text" class="form-control" id="no_inventaris_buku" name="no_inventaris_buku" placeholder="nomor"value="{{ $koleksibuku->nomorkoleksibuku->no_inventaris_buku }}">
                             </div>
+                            <div class="form-group">
+                              <label for="nama_barang">Nomor Inventaris</label>
+                              <input type="text" class="form-control" id="no_registrasi_buku" name="no_registrasi_buku" placeholder="nomor"value="{{ $koleksibuku->nomorkoleksibuku->no_registrasi_buku }}">
+                          </div>
                             <div class="form-group">
                                 <label for="no_inventaris">Judul</label>
                                 <input type="text" class="form-control" id="judul" name="judul" placeholder="judul"value="{{ $koleksibuku->judul }}">
@@ -103,7 +107,8 @@
                         </div>
                         <div class="form-group">
                           <label for="tahun_abad_masa">Abstrak</label>
-                          <textarea class="form-control" id="abstrak" name="abstrak" placeholder="abstrak"value="{{ $koleksibuku['abstrak'] }}"></textarea>
+                          {{-- @dd($koleksibuku->abstrak) --}}
+                          <textarea class="form-control" id="abstrak" name="abstrak" placeholder="abstrak"value="">{{ $koleksibuku->abstrak }}</textarea>
                         </div>
                     <div class="form-group">
                       <label for="tahun_abad_masa">Subjek</label>

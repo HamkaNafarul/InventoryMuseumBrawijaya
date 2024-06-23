@@ -14,7 +14,6 @@ class koleksibuku extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nomor',
         'judul',
         'pengarang',
         'edisi',
@@ -32,4 +31,8 @@ class koleksibuku extends Model
     protected $casts = [
         'sampul' => 'string',
     ];
+    public function nomorkoleksibuku()
+    {
+        return $this->hasOne(nomor_koleksiBuku::class);
+    }
 }

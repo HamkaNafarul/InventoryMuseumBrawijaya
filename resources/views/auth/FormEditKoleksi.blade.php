@@ -65,9 +65,19 @@
                                 <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang"value="{{ $koleksi->nama_barang }}">
                             </div>
                             <div class="form-group">
-                                <label for="no_inventaris">No Inventaris</label>
-                                <input type="text" class="form-control" id="no_inventaris" name="no_inventaris" placeholder="No Inventaris"value="{{ $koleksi->no_inventaris }}">
+                              <label for="no_inventaris">No Inventaris</label>
+                              <input type="text" class="form-control @error('no_inventaris') is-invalid @enderror" id="no_inventaris" name="no_inventaris" placeholder="No Inventaris" value="{{ $koleksi->nomorKoleksi->no_inventaris }}">
                             </div>
+                              @error('no_inventaris')
+                                  <span class="text-danger">{{ $message }}</span>
+                              @enderror
+                          <div class="form-group">
+                            <label for="no_registrasi">No Registrasi</label>
+                            <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" id="no_registrasi" name="no_registrasi" placeholder="No Registrasi" value="{{ $koleksi->nomorKoleksi->no_inventaris }}">
+                            @error('no_registrasi')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                             <div class="form-group">
                                 <label for="asal_ditemukan">Asal Ditemukan</label>
                                 <input type="text" class="form-control" id="asal_ditemukan" name="asal_ditemukan" placeholder="Asal Ditemukan"value="{{ $koleksi->asal_ditemukan }}">

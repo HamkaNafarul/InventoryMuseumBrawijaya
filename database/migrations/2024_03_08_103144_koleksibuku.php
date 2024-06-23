@@ -17,17 +17,16 @@ return new class extends Migration
         {
             Schema::create('koleksibuku', function (Blueprint $table) {
                 $table->id(); 
-                $table->string('nomor')->unique();
                 $table->string('judul');
                 $table->string('pengarang')->nullable();
                 $table->string('edisi')->nullable();
-                $table->text('tahun_terbit')->nullable();
-                $table->text('issn')->nullable();
+                $table->string('tahun_terbit')->nullable();
+                $table->string('issn')->nullable();
                 $table->string('penerbit')->nullable();
                 $table->string('tempat_terbit')->nullable();
                 $table->string('kualifikasi')->nullable();
                 $table->string('bahasa')->nullable();
-                $table->string('abstrak')->nullable();
+                $table->longText('abstrak')->nullable();
                 $table->string('subjek')->nullable();
                 $table->string('sampul')->nullable(); // Kolom gambar
                 $table->timestamps();

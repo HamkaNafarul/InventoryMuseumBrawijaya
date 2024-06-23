@@ -113,9 +113,10 @@
                         data: 'judul',
                         name: 'judul'
                     },
-                    {
-                        data: 'nomor',
-                        name: 'nomor'
+                    
+                        {
+                        data: 'no_inventaris',
+                        name: 'no_inventaris'
                     },
                     {
                         data: 'tahun_terbit',

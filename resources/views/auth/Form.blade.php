@@ -68,10 +68,11 @@
                             </div>
                             <div class="form-group">
                               <label for="no_inventaris">No Inventaris</label>
-                              <input type="text" class="form-control" id="no_inventaris" name="no_inventaris" placeholder="No Inventaris">
-                              @error('no_inventaris')
-                                  <span class="text-danger">Nomor Inventaris Sudah Ada</span>
-                              @enderror
+                              <input type="text" class="form-control @error('no_inventaris') is-invalid @enderror" id="no_inventaris" name="no_inventaris" placeholder="No Inventaris">
+                          </div>
+                          <div class="form-group">
+                              <label for="no_registrasi">No Registrasi</label>
+                              <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" id="no_registrasi" name="no_registrasi" placeholder="No Registrasi">
                           </div>
                             <div class="form-group">
                                 <label for="asal_ditemukan">Asal Ditemukan</label>

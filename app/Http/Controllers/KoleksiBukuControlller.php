@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\koleksibuku;
+use App\Models\nomor_koleksiBuku;
 use Illuminate\Http\Request;
 use yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Storage;
@@ -18,18 +19,14 @@ public function pdf(Request $request)
     $koleksiBuku = KoleksiBuku::where('judul', 'like', "%$search%")
                                 ->orWhere('pengarang', 'like', "%$search%")
                                 ->orWhere('penerbit', 'like', "%$search%")
+                                ->join('nomor_koleksibukus', 'koleksi.id', '=', 'nomor_koleksibukusbuku.koleksi_id')
+                                ->select('koleksi.*', 'nomor_koleksibukus.no_inventaris_buku')
                                 ->get();
 
     $pdf = PDF::loadView('auth.PdfView_Buku', compact('koleksiBuku','search'));
     return $pdf->stream('laporan_pencarian.pdf');
 }
 
-    // public function pdf()
-    // {
-    //     $koleksibuku = koleksibuku::all();
-    //     $pdf=Pdf::loadView('auth.PdfView_Buku', compact('koleksibuku'));
-    //     return $pdf->stream();
-    // }
 
     public function create()
     {
@@ -38,7 +35,8 @@ public function pdf(Request $request)
     public function store (Request $request)
     {
         $validatedData = $request->validate([
-            'nomor' => 'required|unique:koleksibuku',
+            'no_inventaris_buku' => 'required|unique:nomor_koleksibukus,no_inventaris_buku',
+            'no_registrasi_buku' => 'required|unique:nomor_koleksibukus,no_registrasi_buku',
             'judul' => 'required',
             'pengarang' => 'nullable',
             'edisi' => 'nullable',
@@ -57,21 +55,25 @@ public function pdf(Request $request)
             $imagePath = $request->file('sampul')->store('uploads', 'public');
             $validatedData['sampul'] = $imagePath;
         }
-
-
-        koleksibuku::create($validatedData);
+        $koleksibuku = koleksibuku::create($validatedData);
+        nomor_koleksiBuku ::create([
+            'no_inventaris_buku' => $validatedData['no_inventaris_buku'],
+            'no_registrasi_buku' => $validatedData['no_registrasi_buku'],
+            'koleksibuku_id' => $koleksibuku->id,
+        ]);
 
         return redirect('dashboardd/koleksibuku')->with('success', 'Data berhasil disimpan');
     }
     public function edit(string $id)
     {
-        $koleksibuku = koleksibuku::find($id);
+        $koleksibuku = koleksibuku::with('nomorkoleksibuku')->find($id);
         return view('auth.FormBukuEdit',compact('koleksibuku'));
     }
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nomor' => 'required|unique:koleksibuku,nomor,'.$id,
+           'no_inventaris_buku' => 'required|unique:nomor_koleksibukus,no_inventaris_buku,' . $id,
+            'no_registrasi_buku' => 'required|unique:nomor_koleksibukus,no_registrasi_buku,' . $id,
             'judul' => 'required',
             'pengarang' => 'nullable',
             'edisi' => 'nullable',
@@ -87,6 +89,8 @@ public function pdf(Request $request)
         ]);
     
         $koleksibuku = KoleksiBuku::findOrFail($id);
+        $nomorKoleksi = nomor_koleksibuku::where('koleksibuku_id', $id)->first();
+
 
         // Jika tidak ada sampul baru yang diunggah, gunakan sampul lama
         if (!$request->hasFile('sampul')) {
@@ -100,6 +104,10 @@ public function pdf(Request $request)
             $validatedData['sampul'] = $imagePath;
         }    
         $koleksibuku->update($validatedData);
+        $nomorKoleksi->update([
+            'no_inventaris_buku' => $validatedData['no_inventaris_buku'],
+            'no_registrasi_buku' => $validatedData['no_registrasi_buku'],
+        ]);
 
     return redirect('dashboardd/koleksibuku')->with('success', 'Data berhasil diperbarui');
     }
@@ -107,7 +115,8 @@ public function pdf(Request $request)
     public function destroy($id)
     {
     $koleksibuku = koleksibuku::findOrFail($id);
-    
+    $nomorKoleksi = nomor_koleksibuku::where('koleksibuku_id', $id)->first();
+
     // Hapus gambar jika ada
     if ($koleksibuku->sampul) {
         Storage::disk('public')->delete($koleksibuku->sampul);
@@ -119,14 +128,13 @@ public function pdf(Request $request)
     }
     public function DetailKoleksiAdminBuku($id)
 {
-    $koleksibuku = koleksibuku::findOrFail($id);
+    $koleksibuku = koleksibuku::with('nomorkoleksibuku')->findOrFail($id);
     return view('auth.DetailKoleksiAdminBuku',compact('koleksibuku'));
 }
-
-    public function json(Request $request)
+public function json(Request $request)
 {
     $search = $request->input('search.value');
-    $koleksibuku = koleksibuku::select(['id', 'nomor', 'judul', 'pengarang', 'edisi', 'tahun_terbit', 'issn', 'penerbit']);
+    $koleksibuku = Koleksibuku::with('nomorkoleksibuku')->select(['id', 'judul', 'pengarang', 'edisi', 'tahun_terbit', 'issn', 'penerbit']);
 
     if (!empty($search)) {
         $koleksibuku->where('judul', 'like', '%' . $search . '%')
@@ -140,6 +148,9 @@ public function pdf(Request $request)
         ->addColumn('DT_RowIndex', function ($data) use (&$index) {
             return $index++;
         })
+        ->addColumn('no_inventaris', function ($row) {
+            return $row->nomorkoleksibuku->no_inventaris_buku;
+        })
         ->addColumn('action', function ($row) {
             $editUrl = url('dashboardd/koleksibuku/FormBukuEdit/edit/' . $row->id);
             $deleteUrl = url('/dashboardd/koleksibuku/FormDeleteKoleksiBuku/delete/' . $row->id);
@@ -150,11 +161,12 @@ public function pdf(Request $request)
         ->toJson();
 }
 
+
 public function printPDF(Request $request)
 {
     $search = $request->input('search');
     // dd($search);
-    $koleksibuku = koleksibuku::select(['id', 'nomor', 'judul', 'pengarang', 'edisi', 'tahun_terbit', 'issn', 'penerbit','tempat_terbit','kualifikasi','bahasa','subjek',]);
+    $koleksibuku = koleksibuku::with('nomorkoleksibuku')->select(['id', 'judul', 'pengarang', 'edisi', 'tahun_terbit', 'issn', 'penerbit','tempat_terbit','kualifikasi','bahasa','subjek','abstrak']);
 
     if (!empty($search)) {
         $koleksibuku->where('judul', 'like', '%' . $search . '%') ->orWhere('pengarang', 'like', "%$search%")
