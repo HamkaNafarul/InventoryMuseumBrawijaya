@@ -43,6 +43,27 @@
     body {
         padding-top: 0;
     }
+    .about-img img {
+    width: 100%; /* Pastikan gambar menggunakan lebar penuh dari container */
+}
+
+@media (max-width: 992px) {
+    .about-img .text-start, .about-img .text-end {
+        margin-top: -150px;
+    }
+}
+
+@media (min-width: 992px) {
+    .about-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-img .col-12 {
+        margin-bottom: 30px; /* Tambahkan jarak antara gambar atas dan bawah */
+    }
+}
+
 
     p {
         font-family: "Open Sans", sans-serif;
@@ -135,13 +156,18 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <h1 class="mb-4">Inventaris Museum Brawijaya Malang</h1>
                     <p class="mb-4">
-                        Sebagai pimpinan Museum Brawijaya, saya dengan bangga mempersembahkan kepada Anda semua portal
-                        online ini yang merupakan wujud dari komitmen kami untuk memperluas aksesibilitas dan
-                        meningkatkan pelayanan kepada masyarakat serta para pecinta sejarah.
-                        Melalui website ini, Anda akan dapat menjelajahi inventaris koleksi yang berharga dan beragam
-                        yang dimiliki oleh Museum Brawijaya. Koleksi ini tidak hanya menjadi saksi bisu dari sejarah
-                        perjuangan bangsa, tetapi juga sebagai warisan berharga yang perlu dilestarikan dan dipelajari
-                        untuk generasi-generasi mendatang.
+                        Puji syukur kita panjatkan kepada Tuhan Yang Maha Esa pembinaan mental dan sejarah 
+                        Kodam V/Brawijaya telah berhasil melaksanakan pembimbingan penelitian menyelesaikan tugas belajar skripsi dengan judul "PENGEMBANGAN SISTEM INFORMASI 
+                        INVENTORY DATA PAMERAN KOLEKSI DAN BUKU PERPUSTAKAAN DI MUSEUM BRAWIJAYA MALANG" Merupakan suatu penghargaan 
+                        penelitian membantu tugas pokok kesejarahan mewariskan nilai-nilai patriotisme 
+                        perjuangan cinta tanah air rela berkorban demi bangsa dan Negara Kesatuan Republik Indonesia kepada generasi TNI khususnya dan seluruh generasi penerus bangsa Indonesia pada umumnya.
+                        <br>Museum Brawijaya Bintaljarahdam V/Brawijaya merupakan tempat pembinaan Dokumen, Penulisan, 
+                        Perpustakaan, Museum, Monumen, dan Tradisi Kodam V/Brawijaya.<br> Sebagai wadah pembinaan sejarah Kodam V/Brawijaya memiliki literasi arsip/dokumen statis dan 
+                        dinamis serta artefak saksi sejarah perjuangan di wilayah Kodam V/Brawijaya yang wilayahnya meliputi seluruh Jawa Timur. 
+                        Penelitian ini semoga menjadi kajian akademis kesejarahan bagi generasi penerus bangsa.
+                        <br>Demikian saya ucapkan selamat dan ucapan terima kasih atas keberhasilan penelitian ini
+                        semoga Tuhan Yang Maha Esa senantiasa memberikan petunjuk dan bimbingan kepada kita semua demi Bangsa dan Negara Kesatuan 
+                        Republik Indonesia.
                         <div class="row g-4 align-items-center">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
@@ -156,22 +182,24 @@
                         </div>
                 </div>
                 <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="img-fluid w-75 rounded-circle bg-light p-1" src="gambar/museum_satu.png" alt="">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="col-12 text-center mb-4">
+                            <img class="img-fluid rounded-circle bg-light p-1" src="gambar/1589275636662-4b355cb85ebd3980d3206ab7a604231c.jpeg" alt="">
                         </div>
-                        <div class="col-6 text-start" style="margin-top: -150px;">
-                            <img class="img-fluid w-100 rounded-circle bg-light p-1" src="gambar/museum_dua.jpg" alt="">
-                        </div>
-                        <div class="col-6 text-end" style="margin-top: -150px;">
-                            <img class="img-fluid w-100 rounded-circle bg-light p-1" src="gambar/museum_tiga.png"
-                                alt="">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="text-start" style="width: 48%;">
+                                <img class="img-fluid rounded-circle bg-light p-1" src="gambar/1692086137291-IMG_20230815_100555.jpg" alt="">
+                            </div>
+                            <div class="text-end" style="width: 48%;">
+                                <img class="img-fluid rounded-circle bg-light p-1" src="gambar/museum_tiga.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- About -->
 
 

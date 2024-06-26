@@ -93,7 +93,7 @@ label.error {
 <body>
    <!-- Navbar Start -->
    <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
-    <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
+    <a href="/" class="navbar-brand" style="display: flex; align-items: center;">
         <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
@@ -164,7 +164,7 @@ label.error {
                             <div class="col-md-6 mb-3">
                                 <label for="file">File:</label>
                                 <input type="file" class="form-control" id="file" name="file">
-                                <span id="file-error" class="text-danger"></span>
+                                <small>maksimal ukuran pdf 2 mb.</small>
                             </div>
                         </div>
                     </div>
@@ -212,6 +212,7 @@ label.error {
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+           
             var tanggalInput = document.getElementById('tanggal');
             var datatanggalpenuh = {!! json_encode($data_penuh) !!};
     
@@ -226,57 +227,76 @@ label.error {
                     }
                 });
             });
+            var fileInput = document.getElementById('file');
+    fileInput.addEventListener('change', function () {
+        var file = this.files[0];
+        if (file && file.size > 2 * 1024 * 1024) { // 2MB in bytes
+            alert('Ukuran file tidak boleh lebih dari 2MB');
+            this.value = ''; // Reset the input value
+        }
+    });
         });
     </script>
-  <script>
-    $(document).ready(function() {
-        $("#form").validate({
-            rules: {
-                nama: {
-                    required: true,
-                },
-                nomor_hp: {
-                    required: true,
-                },
-                asal_intansi: {
-                    required: true,
-                },
-                tanggal: {
-                    required: true,
-                },
-                kategori_surat_id: {
-                    required: true,
-                },
-                file: {
-                    required: true,
+    <script>
+        $(document).ready(function() {
+            $.validator.addMethod("filesize", function(value, element, param) {
+                if (element.files.length == 0) {
+                    return true; // Jika tidak ada file yang diunggah, jangan validasi ukuran file
                 }
-            },
-            messages: { // Menambahkan pesan error untuk setiap field yang tidak diisi
-                nama: {
-                    required: "Nama harus diisi",
+                return element.files[0].size <= param;
+            }, "Ukuran file tidak boleh lebih dari 2MB");
+            $("#form").validate({
+                rules: {
+                    nama: {
+                        required: true,
+                    },
+                    nomor_hp: {
+                        required: true,
+                    },
+                    asal_intansi: {
+                        required: true,
+                    },
+                    tanggal: {
+                        required: true,
+                    },
+                    kategori_surat_id: {
+                        required: true,
+                    },
+                    file: {
+                        required: true,
+                        extension: "pdf",
+                        filesize: 2 * 1024 * 1024
+                    }
                 },
-                nomor_hp: {
-                    required: "Nomor HP harus diisi",
+                messages: { // Menambahkan pesan error untuk setiap field yang tidak diisi
+                    nama: {
+                        required: "Nama harus diisi",
+                    },
+                    nomor_hp: {
+                        required: "Nomor HP harus diisi",
+                    },
+                    asal_intansi: {
+                        required: "Asal Instansi harus diisi",
+                    },
+                    tanggal: {
+                        required: "Tanggal harus diisi",
+                    },
+                    kategori_surat_id: {
+                        required: "Agenda harus diisi",
+                    },
+                    file: {
+                        required: "File harus diunggah",
+                        extension: "File harus berformat PDF",
+                        filesize: "Ukuran file tidak boleh lebih dari 2MB"
+                    }
                 },
-                asal_intansi: {
-                    required: "Asal Instansi harus diisi",
-                },
-                tanggal: {
-                    required: "Tanggal harus diisi",
-                },
-                kategori_surat_id: {
-                    required: "Agenda harus diisi",
-                },
-                file: {
-                    required: "File harus diunggah",
+                
+                submitHandler: function(form) {
+                    // Jika semua validasi terpenuhi, submit form
+                    form.submit();
                 }
-            },
-            submitHandler: function(form) {
-                // Jika semua validasi terpenuhi, submit form
-                form.submit();
-            }
+            });
         });
-    });
     </script>
     
     

@@ -108,7 +108,7 @@ td {
                     </td>
                     <td style="text-align: center; border: none;">
                         <div class="address">
-                            <h1>MUSEUM BRAWIJAYA<br> Jalan Museum No. 1, Kota Malang, Indonesia<br> Telepon: (123) 456-7890 | Email: info@museum.com</h1>
+                            <h1>MUSEUM BRAWIJAYA<br>Jl. Besar Ijen No.25A, Gading Kasri, Kec. Klojen,<br>Kota Malang, Jawa Timur 65115</h1>
                         </div>
                     </td>
                     <td style="text-align: right; border: none;">
@@ -125,6 +125,7 @@ td {
             </thead>
         </table>
     </header>
+    <br>
     <div class="table-responsive">
         <table class="narrow-column">
             <thead>

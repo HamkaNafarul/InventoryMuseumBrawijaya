@@ -64,11 +64,22 @@ class HomeController extends Controller
     $koleksibuku = koleksibuku::findOrFail($id);
     
     $similarCollections = koleksibuku::where('bahasa', $koleksibuku->bahasa)
-                                ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
-                                ->limit(5) // batasi jumlah koleksi yang ditampilkan
-                                ->inRandomOrder() // mengacak urutan koleksi
-                                ->get();
+    ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
+    ->limit(5) // batasi jumlah koleksi yang ditampilkan
+    ->inRandomOrder() // mengacak urutan koleksi
+    ->get();
 
+if ($similarCollections->count() < 5) {
+$additionalCollections = koleksibuku::where('id', '!=', $id)
+            ->whereNotIn('id', $similarCollections->pluck('id')) // untuk tidak mengulang koleksi yang sudah diambil
+            ->limit(5 - $similarCollections->count())
+            ->inRandomOrder()
+            ->get();
+$similarCollections = $similarCollections->merge($additionalCollections);
+}
+
+
+                                
     return view('detailkoleksibuku', compact('koleksibuku', 'similarCollections'));
     }
 
@@ -76,12 +87,21 @@ class HomeController extends Controller
     {
     $koleksi = Koleksi::findOrFail($id);
     
-    // Mengambil koleksi yang mirip berdasarkan tahun_abad_masa
     $similarCollections = Koleksi::where('tahun_abad_masa', $koleksi->tahun_abad_masa)
                                 ->where('id', '!=', $id) // agar tidak termasuk koleksi saat ini
-                                ->limit(3) // batasi jumlah koleksi yang ditampilkanr
+                                ->limit(3) // batasi jumlah koleksi yang ditampilkan
                                 ->inRandomOrder() // mengacak urutan koleksi
                                 ->get();
+
+if ($similarCollections->count() < 3) {
+    $additionalCollections = Koleksi::where('id', '!=', $id)
+                                    ->whereNotIn('id', $similarCollections->pluck('id')) // untuk tidak mengulang koleksi yang sudah diambil
+                                    ->limit(3 - $similarCollections->count())
+                                    ->inRandomOrder()
+                                    ->get();
+    $similarCollections = $similarCollections->merge($additionalCollections);
+}
+
 
     return view('detailkoleksi', compact('koleksi', 'similarCollections'));
 }
@@ -111,7 +131,9 @@ class HomeController extends Controller
             'asal_intansi' => 'required',
             'tanggal' => 'required',
             'kategori_surat_id' => 'required',
-            'file' => 'required|mimes:pdf',
+            'file' => 'required|mimes:pdf|max:2048',
+        ], [
+            'file.max' => 'The file size must not exceed 2MB.',
         ]);
 
         if ($request->hasFile('file')) {
@@ -119,8 +141,8 @@ class HomeController extends Controller
             $validatedData['file'] = $imagePath;
         }
 
- // Tambahkan status default 0
- $validatedData['status'] = 0;
+        // Tambahkan status default 0
+        $validatedData['status'] = 0;
 
         surat::create($validatedData);
 

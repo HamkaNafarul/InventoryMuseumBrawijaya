@@ -162,7 +162,7 @@ class KoleksiController extends Controller
     {
         $search = $request->input('search');
     
-        $query = Koleksi::with('nomorKoleksi')->select(['id', 'nama_barang', 'asal_ditemukan', 'ukuran', 'keterangan']);
+        $query = Koleksi::with('nomorKoleksi')->select(['id', 'nama_barang', 'asal_ditemukan', 'ukuran', 'keterangan','tahun_abad_masa','deskripsi','cara_didapat']);
     
         if (!empty($search)) {
             $query->where(function($query) use ($search) {

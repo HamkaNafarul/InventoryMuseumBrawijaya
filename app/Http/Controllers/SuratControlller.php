@@ -19,7 +19,7 @@ class SuratControlller extends Controller
             'asal_intansi' => 'required',
             'tanggal' => 'required',
             'kategori_surat_id' => 'required',
-            'file' => 'required|mimes:pdf',
+            'file' => 'required|mimes:pdf|max:2048',
         ]);
 
         if ($request->hasFile('file')) {

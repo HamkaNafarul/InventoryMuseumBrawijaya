@@ -41,10 +41,10 @@
             <div class="col-lg-3 col-md-6">
                 <h3 class="text-white mb-4">Photo Gallery</h3>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://facebook.com/museumbrawijaya/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://youtube.com/@museumbrawijayamalang?si=57KUxzwhVv0k0b5r"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://instagram.com/museum_brawijaya/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
            

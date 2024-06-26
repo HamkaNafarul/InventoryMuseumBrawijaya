@@ -113,7 +113,7 @@
 <body>
    <!-- Navbar Start -->
    <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
-    <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
+    <a href="/" class="navbar-brand" style="display: flex; align-items: center;">
         <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
@@ -272,6 +272,7 @@
                                 <div class="flex-fill">
                                     <label for="file">File:</label>
                                     <input type="file" class="form-control" id="file" name="file" placeholder="File">
+                                    <small>maksimal ukuran pdf 2 mb.</small>
                                     <span id="file-error" class="text-danger"></span>
                                 </div>
                             </div>
@@ -443,6 +444,8 @@ $('#submitForm').click(function () {
             },
             error: function(xhr, textStatus, errorThrown) {
                 if (xhr.status === 422) {
+                    $('#file-error').text('File Terlalu Besar');
+                   
                     var errors = xhr.responseJSON.errors;
                     if (errors.hasOwnProperty('captcha')) {
                         captchaAttempts++;
@@ -461,8 +464,12 @@ $('#submitForm').click(function () {
                 }
             }
         });
-    } else {                                                                                                                                                                                    
-        
+    } else {  
+        $('#nama-error').text('Nama Tidak Boleh Kosong');    
+        $('#nomor_hp-error').text('Nomor HP Tidak Boleh Kosong');  
+        $('#asal_intansi-error').text('Asal Intansi Tidak Boleh Kosong');                                                                                                                                                                        
+        $('#file-error').text('File Tidak Boleh Kosong');    
+
         // Tambahkan pesan error untuk captcha
         $('#captcha-error').text('The captcha field is required.');
         // Memperbarui gambar captcha jika submit tidak berhasil
@@ -488,7 +495,9 @@ $('#submitForm').click(function () {
 </script> 
 <script>
     $(document).ready(function () {
-        
+        @if(session('success'))
+                alert('{{ session('success') }}');
+            @endif
     });
 </script>
 <script>

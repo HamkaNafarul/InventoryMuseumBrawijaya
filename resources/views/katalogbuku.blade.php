@@ -100,7 +100,7 @@
 <body>
    <!-- Navbar Start -->
    <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: #103741;">
-    <a href="index.html" class="navbar-brand" style="display: flex; align-items: center;">
+    <a href="/" class="navbar-brand" style="display: flex; align-items: center;">
         <h1 class="m-0 text-white fw-bold">MUSEUM BRAWIJAYA</h1>
         <img src="gambar\image1.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
         <img src="gambar\image2.png" alt="Logo" style="height: 2.5em; margin-left: 0.5em;" />
